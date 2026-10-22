@@ -24,5 +24,9 @@
 // 4. Base Responsive
 @use 'base/responsive';
 
-// 5. WordPress Alignments
+// 5. Founder & Refinements
+@use 'founder/editorial';
+@use 'refinements/readability';
+
+// 6. WordPress Alignments
 @use 'wordpress/alignments';

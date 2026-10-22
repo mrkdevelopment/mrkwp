@@ -36,6 +36,12 @@
 @use 'base/responsive';
 @use 'base/accents';
 
-// 6. WordPress Compatibility
+// 6. Founder-Led Editorial Enhancements
+@use 'founder/editorial';
+
+// 7. Review Refinements (Readability, Bento Grid, Process, Polish)
+@use 'refinements/readability';
+
+// 8. WordPress Compatibility
 @use 'wordpress/admin-bar';
 @use 'wordpress/alignments';
