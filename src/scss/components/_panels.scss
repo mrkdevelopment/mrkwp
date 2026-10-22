@@ -428,7 +428,7 @@ dialog {
   }
 
   .video-date {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
   }
 }
@@ -456,6 +456,65 @@ dialog {
     &:hover {
       background: var(--surface-hover);
       color: var(--indigo);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Video Single Layout
+// --------------------------------------------------------------------------
+
+.video-single-main {
+  .page-intro {
+    padding-block: 48px 24px;
+
+    h1,
+    h1.wp-block-post-title {
+      font-size: 35px !important;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      margin: 16px 0 12px;
+    }
+  }
+
+  .video-panel,
+  article.video-panel,
+  .video-content-section {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding-inline: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .video-panel {
+    padding-block: 0 !important;
+
+    iframe,
+    .wp-block-embed,
+    .wp-block-video video {
+      border: none !important;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(10, 37, 64, 0.08);
+      max-width: 100%;
+    }
+  }
+
+  .video-content-section {
+    padding-top: 0;
+  }
+
+  .related-videos-section {
+    padding-top: 56px;
+    border-top: 1px solid var(--line);
+    margin-top: 32px;
+
+    .section-heading {
+      margin-bottom: 36px;
+
+      h2 {
+        font-size: clamp(32px, 3.5vw, 42px);
+      }
     }
   }
 }
