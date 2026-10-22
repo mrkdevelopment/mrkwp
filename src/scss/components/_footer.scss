@@ -12,27 +12,41 @@
   }
 }
 
+// Prevent Gutenberg layout flow margins from misaligning grid/flex children
+.site-footer,
+.site-footer .wp-block-group,
+.site-footer .is-layout-flow,
+.site-footer .is-layout-constrained {
+  > *,
+  > * + * {
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+  }
+}
+
 // --------------------------------------------------------------------------
-// Footer Brand Logo Alignment
+// Footer Brand Logo & Tagline (Always White, Including Links)
 // --------------------------------------------------------------------------
 
 .site-footer .logo,
-.site-footer .wp-block-group.logo {
+.site-footer .wp-block-group.logo,
+.site-footer a.logo,
+.site-footer a.logo:hover,
+.site-footer a.logo:focus,
+.site-footer a.logo:visited {
   display: inline-flex !important;
   flex-direction: row !important;
   align-items: center !important;
-  color: var(--white) !important;
+  color: #ffffff !important;
+  font-size: 23px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
   gap: 12px !important;
   margin: 0 !important;
   margin-block: 0 !important;
   padding: 0 !important;
   line-height: 1 !important;
   text-decoration: none !important;
-
-  > * {
-    margin-block-start: 0 !important;
-    margin-block-end: 0 !important;
-  }
 }
 
 .site-footer .square-logo,
@@ -76,239 +90,221 @@
   gap: 0 !important;
   row-gap: 0 !important;
   line-height: 1 !important;
-
-  > * {
-    margin: 0 !important;
-    margin-block: 0 !important;
-    margin-block-start: 0 !important;
-    margin-block-end: 0 !important;
-    padding: 0 !important;
-  }
-
-  .logo-title,
-  p.logo-title {
-    margin: 0 !important;
-    margin-block: 0 !important;
-    margin-block-start: 0 !important;
-    margin-block-end: 0 !important;
-    padding: 0 !important;
-    color: var(--white) !important;
-    font-size: 23px !important;
-    font-weight: 800 !important;
-    letter-spacing: -0.04em !important;
-    line-height: 1 !important;
-
-    a {
-      color: var(--white) !important;
-      text-decoration: none !important;
-    }
-  }
-
-  .logo-caption,
-  p.logo-caption {
-    display: block !important;
-    color: var(--white) !important;
-    font-size: 10px !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.01em !important;
-    line-height: 1.2 !important;
-    margin: 7px 0 0 0 !important;
-    margin-block-start: 7px !important;
-    margin-block-end: 0 !important;
-    padding: 0 !important;
-
-    a {
-      color: var(--white) !important;
-      text-decoration: none !important;
-    }
-  }
 }
 
-// Fallback for classic inline logo markup
-.site-footer a.logo {
-  > span {
-    display: inline-block;
-    color: var(--white);
-    font-size: 23px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1;
-  }
-
-  .logo-caption {
-    display: block;
-    color: var(--white);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    line-height: 1.2;
-    margin-top: 7px;
-  }
+.site-footer .logo .logo-title,
+.site-footer .logo p.logo-title,
+.site-footer .logo .logo-title a,
+.site-footer .logo .logo-title a:hover,
+.site-footer .logo .logo-title a:focus,
+.site-footer .logo .logo-title a:visited {
+  margin: 0 !important;
+  margin-block: 0 !important;
+  padding: 0 !important;
+  color: #ffffff !important;
+  font-size: 23px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
 }
 
-// --------------------------------------------------------------------------
-// Footer Brand Tagline
-// --------------------------------------------------------------------------
+.site-footer .logo .logo-caption,
+.site-footer .logo p.logo-caption,
+.site-footer .logo .logo-caption a,
+.site-footer .logo .logo-caption a:hover,
+.site-footer .logo .logo-caption a:focus,
+.site-footer .logo .logo-caption a:visited {
+  display: block !important;
+  color: #ffffff !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.2 !important;
+  margin: 7px 0 0 0 !important;
+  margin-block-start: 7px !important;
+  margin-block-end: 0 !important;
+  padding: 0 !important;
+  text-decoration: none !important;
+}
+
+.site-footer .brand-mark { width: 35px; height: 35px; }
+.site-footer .brand-mark img { width: 24px; }
 
 .site-footer .footer-top > div > p:not(.logo-title):not(.logo-caption),
 .site-footer .wp-block-group.footer-brand > p:not(.logo-title):not(.logo-caption),
-.site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) {
+.site-footer .footer-brand > p:not(.logo-title):not(.logo-caption),
+.site-footer .footer-top > div > p:not(.logo-title):not(.logo-caption) a,
+.site-footer .footer-top > div > p:not(.logo-title):not(.logo-caption) a:hover,
+.site-footer .footer-top > div > p:not(.logo-title):not(.logo-caption) a:focus,
+.site-footer .footer-top > div > p:not(.logo-title):not(.logo-caption) a:visited,
+.site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) a,
+.site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) a:hover,
+.site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) a:focus,
+.site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) a:visited {
   font-size: 29px !important;
   font-weight: 500 !important;
   line-height: 1.25 !important;
   letter-spacing: -0.035em !important;
   margin: 23px 0 0 !important;
   margin-block-start: 23px !important;
-  color: #d7e1ec !important;
+  color: #ffffff !important;
   text-decoration: none !important;
 }
 
+.site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) a {
+  margin: 0 !important;
+  margin-block-start: 0 !important;
+}
+
 // --------------------------------------------------------------------------
-// Footer Top & Navigation Links
+// Footer Top & Navigation Columns
 // --------------------------------------------------------------------------
 
 .footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+  gap: 55px;
   padding-bottom: 58px;
-}
-
-.footer-brand {
-  max-width: 440px;
 }
 
 .footer-links {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: start;
-  gap: 55px;
+  gap: 30px;
   padding-top: 0;
+}
 
-  > div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.footer-links > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-    > span,
-    > .footer-heading,
-    > .footer-heading a {
-      color: var(--white);
-      font-size: 10px;
-      font-weight: 600;
-      margin: 0 0 16px;
-      margin-block-end: 16px;
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
+.site-footer .footer-links > div > span,
+.site-footer .footer-links > div > .footer-heading,
+.site-footer .footer-links > div > .footer-heading a,
+.site-footer .footer-links > div > .footer-heading a:hover {
+  color: #ffffff !important;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 16px !important;
+  margin-block-end: 16px !important;
+  text-decoration: none !important;
+  text-transform: none;
+  letter-spacing: normal;
+}
 
-    > p:not(.footer-heading),
-    > ul,
-    > ul > li {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      width: 100%;
-    }
-  }
+.footer-links > div > p:not(.footer-heading),
+.footer-links > div > ul,
+.footer-links > div > ul > li {
+  margin: 0 !important;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
 
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 25px;
-    min-height: 34px;
-    font-size: 12px;
-    color: #d1ddea;
-    text-decoration: none;
-    transition: color 0.2s;
+.footer-links a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 25px;
+  min-height: 46px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #d1ddea;
+  text-decoration: none;
+}
 
-    &:hover {
-      color: var(--cyan);
-    }
+.footer-links a .icon {
+  width: 13px;
+  height: 13px;
+  color: #9ab3ca;
+}
 
-    .icon {
-      width: 13px;
-      height: 13px;
-      color: #9ab3ca;
-    }
-  }
+.site-footer a:hover {
+  color: var(--cyan);
 }
 
 // --------------------------------------------------------------------------
-// Social Row
+// Social Row & Icons
 // --------------------------------------------------------------------------
 
 .social-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding-block: 28px;
-  border-block: 1px solid rgba(255, 255, 255, 0.12);
+  gap: 25px;
+  padding: 0 0 32px;
+}
 
-  > p,
-  > .social-row-label {
-    margin: 0;
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 500;
-  }
+.site-footer .social-row > span,
+.site-footer .social-row > p,
+.site-footer .social-row > .social-row-label {
+  margin: 0 !important;
+  font-size: 17px;
+  color: #ffffff !important;
 }
 
 .site-footer .wp-block-social-links.social-icons {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
-  align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-  .wp-social-link {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-  }
+.site-footer .wp-block-social-links.social-icons .wp-social-link {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 16px;
+}
 
-  .wp-block-social-link-anchor {
-    display: grid;
-    place-items: center;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    border-radius: 6px;
-    background: #12314e;
-    color: var(--white);
-    transition: background 0.2s, transform 0.2s var(--ease);
-    text-decoration: none;
+.site-footer .social-icons a,
+.site-footer .wp-block-social-links.social-icons .wp-block-social-link-anchor,
+.site-footer .social-pending {
+  display: grid !important;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0 !important;
+  border: 1px solid #48617c;
+  border-radius: 16px;
+  background: #12314e !important;
+  color: #ffffff !important;
+  transition: background 0.2s, transform 0.2s;
+  text-decoration: none !important;
+}
 
-    &:hover {
-      background: #24435f;
-      color: var(--white);
-      transform: translateY(-3px);
-    }
+.site-footer .social-icons a:hover,
+.site-footer .wp-block-social-links.social-icons .wp-block-social-link-anchor:hover {
+  background: #24435f !important;
+  color: #ffffff !important;
+  transform: translateY(-3px);
+}
 
-    svg.mrkwp-stroke-icon {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.7;
-      stroke-linejoin: round;
-      stroke-linecap: round;
-    }
+.site-footer .social-icons svg,
+.site-footer .wp-block-social-links.social-icons .wp-social-link .wp-block-social-link-anchor svg.mrkwp-stroke-icon {
+  width: 24px !important;
+  height: 24px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.7;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
 
-    svg:not(.mrkwp-stroke-icon) {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-      stroke: none;
-    }
-  }
+.site-footer .wp-block-social-links.social-icons .wp-social-link .wp-block-social-link-anchor svg:not(.mrkwp-stroke-icon) {
+  width: 24px !important;
+  height: 24px !important;
+  fill: currentColor !important;
+  stroke: none !important;
 }
 
 // --------------------------------------------------------------------------
@@ -316,73 +312,48 @@
 // --------------------------------------------------------------------------
 
 .footer-bottom {
+  border-top: 1px solid #ffffff1f;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
   padding-block: 24px;
-  font-size: 11px;
-  color: #99afc3;
-
-  > p,
-  > div > p,
-  span {
-    margin: 0;
-    color: #c2d1e1;
-  }
-
-  > div {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-  }
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    color: #c2d1e1;
-    text-decoration: none;
-    transition: color 0.2s;
-
-    &:hover {
-      color: var(--cyan);
-    }
-  }
+  font-size: 15px;
+  color: #c2d1e1;
 }
 
-// --------------------------------------------------------------------------
-// Responsive
-// --------------------------------------------------------------------------
-
-@media (max-width: 960px) {
-  .footer-links {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 35px;
-  }
+.site-footer .footer-bottom > p,
+.site-footer .footer-bottom > div > p,
+.site-footer .footer-bottom span {
+  margin: 0 !important;
+  color: #c2d1e1;
+  font-size: 15px;
 }
 
-@media (max-width: 760px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 40px;
-  }
+.footer-bottom > div {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
 
-  .footer-links {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    width: 100%;
-  }
+.site-footer .footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #c2d1e1;
+  text-decoration: none;
+}
 
-  .social-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
+.site-footer .footer-bottom a:hover {
+  color: var(--cyan);
+}
 
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
+.footer-bottom .back-to-top {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #496078;
+  border-radius: var(--radius-sm);
+  justify-content: center;
+  color: #dce8f4;
+  font-size: 16px;
 }

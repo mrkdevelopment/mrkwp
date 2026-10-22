@@ -47,8 +47,8 @@
     transition: transform 0.2s var(--ease);
   }
 
-  // When standard buttons do not manually include an icon element, show ↗ automatically
-  &:not(:has(span)):not(:has(svg))::after {
+  // When Gutenberg block buttons do not manually include an icon element, show ↗ automatically
+  &.wp-block-button__link:not(.button):not(:has(span)):not(:has(svg))::after {
     content: "↗";
     display: inline-flex;
     align-items: center;
@@ -61,6 +61,7 @@
 
   &:hover {
     background: var(--indigo-dark);
+    color: var(--white);
     box-shadow: 0 4px 12px rgba(85, 76, 240, 0.25);
 
     span[aria-hidden="true"],
