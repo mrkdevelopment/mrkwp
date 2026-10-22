@@ -130,6 +130,18 @@ Configuration is maintained in [`phpcs.xml`](./phpcs.xml), scanning all theme PH
 
 ## Changelog
 
+### [1.0.2] - 2026-10-23
+#### Added
+- Dynamic related videos block (`mrkwp/related-videos`) querying videos related by `post_tag` and date descending, with fallback backfill to recent videos.
+- Dynamic relative post date formatting (`mrkwp_format_relative_days()`) and `render_block_core/post-date` filter to show "Posted 'x' days ago" (e.g. "Posted today", "Posted 1 day ago", "Posted 5 days ago") for `mrkwp_video` posts.
+- Insertable block patterns for `path-section` and `belief-strip`.
+
+#### Changed
+- Refined `single-mrkwp_video.html` template: removed card border, background, and padding artifacts from the video container.
+- Set single video `h1` post title font size to 35px (`clamp` override and line-height adjustment).
+- Styled related videos grid in `.videos-grid` with unified button badges and responsive column layouts.
+- Maintained 100% PHPCS compliance (26 of 26 files passing).
+
 ### [1.0.1] - 2026-10-23
 #### Added
 - `phpcs.xml` configuration for WordPress Coding Standards (WPCS) with text domain validation for `mrkwp`.

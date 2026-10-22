@@ -677,5 +677,231 @@ function mrkwp_register_theme_blocks() {
 			),
 		)
 	);
+
+	register_block_type(
+		'mrkwp/related-videos',
+		array(
+			'title'           => __( 'Related Videos', 'mrkwp' ),
+			'category'        => 'theme',
+			'render_callback' => 'mrkwp_render_related_videos',
+			'supports'        => array(
+				'html' => false,
+			),
+		)
+	);
 }
 add_action( 'init', 'mrkwp_register_theme_blocks' );
+
+/**
+ * Calculate relative post date in days.
+ *
+ * @param int $post_id Optional. Post ID. Defaults to current post.
+ * @return string Relative date string, e.g. "Posted today", "Posted 1 day ago", "Posted 5 days ago".
+ */
+function mrkwp_format_relative_days( $post_id = 0 ) {
+	$post_id   = $post_id ? $post_id : get_the_ID();
+	$post_time = get_post_time( 'U', true, $post_id );
+	$diff_sec  = max( 0, time() - (int) $post_time );
+	$days      = (int) floor( $diff_sec / DAY_IN_SECONDS );
+
+	if ( $days <= 0 ) {
+		return __( 'Posted today', 'mrkwp' );
+	} elseif ( 1 === $days ) {
+		return __( 'Posted 1 day ago', 'mrkwp' );
+	}
+
+	/* translators: %d: number of days. */
+	return sprintf( __( 'Posted %d days ago', 'mrkwp' ), $days );
+}
+
+/**
+ * Filter core/post-date block to show relative days for mrkwp_video post type.
+ *
+ * @param string        $block_content The block content.
+ * @param array         $block         The parsed block.
+ * @param WP_Block|null $instance      The block instance.
+ * @return string Filtered block content.
+ */
+function mrkwp_filter_video_post_date( $block_content, $block, $instance = null ) {
+	$post_id = 0;
+	if ( ! empty( $instance->context['postId'] ) ) {
+		$post_id = (int) $instance->context['postId'];
+	} elseif ( ! empty( $block['attrs']['postId'] ) ) {
+		$post_id = (int) $block['attrs']['postId'];
+	} else {
+		$post_id = get_the_ID();
+	}
+
+	if ( ! $post_id || 'mrkwp_video' !== get_post_type( $post_id ) ) {
+		return $block_content;
+	}
+
+	$relative_text = mrkwp_format_relative_days( $post_id );
+	$updated       = preg_replace( '/(<time[^>]*>).*?(<\/time>)/is', '$1' . esc_html( $relative_text ) . '$2', $block_content );
+
+	return $updated ? $updated : $block_content;
+}
+add_filter( 'render_block_core/post-date', 'mrkwp_filter_video_post_date', 10, 3 );
+
+/**
+ * Render callback for dynamic related videos block (mrkwp/related-videos).
+ *
+ * @param array  $attributes Block attributes.
+ * @param string $content    Block inner content.
+ * @return string HTML output.
+ */
+function mrkwp_render_related_videos( $attributes = array(), $content = '' ) {
+	unset( $attributes, $content );
+
+	$current_id = get_the_ID();
+	if ( ! $current_id ) {
+		return '';
+	}
+
+	$tag_ids = wp_get_post_terms( $current_id, 'post_tag', array( 'fields' => 'ids' ) );
+	if ( is_wp_error( $tag_ids ) ) {
+		$tag_ids = array();
+	}
+
+	$related_ids = array();
+
+	// 1. Primary query: Same post_tag ordered by date DESC.
+	if ( ! empty( $tag_ids ) ) {
+		$tag_query = new WP_Query(
+			array(
+				'post_type'      => 'mrkwp_video',
+				'post_status'    => 'publish',
+				'posts_per_page' => 3,
+				'post__not_in'   => array( $current_id ),
+				'tax_query'      => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+					array(
+						'taxonomy' => 'post_tag',
+						'field'    => 'term_id',
+						'terms'    => $tag_ids,
+					),
+				),
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+			)
+		);
+
+		if ( ! empty( $tag_query->posts ) ) {
+			$related_ids = array_map( 'intval', $tag_query->posts );
+		}
+	}
+
+	// 2. Backfill query: Most recent videos if fewer than 3 were found.
+	$needed = 3 - count( $related_ids );
+	if ( $needed > 0 ) {
+		$exclude        = array_merge( array( $current_id ), $related_ids );
+		$backfill_query = new WP_Query(
+			array(
+				'post_type'      => 'mrkwp_video',
+				'post_status'    => 'publish',
+				'posts_per_page' => $needed,
+				'post__not_in'   => $exclude,
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+			)
+		);
+
+		if ( ! empty( $backfill_query->posts ) ) {
+			$related_ids = array_merge( $related_ids, array_map( 'intval', $backfill_query->posts ) );
+		}
+	}
+
+	if ( empty( $related_ids ) ) {
+		return '';
+	}
+
+	$related_query = new WP_Query(
+		array(
+			'post_type'      => 'mrkwp_video',
+			'post_status'    => 'publish',
+			'post__in'       => $related_ids,
+			'orderby'        => 'post__in',
+			'posts_per_page' => count( $related_ids ),
+			'no_found_rows'  => true,
+		)
+	);
+
+	if ( ! $related_query->have_posts() ) {
+		return '';
+	}
+
+	ob_start();
+	?>
+	<section class="wrap section related-videos-section" aria-label="<?php esc_attr_e( 'Related Videos', 'mrkwp' ); ?>">
+		<div class="section-heading">
+			<div>
+				<p class="eyebrow"><?php esc_html_e( 'More Walkthroughs', 'mrkwp' ); ?></p>
+				<h2><?php esc_html_e( 'Related Videos', 'mrkwp' ); ?></h2>
+			</div>
+			<p><?php esc_html_e( 'Continue learning with tutorials and workflows related to this walkthrough.', 'mrkwp' ); ?></p>
+		</div>
+
+		<div class="content-grid videos-grid">
+			<?php
+			while ( $related_query->have_posts() ) :
+				$related_query->the_post();
+				$video_id      = get_the_ID();
+				$video_title   = get_the_title();
+				$permalink     = get_permalink();
+				$video_tags    = get_the_terms( $video_id, 'post_tag' );
+				$youtube_thumb = get_post_meta( $video_id, '_mrkwp_youtube_thumbnail_url', true );
+				?>
+				<article class="content-card">
+					<?php if ( has_post_thumbnail( $video_id ) ) : ?>
+						<a href="<?php echo esc_url( $permalink ); ?>" class="wp-block-post-featured-image" aria-label="<?php echo esc_attr( $video_title ); ?>">
+							<?php
+							echo get_the_post_thumbnail(
+								$video_id,
+								'medium_large',
+								array(
+									'loading' => 'lazy',
+									'alt'     => esc_attr( $video_title ),
+								)
+							);
+							?>
+						</a>
+					<?php elseif ( ! empty( $youtube_thumb ) ) : ?>
+						<a href="<?php echo esc_url( $permalink ); ?>" class="wp-block-post-featured-image" aria-label="<?php echo esc_attr( $video_title ); ?>">
+							<img src="<?php echo esc_url( $youtube_thumb ); ?>" alt="<?php echo esc_attr( $video_title ); ?>" loading="lazy" />
+						</a>
+					<?php else : ?>
+						<a href="<?php echo esc_url( $permalink ); ?>" class="content-art art-video" aria-hidden="true">
+							<span class="play-circle">▶</span>
+						</a>
+					<?php endif; ?>
+
+					<div class="content-card-copy">
+						<?php if ( ! empty( $video_tags ) && ! is_wp_error( $video_tags ) ) : ?>
+							<div class="video-tags-row">
+								<?php foreach ( array_slice( $video_tags, 0, 3 ) as $tag ) : ?>
+									<a href="<?php echo esc_url( get_tag_link( $tag ) ); ?>"><?php echo esc_html( $tag->name ); ?></a>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+
+						<h3><a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $video_title ); ?></a></h3>
+
+						<div class="wp-block-post-date video-date">
+							<time datetime="<?php echo esc_attr( (string) get_the_date( 'c', $video_id ) ); ?>"><?php echo esc_html( mrkwp_format_relative_days( $video_id ) ); ?></time>
+						</div>
+
+						<b><a href="<?php echo esc_url( $permalink ); ?>"><?php esc_html_e( 'Watch walkthrough', 'mrkwp' ); ?> <span aria-hidden="true">↗</span></a></b>
+					</div>
+				</article>
+				<?php
+			endwhile;
+			wp_reset_postdata();
+			?>
+		</div>
+	</section>
+	<?php
+	return ob_get_clean();
+}
