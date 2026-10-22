@@ -558,3 +558,21 @@ JS;
 	wp_add_inline_script( 'wp-blocks', $inline_js );
 }
 add_action( 'enqueue_block_editor_assets', 'mrkwp_enqueue_block_editor_social_icons' );
+
+
+/**
+ * Register pattern categories.
+ */
+function pattern_categories() {
+
+	$block_pattern_categories = array(
+		'ollie/menu' => array(
+			'label' => __( 'Menu', 'mrkwp' ),
+		),
+	);
+
+	foreach ( $block_pattern_categories as $name => $properties ) {
+		register_block_pattern_category( $name, $properties );
+	}
+}
+add_action( 'init', __NAMESPACE__ . '\pattern_categories', 9 );
