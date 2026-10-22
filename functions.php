@@ -577,4 +577,102 @@ function pattern_categories() {
 		register_block_pattern_category( $name, $properties );
 	}
 }
-add_action( 'init', __NAMESPACE__ . '\pattern_categories', 9 );
+add_action( 'init', 'pattern_categories', 9 );
+
+/**
+ * Render callback for dynamic tools directory block (mrkwp/tools-directory).
+ *
+ * @param array  $attributes Block attributes.
+ * @param string $content    Block inner content.
+ * @return string HTML output.
+ */
+function mrkwp_render_tools_directory( $attributes = array(), $content = '' ) {
+	$categories = array(
+		'all'         => __( 'All tools', 'mrkwp' ),
+		'assistants'  => __( 'AI assistants', 'mrkwp' ),
+		'social'      => __( 'Social media AI', 'mrkwp' ),
+		'video'       => __( 'Video', 'mrkwp' ),
+		'coding'      => __( 'AI coding', 'mrkwp' ),
+		'creative'    => __( 'Creative', 'mrkwp' ),
+		'development' => __( 'Development', 'mrkwp' ),
+	);
+
+	$tools_query = new WP_Query(
+		array(
+			'post_type'      => 'mrkwp_tool',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'orderby'        => array(
+				'menu_order' => 'ASC',
+				'title'      => 'ASC',
+			),
+		)
+	);
+
+	$total_tools = $tools_query->found_posts;
+
+	ob_start();
+	?>
+	<section class="wrap" aria-label="<?php esc_attr_e( 'Matt’s tool directory', 'mrkwp' ); ?>">
+		<div class="tool-controls" aria-label="<?php esc_attr_e( 'Filter tools', 'mrkwp' ); ?>">
+			<?php foreach ( $categories as $slug => $label ) : ?>
+				<button class="tool-filter" data-category="<?php echo esc_attr( $slug ); ?>" aria-pressed="<?php echo 'all' === $slug ? 'true' : 'false'; ?>"><?php echo esc_html( $label ); ?></button>
+			<?php endforeach; ?>
+		</div>
+
+		<p id="tool-count" role="status"><?php echo esc_html( sprintf( _n( '%d tool', '%d tools', $total_tools, 'mrkwp' ), $total_tools ) ); ?></p>
+
+		<div class="tool-grid">
+			<?php
+			if ( $tools_query->have_posts() ) :
+				while ( $tools_query->have_posts() ) :
+					$tools_query->the_post();
+					$post_id   = get_the_ID();
+					$title     = get_the_title();
+					$permalink = get_permalink();
+					$initial   = get_post_meta( $post_id, '_mrkwp_tool_initial', true );
+					if ( empty( $initial ) ) {
+						$initial = mb_substr( $title, 0, 1 );
+					}
+					$terms    = get_the_terms( $post_id, 'mrkwp_tool_cat' );
+					$cat_slug = 'other';
+					$cat_name = '';
+					if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+						$first_term = reset( $terms );
+						$cat_slug   = $first_term->slug;
+						$cat_name   = $first_term->name;
+					}
+					?>
+					<a class="tool-card" href="<?php echo esc_url( $permalink ); ?>" data-category="<?php echo esc_attr( $cat_slug ); ?>">
+						<span class="tool-initial" aria-hidden="true"><?php echo esc_html( $initial ); ?></span>
+						<h3><?php echo esc_html( $title ); ?></h3>
+						<p><?php echo esc_html( $cat_name ); ?></p>
+					</a>
+					<?php
+				endwhile;
+				wp_reset_postdata();
+			endif;
+			?>
+		</div>
+	</section>
+	<?php
+	return ob_get_clean();
+}
+
+/**
+ * Register dynamic blocks for the theme.
+ */
+function mrkwp_register_theme_blocks() {
+	register_block_type(
+		'mrkwp/tools-directory',
+		array(
+			'title'           => __( 'Tools Directory', 'mrkwp' ),
+			'category'        => 'theme',
+			'render_callback' => 'mrkwp_render_tools_directory',
+			'supports'        => array(
+				'html' => false,
+			),
+		)
+	);
+}
+add_action( 'init', 'mrkwp_register_theme_blocks' );

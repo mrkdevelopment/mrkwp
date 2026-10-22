@@ -305,11 +305,6 @@
 			"name": "page-resources",
 			"title": "Resource Library",
 			"postTypes": [ "page" ]
-		},
-		{
-			"name": "page-tools",
-			"title": "Tools & Workflows",
-			"postTypes": [ "page" ]
 		}
 	]
 }

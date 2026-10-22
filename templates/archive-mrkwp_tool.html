@@ -1,44 +1,26 @@
 <!-- wp:template-part {"slug":"header","area":"header"} /-->
 
-<!-- wp:html -->
-<main id="main">
-	<section class="page-intro wrap">
+<!-- wp:group {"tagName":"main","className":"site-main"} -->
+<main class="wp-block-group site-main">
+	<!-- wp:group {"tagName":"section","className":"page-intro wrap"} -->
+	<section class="wp-block-group page-intro wrap">
+		<!-- wp:paragraph {"className":"eyebrow"} -->
 		<p class="eyebrow">The tools directory</p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:heading {"level":1} -->
 		<h1>Useful tools.<br><span>Thoughtful choices.</span></h1>
+		<!-- /wp:heading -->
+
+		<!-- wp:paragraph -->
 		<p>The AI, creative, and development tools I use. Explore the collection by category, then find your own next step.</p>
+		<!-- /wp:paragraph -->
 	</section>
+	<!-- /wp:group -->
 
-	<section class="wrap" aria-label="Matt’s tool directory">
-		<div class="tool-controls" aria-label="Filter tools">
-			<button class="tool-filter" data-category="all" aria-pressed="true">All tools</button>
-			<button class="tool-filter" data-category="assistants" aria-pressed="false">AI assistants</button>
-			<button class="tool-filter" data-category="social" aria-pressed="false">Social media AI</button>
-			<button class="tool-filter" data-category="video" aria-pressed="false">Video</button>
-			<button class="tool-filter" data-category="coding" aria-pressed="false">AI coding</button>
-			<button class="tool-filter" data-category="creative" aria-pressed="false">Creative</button>
-			<button class="tool-filter" data-category="development" aria-pressed="false">Development</button>
-		</div>
-		<p id="tool-count" role="status">16 tools</p>
-		<div class="tool-grid">
-			<article class="tool-card" data-category="assistants"><span class="tool-initial" aria-hidden="true">C</span><h3>ChatGPT</h3><p>AI assistants</p></article>
-			<article class="tool-card" data-category="assistants"><span class="tool-initial" aria-hidden="true">G</span><h3>Gemini</h3><p>AI assistants</p></article>
-			<article class="tool-card" data-category="assistants"><span class="tool-initial" aria-hidden="true">C</span><h3>Claude</h3><p>AI assistants</p></article>
-			<article class="tool-card" data-category="assistants"><span class="tool-initial" aria-hidden="true">G</span><h3>Grok</h3><p>AI assistants</p></article>
-			<article class="tool-card" data-category="social"><span class="tool-initial" aria-hidden="true">N</span><h3>Native.io</h3><p>Social media AI</p></article>
-			<article class="tool-card" data-category="social"><span class="tool-initial" aria-hidden="true">S</span><h3>Sandcastles</h3><p>Social media AI</p></article>
-			<article class="tool-card" data-category="social"><span class="tool-initial" aria-hidden="true">F</span><h3>Format Finder</h3><p>Social media AI</p></article>
-			<article class="tool-card" data-category="video"><span class="tool-initial" aria-hidden="true">D</span><h3>DaVinci Resolve</h3><p>Video</p></article>
-			<article class="tool-card" data-category="video"><span class="tool-initial" aria-hidden="true">H</span><h3>Hyperframes</h3><p>Video</p></article>
-			<article class="tool-card" data-category="coding"><span class="tool-initial" aria-hidden="true">C</span><h3>Codex</h3><p>AI coding</p></article>
-			<article class="tool-card" data-category="coding"><span class="tool-initial" aria-hidden="true">C</span><h3>Claude Code</h3><p>AI coding</p></article>
-			<article class="tool-card" data-category="coding"><span class="tool-initial" aria-hidden="true">A</span><h3>Antigravity</h3><p>AI coding</p></article>
-			<article class="tool-card" data-category="coding"><span class="tool-initial" aria-hidden="true">G</span><h3>Google AI Studio</h3><p>AI coding</p></article>
-			<article class="tool-card" data-category="creative"><span class="tool-initial" aria-hidden="true">C</span><h3>Canva</h3><p>Creative</p></article>
-			<article class="tool-card" data-category="creative"><span class="tool-initial" aria-hidden="true">A</span><h3>Adobe Firefly</h3><p>Creative</p></article>
-			<article class="tool-card" data-category="development"><span class="tool-initial" aria-hidden="true">V</span><h3>VS Code</h3><p>Development</p></article>
-		</div>
-	</section>
+	<!-- wp:mrkwp/tools-directory /-->
 
+	<!-- wp:html -->
 	<section class="assessment section wrap" id="assessment" aria-labelledby="assessment-title">
 		<div class="assessment-copy">
 			<p class="eyebrow">Free self-assessment</p>
@@ -128,7 +110,8 @@
 			</noscript>
 		</div>
 	</section>
+	<!-- /wp:html -->
 </main>
-<!-- /wp:html -->
+<!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","area":"footer"} /-->
