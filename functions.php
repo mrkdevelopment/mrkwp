@@ -734,9 +734,14 @@ function mrkwp_render_video_player( $attributes = array(), $content = '' ) {
 	$video_html = '';
 	$blocks     = parse_blocks( $post->post_content );
 	foreach ( $blocks as $block ) {
-		if ( ! empty( $block['blockName'] ) && 'greenshift-blocks/video' === $block['blockName'] ) {
-			$video_html = render_block( $block );
-			break;
+		if ( ! empty( $block['blockName'] ) ) {
+			if ( 'greenshift-blocks/video' === $block['blockName'] ) {
+				$video_html = render_block( $block );
+				break;
+			} elseif ( 'core/html' === $block['blockName'] && ! empty( $block['innerHTML'] ) && false !== strpos( $block['innerHTML'], 'gs-video' ) ) {
+				$video_html = render_block( $block );
+				break;
+			}
 		}
 	}
 
@@ -750,26 +755,25 @@ function mrkwp_render_video_player( $attributes = array(), $content = '' ) {
 		}
 
 		if ( ! empty( $youtube_id ) ) {
-			$video_url  = 'https://youtu.be/' . $youtube_id;
-			$video_html = sprintf(
-				'<div class="wp-block-greenshift-blocks-video gs-video youtube">' .
-					'<div class="gs-video-wrapper" itemscope>' .
-						'<iframe class="gs-video-element" data-src="%1$s" data-provider="youtube" data-autoplay="true" frameborder="0" allowfullscreen></iframe>' .
-						'<div class="gs-video-overlay" style="background-image:url(%2$s)" data-type="youtube" data-lightbox="true" data-video-id="%3$s" data-video-url="%1$s" role="button" aria-label="%4$s" tabindex="0">' .
-							'<div class="gs-play-icon" style="background-color:#cc0000" aria-hidden="true">' .
-								'<div style="content:\'\';display:block;position:absolute;border-radius:50%;border:1px solid #cc0000;left:-20px;right:-20px;bottom:-20px;top:-20px;animation:pulsevideobutton 1.5s linear infinite;opacity:0"></div>' .
-								'<span></span>' .
-								'<div style="content:\'\';display:block;position:absolute;border-radius:50%;border:1px solid #cc0000;left:-20px;right:-20px;bottom:-20px;top:-20px;animation:pulsevideobutton 1.5s linear infinite;opacity:0;animation-delay:0.5s"></div>' .
-							'</div>' .
-							'<div class="gs-overlay-color" style="background-color:var(--wp--preset--color--palette-color-12, var(--theme-palette-color-12, #111518));opacity:0.5"></div>' .
+			$video_url   = 'https://youtu.be/' . rawurlencode( $youtube_id );
+			$safe_thumb  = esc_url( $thumbnail_url );
+			$safe_yt_id  = esc_attr( $youtube_id );
+			$safe_url    = esc_url( $video_url );
+			$safe_label  = esc_attr__( 'Play video', 'mrkwp' );
+
+			$video_html = '<div class="wp-block-greenshift-blocks-video gs-video youtube">' .
+				'<div class="gs-video-wrapper" itemscope>' .
+					'<iframe class="gs-video-element" data-src="' . $safe_url . '" data-provider="youtube" data-autoplay="true" frameborder="0" allowfullscreen></iframe>' .
+					'<div class="gs-video-overlay" style="background-image:url(' . $safe_thumb . ')" data-type="youtube" data-lightbox="true" data-video-id="' . $safe_yt_id . '" data-video-url="' . $safe_url . '" role="button" aria-label="' . $safe_label . '" tabindex="0">' .
+						'<div class="gs-play-icon" style="background-color:#cc0000" aria-hidden="true">' .
+							'<div style="content:\'\';display:block;position:absolute;border-radius:50%;border:1px solid #cc0000;left:-20px;right:-20px;bottom:-20px;top:-20px;animation:pulsevideobutton 1.5s linear infinite;opacity:0"></div>' .
+							'<span></span>' .
+							'<div style="content:\'\';display:block;position:absolute;border-radius:50%;border:1px solid #cc0000;left:-20px;right:-20px;bottom:-20px;top:-20px;animation:pulsevideobutton 1.5s linear infinite;opacity:0;animation-delay:0.5s"></div>' .
 						'</div>' .
+						'<div class="gs-overlay-color" style="background-color:var(--wp--preset--color--palette-color-12, var(--theme-palette-color-12, #111518));opacity:0.5"></div>' .
 					'</div>' .
-				'</div>',
-				esc_url( $video_url ),
-				esc_url( $thumbnail_url ),
-				esc_attr( $youtube_id ),
-				esc_attr__( 'Play video', 'mrkwp' )
-			);
+				'</div>' .
+			'</div>';
 		}
 	}
 
@@ -783,27 +787,31 @@ function mrkwp_render_video_player( $attributes = array(), $content = '' ) {
 }
 
 /**
- * Suppress duplicate greenshift video block in the post-content area on single video posts,
+ * Suppress duplicate video blocks in the post-content area on single video posts,
  * since the video player is rendered via mrkwp/video-player above.
  *
  * @param string               $block_content The block content.
  * @param array<string, mixed> $block         The parsed block.
  * @return string Filtered block content.
  */
-function mrkwp_filter_greenshift_video_block( $block_content, $block ) {
-	unset( $block );
+function mrkwp_filter_video_content_blocks( $block_content, $block ) {
 	global $mrkwp_rendering_video_player;
 	if ( ! empty( $mrkwp_rendering_video_player ) ) {
 		return $block_content;
 	}
 
 	if ( is_singular( 'mrkwp_video' ) ) {
-		return '';
+		if ( ! empty( $block['blockName'] ) && 'greenshift-blocks/video' === $block['blockName'] ) {
+			return '';
+		}
+		if ( ! empty( $block['blockName'] ) && 'core/html' === $block['blockName'] && false !== strpos( $block_content, 'gs-video' ) ) {
+			return '';
+		}
 	}
 
 	return $block_content;
 }
-add_filter( 'render_block_greenshift-blocks/video', 'mrkwp_filter_greenshift_video_block', 10, 2 );
+add_filter( 'render_block', 'mrkwp_filter_video_content_blocks', 10, 2 );
 
 /**
  * Calculate relative post date in days.
