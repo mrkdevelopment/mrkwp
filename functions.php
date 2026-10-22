@@ -184,6 +184,8 @@ function mrkwp_scripts() {
 	// Scripts.
 	wp_enqueue_script( 'mrkwp-navigation', MRKWP_THEME_URI . '/js/navigation.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
 
+	wp_enqueue_script( 'mrkwp-video-lightbox', MRKWP_THEME_URI . '/js/video-lightbox.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
+
 	wp_enqueue_script( 'mrkwp-motion', MRKWP_THEME_URI . '/js/motion.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
 	wp_localize_script(
 		'mrkwp-motion',
@@ -587,6 +589,7 @@ add_action( 'init', 'pattern_categories', 9 );
  * @return string HTML output.
  */
 function mrkwp_render_tools_directory( $attributes = array(), $content = '' ) {
+	unset( $attributes, $content );
 	$categories = array(
 		'all'         => __( 'All tools', 'mrkwp' ),
 		'assistants'  => __( 'AI assistants', 'mrkwp' ),
@@ -620,7 +623,7 @@ function mrkwp_render_tools_directory( $attributes = array(), $content = '' ) {
 			<?php endforeach; ?>
 		</div>
 
-		<p id="tool-count" role="status"><?php echo esc_html( sprintf( _n( '%d tool', '%d tools', $total_tools, 'mrkwp' ), $total_tools ) ); ?></p>
+		<p id="tool-count" role="status"><?php echo esc_html( sprintf( /* translators: %d: number of tools. */ _n( '%d tool', '%d tools', $total_tools, 'mrkwp' ), $total_tools ) ); ?></p>
 
 		<div class="tool-grid">
 			<?php
