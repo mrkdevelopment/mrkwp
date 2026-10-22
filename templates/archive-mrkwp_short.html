@@ -1,0 +1,55 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"site-main short-archive-main"} -->
+<main class="wp-block-group site-main short-archive-main">
+	<!-- wp:group {"tagName":"section","className":"page-intro wrap"} -->
+	<section class="wp-block-group page-intro wrap">
+		<!-- wp:paragraph {"className":"eyebrow"} -->
+		<p class="eyebrow">YouTube Shorts</p>
+		<!-- /wp:paragraph -->
+		<!-- wp:heading {"level":1} -->
+		<h1>Quick WordPress Tips.<br><span>Under sixty seconds.</span></h1>
+		<!-- /wp:heading -->
+		<!-- wp:paragraph -->
+		<p>Bite-sized WordPress techniques, block tricks, and performance snippets in vertical video format.</p>
+		<!-- /wp:paragraph -->
+	</section>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"tagName":"section","className":"wrap section short-archive-section"} -->
+	<section class="wp-block-group wrap section short-archive-section">
+		<!-- wp:query {"queryId":11,"query":{"perPage":16,"pages":0,"offset":0,"postType":"mrkwp_short","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template {"className":"shorts-grid"} -->
+			<!-- wp:group {"tagName":"article","className":"content-card short-card"} -->
+			<article class="wp-block-group content-card short-card">
+				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"9/16"} /-->
+
+				<!-- wp:group {"className":"content-card-copy"} -->
+				<div class="wp-block-group content-card-copy">
+					<!-- wp:post-title {"level":3,"isLink":true} /-->
+					<!-- wp:post-date /-->
+					<!-- wp:read-more {"content":"Watch short ↗"} /-->
+				</div>
+				<!-- /wp:group -->
+			</article>
+			<!-- /wp:group -->
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- wp:query-pagination-previous /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next /-->
+			<!-- /wp:query-pagination -->
+
+			<!-- wp:query-no-results -->
+			<p>No shorts found.</p>
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+	</section>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->

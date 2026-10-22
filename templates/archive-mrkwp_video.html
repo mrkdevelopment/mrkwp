@@ -1,0 +1,56 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"site-main video-archive-main"} -->
+<main class="wp-block-group site-main video-archive-main">
+	<!-- wp:group {"tagName":"section","className":"page-intro wrap"} -->
+	<section class="wp-block-group page-intro wrap">
+		<!-- wp:paragraph {"className":"eyebrow"} -->
+		<p class="eyebrow">Video Library</p>
+		<!-- /wp:paragraph -->
+		<!-- wp:heading {"level":1} -->
+		<h1>WordPress Walkthroughs.<br><span>Real-world tutorials.</span></h1>
+		<!-- /wp:heading -->
+		<!-- wp:paragraph -->
+		<p>In-depth video tutorials, teardowns, and workflow walkthroughs from the MRK WP channel.</p>
+		<!-- /wp:paragraph -->
+	</section>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"tagName":"section","className":"wrap section video-archive-section"} -->
+	<section class="wp-block-group wrap section video-archive-section">
+		<!-- wp:query {"queryId":10,"query":{"perPage":12,"pages":0,"offset":0,"postType":"mrkwp_video","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template {"className":"content-grid videos-grid"} -->
+			<!-- wp:group {"tagName":"article","className":"content-card"} -->
+			<article class="wp-block-group content-card">
+				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9"} /-->
+
+				<!-- wp:group {"className":"content-card-copy"} -->
+				<div class="wp-block-group content-card-copy">
+					<!-- wp:post-terms {"term":"post_tag","className":"video-tags-row"} /-->
+					<!-- wp:post-title {"level":3,"isLink":true} /-->
+					<!-- wp:post-date /-->
+					<!-- wp:read-more {"content":"Watch walkthrough ↗"} /-->
+				</div>
+				<!-- /wp:group -->
+			</article>
+			<!-- /wp:group -->
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- wp:query-pagination-previous /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next /-->
+			<!-- /wp:query-pagination -->
+
+			<!-- wp:query-no-results -->
+			<p>No videos found.</p>
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+	</section>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
