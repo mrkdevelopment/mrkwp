@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:group {"tagName":"section","className":"community-invite wrap"} -->
-<section class="wp-block-group community-invite wrap">
+<!-- wp:html -->
+<section class="community-invite wrap">
 	<div>
 		<p class="eyebrow">Let’s figure it out together</p>
 		<h2>You don’t have to<br>build alone.</h2>
@@ -19,4 +19,4 @@
 	</div>
 	<div class="community-word" aria-hidden="true">Better<br><span>together.</span><i>↗</i></div>
 </section>
-<!-- /wp:group -->
+<!-- /wp:html -->

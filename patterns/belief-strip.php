@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:group {"tagName":"section","className":"belief-strip wrap"} -->
-<section class="wp-block-group belief-strip wrap" aria-label="<?php esc_attr_e( 'What we build on', 'mrkwp' ); ?>">
+<!-- wp:html -->
+<section class="belief-strip wrap" aria-label="<?php esc_attr_e( 'What we build on', 'mrkwp' ); ?>">
 	<article class="belief-card belief-main">
 		<span class="bento-symbol" aria-hidden="true">✳</span>
 		<h2>Human expertise.<br><span>Amplified by AI.</span></h2>
@@ -32,4 +32,4 @@
 		<p>Practical tools. Lasting confidence.</p>
 	</article>
 </section>
-<!-- /wp:group -->
+<!-- /wp:html -->

@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:group {"tagName":"section","className":"process section","attrs":{"id":"how-it-works"}} -->
-<section class="wp-block-group process section" id="how-it-works" aria-labelledby="process-title">
+<!-- wp:html -->
+<section class="process section" id="how-it-works" aria-labelledby="process-title">
 	<div class="wrap">
 		<div class="section-heading process-heading">
 			<div>
@@ -88,4 +88,4 @@
 		</div>
 	</div>
 </section>
-<!-- /wp:group -->
+<!-- /wp:html -->

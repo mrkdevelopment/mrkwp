@@ -1,17 +1,23 @@
 <!-- wp:template-part {"slug":"header","area":"header"} /-->
 
-<!-- wp:group {"tagName":"main","attrs":{"id":"main"}} -->
-<main id="main">
-	<section class="page-intro wrap">
+<!-- wp:group {"tagName":"main","className":"site-main"} -->
+<main class="wp-block-group site-main">
+	<!-- wp:group {"tagName":"section","className":"page-intro wrap"} -->
+	<section class="wp-block-group page-intro wrap">
 		<!-- wp:post-date {"className":"eyebrow"} /-->
 		<!-- wp:post-title {"level":1} /-->
 	</section>
+	<!-- /wp:group -->
 
-	<section class="wrap section">
-		<article class="simple-panel">
+	<!-- wp:group {"tagName":"section","className":"wrap section"} -->
+	<section class="wp-block-group wrap section">
+		<!-- wp:group {"tagName":"article","className":"simple-panel"} -->
+		<article class="wp-block-group simple-panel">
 			<!-- wp:post-content {"layout":{"type":"default"}} /-->
 		</article>
+		<!-- /wp:group -->
 	</section>
+	<!-- /wp:group -->
 </main>
 <!-- /wp:group -->
 

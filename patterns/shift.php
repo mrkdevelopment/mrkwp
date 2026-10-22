@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:group {"tagName":"section","className":"shift section wrap","attrs":{"id":"geo"}} -->
-<section class="wp-block-group shift section wrap" id="geo" aria-labelledby="shift-title">
+<!-- wp:html -->
+<section class="shift section wrap" id="geo" aria-labelledby="shift-title">
 	<div class="section-heading">
 		<div>
 			<p class="eyebrow">01 / A better foundation</p>
@@ -42,4 +42,4 @@
 		<a class="text-link" href="#how-it-works">Meet the process <svg class="icon"><use href="#i-arrow"/></svg></a>
 	</div>
 </section>
-<!-- /wp:group -->
+<!-- /wp:html -->

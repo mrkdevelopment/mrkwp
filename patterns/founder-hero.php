@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:group {"tagName":"section","className":"founder-hero wrap"} -->
-<section class="wp-block-group founder-hero wrap">
+<!-- wp:html -->
+<section class="founder-hero wrap">
 	<div class="hero-copy">
 		<p class="eyebrow">Educator. Community builder. Advisor.</p>
 		<h1>Hi, I’m Matt.<br>Let’s make<br><span>what’s next.</span></h1>
@@ -41,4 +41,4 @@
 		</div>
 	</div>
 </section>
-<!-- /wp:group -->
+<!-- /wp:html -->

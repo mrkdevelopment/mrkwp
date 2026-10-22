@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:group {"tagName":"section","className":"about-editorial section wrap","attrs":{"id":"about"}} -->
-<section class="wp-block-group about-editorial section wrap" id="about">
+<!-- wp:html -->
+<section class="about-editorial section wrap" id="about">
 	<div>
 		<p class="eyebrow">A human behind the technology</p>
 		<span class="editorial-index">01 / Hello</span>
@@ -22,4 +22,4 @@
 		<a class="text-link" href="<?php echo esc_url( home_url( '/about/' ) ); ?>">A little more about me ↗</a>
 	</div>
 </section>
-<!-- /wp:group -->
+<!-- /wp:html -->

@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:group {"tagName":"section","className":"path-section wrap"} -->
-<section class="wp-block-group path-section wrap">
+<!-- wp:html -->
+<section class="path-section wrap">
 	<div class="section-heading">
 		<div>
 			<p class="eyebrow">Choose your next step</p>
@@ -39,4 +39,4 @@
 		</a>
 	</div>
 </section>
-<!-- /wp:group -->
+<!-- /wp:html -->
