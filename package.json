@@ -1,0 +1,19 @@
+{
+  "name": "mrkwp-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MRK WP custom theme build system and SCSS component library",
+  "scripts": {
+    "build:sass": "sass src/scss/main.scss dist/theme.css --style=compressed --source-map && sass src/scss/editor.scss dist/editor-style.css --style=compressed --source-map",
+    "build:postcss": "postcss dist/*.css --use autoprefixer cssnano --dir dist/ --map",
+    "build": "npm run build:sass && npm run build:postcss",
+    "watch": "sass src/scss/main.scss dist/theme.css --watch --source-map"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.83.4"
+  }
+}

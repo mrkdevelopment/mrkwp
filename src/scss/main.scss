@@ -1,0 +1,41 @@
+// ==========================================================================
+// MRK WP Theme — Master SCSS Entry Point
+// ==========================================================================
+
+// 1. Abstracts
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// 2. Base Layer
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/layout';
+
+// 3. Components (Atomic UI Library)
+@use 'components/icons';
+@use 'components/eyebrows-badges';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/bento';
+@use 'components/navigation';
+@use 'components/footer';
+@use 'components/panels';
+@use 'components/forms';
+@use 'components/carousels';
+
+// 4. Sections (Composite Patterns)
+@use 'sections/hero';
+@use 'sections/about-editorial';
+@use 'sections/engine';
+@use 'sections/shift-comparison';
+@use 'sections/process-journey';
+@use 'sections/assessment';
+@use 'sections/community-invite';
+
+// 5. Base Responsive & Accents
+@use 'base/responsive';
+@use 'base/accents';
+
+// 6. WordPress Compatibility
+@use 'wordpress/admin-bar';
+@use 'wordpress/alignments';

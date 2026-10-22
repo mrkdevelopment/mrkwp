@@ -1,0 +1,119 @@
+// ==========================================================================
+// Component: Carousels & Resource Tabs
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.resource-tabs {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 40px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    transition: background 0.15s var(--ease), color 0.15s var(--ease);
+
+    &:hover {
+      background: var(--surface-hover);
+      color: var(--indigo);
+    }
+
+    @include focus-ring;
+  }
+
+  @include mobile {
+    gap: 8px;
+
+    a {
+      font-size: 13px;
+      padding: 8px 14px;
+    }
+  }
+}
+
+.resource-collection {
+  margin-bottom: 60px;
+}
+
+.collection-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  > div {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.carousel-prev,
+.carousel-next {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 18px;
+  transition: background 0.15s var(--ease), transform 0.1s var(--ease);
+
+  &:hover:not(:disabled) {
+    background: var(--surface-hover);
+    color: var(--indigo);
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  @include focus-ring;
+}
+
+.resource-carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 12px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .content-card {
+    flex: 0 0 calc(58% - 12px);
+    scroll-snap-align: start;
+
+    @include mobile {
+      flex: 0 0 86%;
+    }
+  }
+}

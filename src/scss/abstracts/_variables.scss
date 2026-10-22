@@ -1,0 +1,38 @@
+// ==========================================================================
+// Abstracts: Design Tokens & Variables (Wired to WordPress theme.json)
+// ==========================================================================
+
+:root {
+  // Brand Palette wired directly to WordPress theme.json presets
+  --ink: var(--wp--preset--color--ink, #0a2540);
+  --body: var(--wp--preset--color--body, #425466);
+  --canvas: var(--wp--preset--color--canvas, #f8fafc);
+  --white: var(--wp--preset--color--white, #ffffff);
+  --indigo: var(--wp--preset--color--indigo, #554cf0);
+  --indigo-dark: var(--wp--preset--color--indigo-dark, #463cd7);
+  --indigo-subtle: var(--wp--preset--color--indigo-subtle, #eae8ff);
+  --cyan: var(--wp--preset--color--cyan, #00d4ff);
+  --deep-cyan: var(--wp--preset--color--deep-cyan, #007a99);
+  --accent-cyan: var(--wp--preset--color--accent-cyan, #006c86);
+  --line: var(--wp--preset--color--line, #dfe5ec);
+  --line-strong: var(--wp--preset--color--line-strong, #cbd6e4);
+  --muted: var(--wp--preset--color--muted, #637386);
+  --night: var(--wp--preset--color--night, #051322);
+  --dark-line: var(--wp--preset--color--dark-line, #20394f);
+  --surface-alt: var(--wp--preset--color--surface-alt, #edf1f8);
+  --surface-hover: var(--wp--preset--color--surface-hover, #e9edff);
+
+  // Typography Families
+  --font-sans: var(--wp--preset--font-family--inter, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  --font-display: var(--wp--preset--font-family--plus-jakarta-sans, 'Plus Jakarta Sans', var(--font-sans));
+  --font-mono: var(--wp--preset--font-family--monospace, ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace);
+
+  // Radii Tokens
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-xl: 32px;
+
+  // Motion & Easing
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

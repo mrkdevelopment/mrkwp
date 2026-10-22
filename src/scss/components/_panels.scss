@@ -1,0 +1,155 @@
+// ==========================================================================
+// Component: Dialogs, Panels & Callouts
+// ==========================================================================
+
+dialog {
+  position: fixed;
+  width: min(500px, calc(100% - 32px));
+  padding: 41px;
+  border: 1px solid #d9dfed;
+  border-radius: var(--radius-xl);
+  background: var(--canvas);
+  color: var(--body);
+  max-height: calc(100% - 48px);
+  box-shadow: 0 25px 70px rgba(10, 37, 64, 0.1);
+
+  &::backdrop {
+    background: rgba(5, 19, 34, 0.72);
+    backdrop-filter: blur(5px);
+  }
+
+  .eyebrow {
+    margin-bottom: 17px;
+  }
+
+  h2 {
+    font-size: 40px;
+    margin-bottom: 21px;
+  }
+
+  > p:not(.eyebrow) {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 13px;
+  }
+
+  .button {
+    margin-top: 14px;
+    font-size: 14px;
+  }
+}
+
+.dialog-close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--body);
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dialog-mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  color: var(--indigo);
+  background: #eeedff;
+  border-radius: var(--radius-md);
+  margin-bottom: 26px;
+}
+
+// --------------------------------------------------------------------------
+// Contained Panels
+// --------------------------------------------------------------------------
+
+.simple-panel,
+.price-panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: 0 12px 30px rgba(10, 37, 64, 0.04);
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--body);
+  }
+}
+
+.price-panel {
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    font-size: 44px;
+    color: var(--ink);
+    margin: 14px 0 10px;
+    font-weight: 700;
+
+    small {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+  }
+
+  .button {
+    margin-top: 20px;
+  }
+}
+
+.geo-note {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--ink);
+
+  .text-link {
+    margin-left: auto;
+    font-size: 14px;
+  }
+}
+
+.preview-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .simple-panel,
+  .price-panel {
+    padding: 24px;
+
+    h2 {
+      font-size: 26px;
+    }
+  }
+
+  .geo-note {
+    flex-wrap: wrap;
+
+    .text-link {
+      margin-left: 0;
+    }
+  }
+}

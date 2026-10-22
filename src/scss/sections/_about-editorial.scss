@@ -1,0 +1,123 @@
+// ==========================================================================
+// Section: About Editorial & Detail
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.about-editorial {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding-block: 100px;
+
+  h2 {
+    font-size: 39px;
+    line-height: 1.25;
+
+    span {
+      color: var(--muted);
+    }
+  }
+
+  p:not(.eyebrow) {
+    max-width: 690px;
+    font-size: 18px;
+    line-height: 1.85;
+    margin-top: 25px;
+  }
+
+  .text-link {
+    margin-top: 18px;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-block: 70px;
+
+    h2 {
+      font-size: 31px;
+    }
+
+    p:not(.eyebrow) {
+      font-size: 17px;
+      margin-top: 18px;
+    }
+  }
+}
+
+.about-detail {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 90px;
+
+  img {
+    border-radius: var(--radius-xl);
+    box-shadow: 0 16px 36px rgba(10, 37, 64, 0.08);
+  }
+
+  h2 {
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    margin-top: 12px;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    margin-bottom: 70px;
+
+    h2 {
+      font-size: 32px;
+    }
+
+    img {
+      max-height: 460px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.plain-list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 16px;
+    color: var(--ink);
+
+    span {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--surface-alt);
+      color: var(--indigo);
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+  }
+}

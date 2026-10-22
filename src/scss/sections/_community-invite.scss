@@ -1,0 +1,24 @@
+// Community Invitation & Founder
+.community-section { background: #f0f2fa; border-top: 1px solid #e4e7f1; padding-block: 88px; }
+.community { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 110px; }
+.community-copy .eyebrow { margin-bottom: 24px; }
+.community-copy h2 { font-size: clamp(37px, 3.9vw, 54px); }
+.community-copy h2 span { color: var(--indigo); }
+.community-copy > p:not(.eyebrow):not(.community-note) { max-width: 415px; margin-top: 23px; font-size: 14px; line-height: 1.85; }
+.resource-list { display: flex; flex-wrap: wrap; gap: 10px 17px; margin-top: 23px; margin-bottom: 29px; }
+.resource-list span { font-size: 10px; color: var(--body); padding-left: 12px; position: relative; }
+.resource-list span::before { content: ""; position: absolute; width: 3px; height: 3px; top: 7px; left: 0; background: var(--indigo); }
+.community-note { font-size: 10px; color: var(--muted); margin-top: 17px; }
+.founder { align-self: end; }
+.founder-frame { position: relative; height: 390px; overflow: hidden; background: white; border-radius: var(--radius-lg); border: 1px solid #e0e4f0; }
+.founder-frame > img { width: 100%; height: 100%; object-fit: cover; object-position: center 32%; mix-blend-mode: multiply; position: relative; }
+.founder-line { position: absolute; pointer-events: none; height: 400px; width: 1px; background: #d5d8f4; transform: rotate(34deg); }
+.founder-line-one { left: 47px; top: -40px; }
+.founder-line-two { right: 35px; bottom: -90px; }
+.founder-stamp { position: absolute; bottom: 0; right: 0; display: grid; place-items: center; width: 66px; height: 66px; background: var(--indigo); }
+.founder-stamp img { width: 34px; height: auto; }
+.founder figcaption { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding-top: 17px; }
+.founder figcaption strong, .founder figcaption div > span { display: block; }
+.founder figcaption strong { color: var(--ink); font-size: 12px; font-weight: 600; }
+.founder figcaption div > span { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.founder figcaption > span { font-size: 9px; line-height: 1.7; color: var(--muted); text-align: right; }

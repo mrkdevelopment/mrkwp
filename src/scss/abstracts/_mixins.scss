@@ -1,0 +1,64 @@
+// ==========================================================================
+// Abstracts: Responsive Breakpoint Mixins & Helpers
+// ==========================================================================
+
+@mixin wide {
+  @media (min-width: 1600px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: 1180px) {
+    @content;
+  }
+}
+
+@mixin desktop-narrow {
+  @media (max-width: 1100px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin tablet-narrow {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 760px) {
+    @content;
+  }
+}
+
+@mixin mobile-sm {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin mobile-compact {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--indigo);
+    outline-offset: 3px;
+  }
+}

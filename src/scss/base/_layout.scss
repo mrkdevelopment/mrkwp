@@ -1,0 +1,150 @@
+// ==========================================================================
+// Base: Global Layout Wrappers & Headings
+// ==========================================================================
+
+.wrap {
+  width: min(1240px, calc(100% - 96px));
+  margin-inline: auto;
+
+  @media (max-width: 1180px) {
+    width: calc(100% - 80px);
+  }
+
+  @media (max-width: 960px) {
+    width: calc(100% - 56px);
+  }
+
+  @media (max-width: 760px) {
+    width: calc(100% - 40px);
+  }
+
+  @media (max-width: 390px) {
+    width: calc(100% - 36px);
+  }
+}
+
+.section {
+  padding-block: 100px;
+
+  @media (max-width: 1180px) {
+    padding-block: 98px;
+  }
+
+  @media (max-width: 760px) {
+    padding-block: 70px;
+  }
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 48px;
+
+  .eyebrow {
+    margin-bottom: 22px;
+  }
+
+  > p {
+    font-size: 18px;
+    max-width: 480px;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 960px) {
+    gap: 35px;
+
+    > p {
+      max-width: 280px;
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    display: block;
+    margin-bottom: 32px;
+
+    .eyebrow {
+      margin-bottom: 19px;
+    }
+
+    > p {
+      margin-top: 14px;
+      font-size: 17px;
+      padding: 0;
+      max-width: 440px;
+    }
+  }
+}
+
+.page-intro {
+  padding-block: 65px 50px;
+
+  h1 {
+    font-size: clamp(48px, 5.5vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -0.055em;
+    margin-top: 20px;
+
+    span {
+      color: var(--indigo);
+    }
+  }
+
+  > p:last-child {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 580px;
+    margin-top: 22px;
+  }
+
+  @media (max-width: 760px) {
+    padding-block: 55px 40px;
+
+    h1 {
+      font-size: 46px;
+    }
+
+    > p:last-child {
+      font-size: 16px;
+    }
+  }
+}
+
+.entry-content {
+  width: 100%;
+
+  > :where(:not(.alignwide):not(.alignfull):not(.wrap):not(.founder-hero)) {
+    width: min(1240px, calc(100% - 96px));
+    margin-inline: auto;
+
+    @media (max-width: 1180px) {
+      width: calc(100% - 80px);
+    }
+
+    @media (max-width: 960px) {
+      width: calc(100% - 56px);
+    }
+
+    @media (max-width: 760px) {
+      width: calc(100% - 40px);
+    }
+
+    @media (max-width: 390px) {
+      width: calc(100% - 36px);
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

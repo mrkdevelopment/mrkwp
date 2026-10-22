@@ -1,0 +1,60 @@
+// ==========================================================================
+// Component: Eyebrows, Badges & Step Markers
+// ==========================================================================
+
+.eyebrow,
+.founder-hero .eyebrow,
+.is-style-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent-cyan);
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  @media (max-width: 760px) {
+    font-size: 14px;
+  }
+}
+
+.eyebrow-line {
+  display: none;
+}
+
+.editorial-index {
+  font-size: 16px;
+  color: var(--body);
+  margin-top: 28px;
+  display: block;
+
+  @media (max-width: 760px) {
+    display: none;
+  }
+}
+
+.step-marker {
+  display: grid;
+  place-items: center;
+  align-self: start;
+  position: relative;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #41607d;
+  color: #c4d2df;
+  background: var(--night);
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.4s, border-color 0.4s, background 0.4s;
+
+  &.is-active {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: #0a2540;
+  }
+}

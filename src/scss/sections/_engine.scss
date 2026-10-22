@@ -1,0 +1,44 @@
+// Engine Diagram
+.engine { position: relative; background: var(--ink); color: white; border: 1px solid #183b5b; border-radius: var(--radius-xl); overflow: visible; box-shadow: 0 16px 40px #0a25400a; }
+.engine::before { content: ""; position: absolute; z-index: -1; inset: -32px -16px; background: radial-gradient(circle at 80% 20%, rgba(99,91,255,.08) 0%, rgba(0,212,255,.05) 35%, rgba(248,250,252,0) 70%); }
+.engine-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 26px; border-bottom: 1px solid #ffffff14; font-size: 12px; color: #c4d2df; }
+.engine-head .icon { width: 19px; height: 19px; color: var(--cyan); }
+.engine-diagram { position: relative; padding: 28px 32px 25px; overflow: hidden; }
+.engine-grid { position: absolute; inset: 0; background-image: radial-gradient(#57759166 .7px, transparent .7px); background-size: 19px 19px; opacity: .55; mask-image: linear-gradient(black, transparent); pointer-events: none; }
+.engine-source, .engine-core, .engine-outputs { position: relative; z-index: 1; }
+.engine-source { display: flex; align-items: center; gap: 14px; padding: 16px 19px; max-width: 358px; margin-inline: auto; background: #f8fafc; border: 1px solid #fff; color: var(--ink); border-radius: var(--radius-md); }
+.wordpress-mark { display: grid; place-items: center; border: 1.5px solid var(--ink); outline: 1px solid var(--ink); outline-offset: -4px; border-radius: 50%; width: 36px; height: 36px; flex: 0 0 auto; font-family: Georgia, serif; font-size: 27px; letter-spacing: -5px; padding-right: 5px; line-height: 1; }
+.engine-source strong, .engine-source span:not(.wordpress-mark) { display: block; }
+.engine-source strong { font-size: 13px; font-weight: 600; }
+.engine-source div > span { color: var(--body); font-size: 10px; margin-top: 1px; }
+.engine-source > .icon { width: 16px; height: 16px; color: var(--deep-cyan); margin-left: auto; }
+.engine-stem { position: relative; height: 40px; }
+.engine-stem > span { display: block; width: 1px; height: 100%; margin-inline: auto; background: linear-gradient(#ffffff55, var(--cyan)); }
+.engine-stem i { position: absolute; left: calc(50% - 2.5px); top: 50%; width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); }
+.engine-core { padding: 20px 25px 0; background: #0e3357; border: 1px solid #8797e3; border-radius: var(--radius-md); box-shadow: 0 0 30px #635bff15; }
+.core-top { display: flex; align-items: center; gap: 12px; }
+.core-brand { width: 39px; height: 32px; display: grid; place-items: center; }
+.core-top > span:nth-child(2) { font-size: 10px; font-weight: 500; color: #d3d9ff; }
+.core-top > .icon { margin-left: auto; width: 22px; height: 22px; color: var(--cyan); }
+.engine-core > strong { display: block; margin: 22px 0 23px; font-size: clamp(25px, 2.25vw, 34px); letter-spacing: -.045em; font-weight: 600; line-height: 1.16; }
+.core-foundations { display: flex; gap: 22px; border-top: 1px solid #ffffff26; padding-block: 13px; color: #d3d9ed; font-size: 9px; }
+.core-foundations > span::before { content: ""; display: inline-block; width: 4px; height: 4px; background: var(--cyan); margin-right: 6px; vertical-align: middle; }
+.engine-branches { display: flex; position: relative; height: 42px; width: 72%; margin-inline: auto; }
+.engine-branches::before { content: ""; position: absolute; left: 0; right: 0; height: 1px; top: 50%; background: #6b87a7; }
+.engine-branches span { position: absolute; width: 1px; background: #6b87a7; height: 50%; bottom: 0; }
+.engine-branches span:first-child { left: 0; }
+.engine-branches span:nth-child(2) { left: 50%; height: 100%; }
+.engine-branches span:last-child { right: 0; }
+.engine-outputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.engine-outputs > div { display: flex; align-items: center; flex-direction: column; padding: 16px 5px 14px; background: #102e4b; border: 1px solid #33516b; border-radius: var(--radius-md); text-align: center; }
+.engine-outputs .icon { width: 21px; height: 21px; color: #b6c3ff; margin-bottom: 10px; }
+.engine-outputs strong { display: block; font-size: 12px; font-weight: 500; }
+.engine-outputs span { color: #b1c3d3; font-size: 9px; margin-top: 2px; }
+.engine-bottom { display: flex; align-items: center; gap: 8px; border-top: 1px solid #ffffff14; padding: 16px 26px; color: #c4d2df; font-size: 10px; }
+.engine-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); }
+.engine-bottom > span:last-child { margin-left: auto; color: var(--cyan); font-size: 17px; line-height: 1; }
+.engine-corner { position: absolute; width: 38px; height: 38px; border-left: 2px solid var(--indigo); border-bottom: 2px solid var(--indigo); left: -8px; bottom: -8px; pointer-events: none; }
+.principles { display: grid; grid-template-columns: repeat(3, 1fr); padding-block: 29px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.principles > div { display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 12px; font-weight: 500; }
+.principles > div + div { border-left: 1px solid var(--line); }
+.principles .icon { color: var(--deep-cyan); width: 21px; height: 21px; }
