@@ -16,19 +16,32 @@ p {
   color: var(--body);
 }
 
-h2 {
-  font-size: clamp(38px, 4vw, 55px);
+:where(h1):not([class*="has-"]):not([style*="font-size"]) {
+  font-size: var(--wp--preset--font-size--3xl);
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+}
+
+:where(h2):not([class*="has-"]):not([style*="font-size"]) {
+  font-size: var(--wp--preset--font-size--2xl);
   line-height: 1.1;
   letter-spacing: -0.045em;
+}
 
-  @media (max-width: 960px) {
-    font-size: 41px;
-  }
+:where(h3):not([class*="has-"]):not([style*="font-size"]) {
+  font-size: var(--wp--preset--font-size--lg);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
 
-  @media (max-width: 760px) {
-    font-size: clamp(35px, 6.5vw, 45px);
-    letter-spacing: -0.04em;
-  }
+:where(h4):not([class*="has-"]):not([style*="font-size"]) {
+  font-size: var(--wp--preset--font-size--md);
+  line-height: 1.3;
+}
+
+:where(h5, h6):not([class*="has-"]):not([style*="font-size"]) {
+  font-size: var(--wp--preset--font-size--base);
+  line-height: 1.35;
 }
 
 .skip-link {

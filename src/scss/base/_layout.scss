@@ -81,8 +81,8 @@
 .page-intro {
   padding-block: 65px 50px;
 
-  h1 {
-    font-size: clamp(48px, 5.5vw, 76px);
+  h1:not([class*="has-"]):not([style*="font-size"]) {
+    font-size: var(--wp--preset--font-size--3xl, clamp(48px, 5.5vw, 76px));
     line-height: 1.05;
     letter-spacing: -0.055em;
     margin-top: 20px;
@@ -92,8 +92,8 @@
     }
   }
 
-  > p:last-child {
-    font-size: 18px;
+  > p:last-child:not([class*="has-"]):not([style*="font-size"]) {
+    font-size: var(--wp--preset--font-size--md, 18px);
     line-height: 1.7;
     max-width: 580px;
     margin-top: 22px;
@@ -102,12 +102,12 @@
   @media (max-width: 760px) {
     padding-block: 55px 40px;
 
-    h1 {
-      font-size: 46px;
+    h1:not([class*="has-"]):not([style*="font-size"]) {
+      font-size: var(--wp--preset--font-size--2xl, 46px);
     }
 
-    > p:last-child {
-      font-size: 16px;
+    > p:last-child:not([class*="has-"]):not([style*="font-size"]) {
+      font-size: var(--wp--preset--font-size--base, 16px);
     }
   }
 }

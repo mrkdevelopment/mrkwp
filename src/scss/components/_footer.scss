@@ -38,7 +38,7 @@
   flex-direction: row !important;
   align-items: center !important;
   color: #ffffff !important;
-  font-size: 23px !important;
+  font-size: var(--wp--preset--font-size--lg, 24px);
   font-weight: 800 !important;
   letter-spacing: -0.04em !important;
   gap: 12px !important;
@@ -102,7 +102,7 @@
   margin-block: 0 !important;
   padding: 0 !important;
   color: #ffffff !important;
-  font-size: 23px !important;
+  font-size: var(--wp--preset--font-size--lg, 24px);
   font-weight: 800 !important;
   letter-spacing: -0.04em !important;
   line-height: 1 !important;
@@ -117,7 +117,7 @@
 .site-footer .logo .logo-caption a:visited {
   display: block !important;
   color: #ffffff !important;
-  font-size: 10px !important;
+  font-size: var(--wp--preset--font-size--xs, 11px);
   font-weight: 500 !important;
   letter-spacing: 0.01em !important;
   line-height: 1.2 !important;
@@ -142,7 +142,7 @@
 .site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) a:hover,
 .site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) a:focus,
 .site-footer .footer-brand > p:not(.logo-title):not(.logo-caption) a:visited {
-  font-size: 29px !important;
+  font-size: var(--wp--preset--font-size--xl, 29px);
   font-weight: 500 !important;
   line-height: 1.25 !important;
   letter-spacing: -0.035em !important;

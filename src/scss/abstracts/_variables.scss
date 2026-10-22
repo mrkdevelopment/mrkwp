@@ -27,6 +27,17 @@
   --font-display: var(--wp--preset--font-family--plus-jakarta-sans, 'Plus Jakarta Sans', var(--font-sans));
   --font-mono: var(--wp--preset--font-family--monospace, ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace);
 
+  // Font Size Tokens (Wired to WordPress theme.json presets)
+  --font-size-xs: var(--wp--preset--font-size--xs, 11px);
+  --font-size-sm: var(--wp--preset--font-size--sm, 13px);
+  --font-size-base: var(--wp--preset--font-size--base, 16px);
+  --font-size-md: var(--wp--preset--font-size--md, 18px);
+  --font-size-lg: var(--wp--preset--font-size--lg, 24px);
+  --font-size-xl: var(--wp--preset--font-size--xl, 32px);
+  --font-size-2xl: var(--wp--preset--font-size--2xl, clamp(36px, 4vw, 52px));
+  --font-size-3xl: var(--wp--preset--font-size--3xl, clamp(48px, 6vw, 76px));
+  --font-size-hero: var(--wp--preset--font-size--hero, clamp(60px, 6.45vw, 91px));
+
   // Radii Tokens (Reduced by half)
   --radius-sm: 5px;
   --radius-md: 8px;

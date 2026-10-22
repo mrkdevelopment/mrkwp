@@ -534,19 +534,19 @@ dialog {
   .video-date,
   .wp-block-post-date.video-date {
     display: block;
-    font-size: 14px;
+    font-size: var(--wp--preset--font-size--sm, 14px);
     font-weight: 500;
     color: var(--muted);
     margin-bottom: 12px;
   }
 
   h1.video-title,
-  h1.wp-block-post-title {
-    font-size: clamp(28px, 4vw, 38px) !important;
+  h1.wp-block-post-title:not([class*="has-"]):not([style*="font-size"]) {
+    font-size: var(--wp--preset--font-size--xl, 35px);
     line-height: 1.25;
     letter-spacing: -0.03em;
     color: var(--ink);
-    margin: 0 0 16px !important;
+    margin: 0 0 16px;
     font-weight: 700;
   }
 
@@ -556,7 +556,7 @@ dialog {
 
   .video-description,
   .wp-block-post-content {
-    font-size: 16px;
+    font-size: var(--wp--preset--font-size--base, 16px);
     line-height: 1.8;
     color: var(--ink);
 

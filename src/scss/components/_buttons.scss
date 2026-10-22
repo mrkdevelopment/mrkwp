@@ -24,7 +24,7 @@
   background: var(--indigo);
   color: var(--white);
   font-family: inherit;
-  font-size: 16px;
+  font-size: var(--wp--preset--font-size--base, 16px);
   font-weight: 600;
   line-height: 1.4;
   border: 1px solid transparent;
@@ -118,7 +118,7 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-size: 16px;
+  font-size: var(--wp--preset--font-size--base, 16px);
   font-weight: 600;
   color: var(--ink);
   min-height: 44px;
