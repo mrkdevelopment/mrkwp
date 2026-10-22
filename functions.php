@@ -905,3 +905,41 @@ function mrkwp_render_related_videos( $attributes = array(), $content = '' ) {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Set default posts per page to 15 across all main queries (3-column layout standard).
+ *
+ * @param \WP_Query $query The WP_Query instance.
+ */
+function mrkwp_set_default_posts_per_page( \WP_Query $query ): void {
+	if ( ! is_admin() && $query->is_main_query() ) {
+		$query->set( 'posts_per_page', 15 );
+	}
+}
+add_action( 'pre_get_posts', 'mrkwp_set_default_posts_per_page' );
+
+/**
+ * Filter pagination link arrows to ensure standard "← Previous" and "Next →" display.
+ *
+ * @param string               $block_content The block content.
+ * @param array<string, mixed> $block         The parsed block.
+ * @return string Filtered block content.
+ */
+function mrkwp_filter_pagination_arrows( string $block_content, array $block ): string {
+	if ( empty( $block['blockName'] ) ) {
+		return $block_content;
+	}
+
+	if ( 'core/query-pagination-previous' === $block['blockName'] ) {
+		if ( false === strpos( $block_content, '←' ) && false === strpos( $block_content, '&larr;' ) ) {
+			$block_content = preg_replace( '/(<a[^>]*class="[^"]*wp-block-query-pagination-previous[^"]*"[^>]*>)(.*?)(<\/a>)/i', '$1← $2$3', $block_content );
+		}
+	} elseif ( 'core/query-pagination-next' === $block['blockName'] ) {
+		if ( false === strpos( $block_content, '→' ) && false === strpos( $block_content, '&rarr;' ) ) {
+			$block_content = preg_replace( '/(<a[^>]*class="[^"]*wp-block-query-pagination-next[^"]*"[^>]*>)(.*?)(<\/a>)/i', '$1$2 →$3', $block_content );
+		}
+	}
+
+	return $block_content;
+}
+add_filter( 'render_block', 'mrkwp_filter_pagination_arrows', 10, 2 );
