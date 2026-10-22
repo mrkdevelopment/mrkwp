@@ -1,0 +1,146 @@
+// ==========================================================================
+// Component: Pagination
+// Matching MRK WP Editorial Design (Top border with active indicator bar)
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.wp-block-query-pagination,
+.navigation.pagination,
+.pagination {
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  margin-top: 56px;
+  margin-bottom: 40px;
+  border-top: 1px solid var(--line, #dfe5ec);
+  padding: 0 !important;
+  box-sizing: border-box;
+
+  // Previous Link (Left aligned)
+  .wp-block-query-pagination-previous,
+  .prev.page-numbers,
+  a.prev {
+    grid-column: 1;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 18px;
+    padding-bottom: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted, #637386);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+
+    &:hover {
+      color: var(--ink, #0a2540);
+    }
+  }
+
+  // Next Link (Right aligned)
+  .wp-block-query-pagination-next,
+  .next.page-numbers,
+  a.next {
+    grid-column: 3;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 18px;
+    padding-bottom: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted, #637386);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+
+    &:hover {
+      color: var(--ink, #0a2540);
+    }
+  }
+
+  // Numbers Container (Centered)
+  .wp-block-query-pagination-numbers,
+  .nav-links {
+    grid-column: 2;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Individual Numbers & Dots
+  .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 100%;
+    padding: 18px 10px 12px;
+    margin-top: -1px; // Align directly over container border-top
+    border-top: 2px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted, #637386);
+    text-decoration: none;
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+
+    &:hover:not(.current):not(.dots) {
+      color: var(--ink, #0a2540);
+      border-top-color: var(--line-strong, #cbd6e4);
+    }
+
+    // Active / Current Page (Indigo highlight bar directly on top border)
+    &.current,
+    &[aria-current="page"] {
+      color: var(--indigo, #554cf0);
+      font-weight: 600;
+      border-top-color: var(--indigo, #554cf0);
+    }
+
+    // Ellipsis Dots
+    &.dots {
+      border-top-color: transparent;
+      cursor: default;
+      color: var(--muted, #637386);
+      padding-inline: 4px;
+      min-width: 24px;
+    }
+  }
+
+  // Mobile Responsiveness
+  @media (max-width: 640px) {
+    grid-template-columns: auto 1fr auto;
+    margin-top: 40px;
+
+    .page-numbers {
+      min-width: 30px;
+      padding-inline: 6px;
+      font-size: 13px;
+
+      // Hide distant page numbers on mobile, keeping current and neighbors
+      &:not(.current):not(.dots):nth-child(n + 6) {
+        display: none;
+      }
+    }
+
+    .wp-block-query-pagination-previous,
+    .wp-block-query-pagination-next {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-numbers.dots {
+      display: none;
+    }
+  }
+}

@@ -212,7 +212,7 @@
 					"text": "var(--wp--preset--color--white)"
 				},
 				"border": {
-					"radius": "16px"
+					"radius": "8px"
 				},
 				"typography": {
 					"fontSize": "16px",

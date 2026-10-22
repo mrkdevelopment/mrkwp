@@ -10,12 +10,12 @@
  * Inserter: true
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Menu"},"align":"wide","className":"is-style-default","style":{"border":{"radius":"10px","width":"1px","color":"#E3E3F0"},"position":{"type":""},"spacing":{"padding":{"right":"0","left":"0"},"blockGap":"0"},"shadow":"var:preset|shadow|small-light"},"backgroundColor":"base","layout":{"type":"constrained","justifyContent":"center"}} -->
-	<div class="wp-block-group alignwide is-style-default has-border-color has-base-background-color has-background" style="border-color:#E3E3F0;border-width:1px;border-radius:10px;padding-right:0;padding-left:0;box-shadow:var(--wp--preset--shadow--small-light)">
+<!-- wp:group {"metadata":{"name":"Menu"},"align":"wide","className":"is-style-default","style":{"border":{"radius":"5px","width":"1px","color":"#E3E3F0"},"position":{"type":""},"spacing":{"padding":{"right":"0","left":"0"},"blockGap":"0"},"shadow":"var:preset|shadow|small-light"},"backgroundColor":"base","layout":{"type":"constrained","justifyContent":"center"}} -->
+	<div class="wp-block-group alignwide is-style-default has-border-color has-base-background-color has-background" style="border-color:#E3E3F0;border-width:1px;border-radius:5px;padding-right:0;padding-left:0;box-shadow:var(--wp--preset--shadow--small-light)">
 	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|medium"},"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"}}}} -->
 		<div class="wp-block-columns alignwide" style="padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--medium)">
-		<!-- wp:column {"style":{"border":{"radius":"10px"},"spacing":{"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"0","right":"0"}}},"layout":{"type":"constrained"}} -->
-			<div class="wp-block-column" style="border-radius:10px;padding-top:var(--wp--preset--spacing--medium);padding-right:0;padding-bottom:var(--wp--preset--spacing--medium);padding-left:0">
+		<!-- wp:column {"style":{"border":{"radius":"5px"},"spacing":{"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"0","right":"0"}}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-column" style="border-radius:5px;padding-top:var(--wp--preset--spacing--medium);padding-right:0;padding-bottom:var(--wp--preset--spacing--medium);padding-left:0">
 			<!-- wp:paragraph -->
 				<p><strong><?php esc_html_e( 'Quick Resources', 'ollie' ); ?></strong></p>
 			<!-- /wp:paragraph -->
@@ -53,8 +53,8 @@
 			<!-- /wp:buttons -->
 			</div>
 		<!-- /wp:column -->
-		<!-- wp:column {"style":{"border":{"radius":"10px"},"spacing":{"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"0","right":"0"}}},"layout":{"type":"constrained"}} -->
-			<div class="wp-block-column" style="border-radius:10px;padding-top:var(--wp--preset--spacing--medium);padding-right:0;padding-bottom:var(--wp--preset--spacing--medium);padding-left:0">
+		<!-- wp:column {"style":{"border":{"radius":"5px"},"spacing":{"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"0","right":"0"}}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-column" style="border-radius:5px;padding-top:var(--wp--preset--spacing--medium);padding-right:0;padding-bottom:var(--wp--preset--spacing--medium);padding-left:0">
 			<!-- wp:paragraph -->
 				<p><strong><?php esc_html_e( 'Learn Our Product', 'ollie' ); ?></strong></p>
 			<!-- /wp:paragraph -->
@@ -92,8 +92,8 @@
 			<!-- /wp:buttons -->
 			</div>
 		<!-- /wp:column -->
-		<!-- wp:column {"style":{"border":{"radius":"10px"},"spacing":{"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"}}},"backgroundColor":"tertiary","layout":{"type":"constrained"}} -->
-			<div class="wp-block-column has-tertiary-background-color has-background" style="border-radius:10px;padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--medium)">
+		<!-- wp:column {"style":{"border":{"radius":"5px"},"spacing":{"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"}}},"backgroundColor":"tertiary","layout":{"type":"constrained"}} -->
+			<div class="wp-block-column has-tertiary-background-color has-background" style="border-radius:5px;padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--medium)">
 			<!-- wp:group {"metadata":{"name":"Text"},"style":{"spacing":{"margin":{"top":"0","bottom":"0"},"blockGap":"var:preset|spacing|small"}},"layout":{"type":"constrained"}} -->
 				<div class="wp-block-group" style="margin-top:0;margin-bottom:0">
 				<!-- wp:paragraph {"fontSize":"base"} -->
@@ -104,8 +104,8 @@
 				<!-- /wp:paragraph -->
 				</div>
 			<!-- /wp:group -->
-			<!-- wp:image {"id":31,"aspectRatio":"16/9","scale":"cover","sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"8px"}}} -->
-				<figure class="wp-block-image size-large has-custom-border"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/patterns/images/computer-hands.webp" alt="" class="wp-image-31" style="border-radius:8px;aspect-ratio:16/9;object-fit:cover"/></figure>
+			<!-- wp:image {"id":31,"aspectRatio":"16/9","scale":"cover","sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"4px"}}} -->
+				<figure class="wp-block-image size-large has-custom-border"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/patterns/images/computer-hands.webp" alt="" class="wp-image-31" style="border-radius:4px;aspect-ratio:16/9;object-fit:cover"/></figure>
 			<!-- /wp:image -->
 			<!-- wp:buttons -->
 				<div class="wp-block-buttons">

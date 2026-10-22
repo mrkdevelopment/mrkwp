@@ -11,8 +11,8 @@
  * Inserter: true
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Menu"},"style":{"spacing":{"blockGap":"var:preset|spacing|small","padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"}},"dimensions":{"minHeight":""},"border":{"radius":"10px"},"shadow":"var:preset|shadow|small-light"},"backgroundColor":"base","borderColor":"border-light","layout":{"type":"constrained"}} -->
-	<div class="wp-block-group has-border-color has-border-light-border-color has-base-background-color has-background" style="border-radius:10px;padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--medium);box-shadow:var(--wp--preset--shadow--small-light)">
+<!-- wp:group {"metadata":{"name":"Menu"},"style":{"spacing":{"blockGap":"var:preset|spacing|small","padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"}},"dimensions":{"minHeight":""},"border":{"radius":"5px"},"shadow":"var:preset|shadow|small-light"},"backgroundColor":"base","borderColor":"border-light","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group has-border-color has-border-light-border-color has-base-background-color has-background" style="border-radius:5px;padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--medium);box-shadow:var(--wp--preset--shadow--small-light)">
 	<!-- wp:group {"metadata":{"name":"Icon and Text"},"style":{"spacing":{"blockGap":"var:preset|spacing|medium"},"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center","justifyContent":"space-between"}} -->
 		<div class="wp-block-group">
 		<!-- wp:group {"metadata":{"name":"Text"},"style":{"spacing":{"blockGap":"5px"}},"layout":{"type":"constrained"}} -->
@@ -25,8 +25,8 @@
 			<!-- /wp:paragraph -->
 			</div>
 		<!-- /wp:group -->
-		<!-- wp:paragraph {"align":"center","style":{"spacing":{"padding":{"top":"12px","bottom":"12px","left":"12px","right":"12px"}},"layout":{"selfStretch":"fixed","flexSize":"50px"},"border":{"radius":"10px"}},"backgroundColor":"tertiary"} -->
-			<p class="has-text-align-center has-tertiary-background-color has-background" style="border-radius:10px;padding-top:12px;padding-right:12px;padding-bottom:12px;padding-left:12px"><strong><?php esc_html_e( '›', 'ollie' ); ?></strong></p>
+		<!-- wp:paragraph {"align":"center","style":{"spacing":{"padding":{"top":"12px","bottom":"12px","left":"12px","right":"12px"}},"layout":{"selfStretch":"fixed","flexSize":"50px"},"border":{"radius":"5px"}},"backgroundColor":"tertiary"} -->
+			<p class="has-text-align-center has-tertiary-background-color has-background" style="border-radius:5px;padding-top:12px;padding-right:12px;padding-bottom:12px;padding-left:12px"><strong><?php esc_html_e( '›', 'ollie' ); ?></strong></p>
 		<!-- /wp:paragraph -->
 		</div>
 	<!-- /wp:group -->
@@ -45,8 +45,8 @@
 			<!-- /wp:paragraph -->
 			</div>
 		<!-- /wp:group -->
-		<!-- wp:paragraph {"align":"center","style":{"spacing":{"padding":{"top":"12px","bottom":"12px","left":"12px","right":"12px"}},"layout":{"selfStretch":"fixed","flexSize":"50px"},"border":{"radius":"10px"}},"backgroundColor":"tertiary"} -->
-			<p class="has-text-align-center has-tertiary-background-color has-background" style="border-radius:10px;padding-top:12px;padding-right:12px;padding-bottom:12px;padding-left:12px"><strong><?php esc_html_e( '›', 'ollie' ); ?></strong></p>
+		<!-- wp:paragraph {"align":"center","style":{"spacing":{"padding":{"top":"12px","bottom":"12px","left":"12px","right":"12px"}},"layout":{"selfStretch":"fixed","flexSize":"50px"},"border":{"radius":"5px"}},"backgroundColor":"tertiary"} -->
+			<p class="has-text-align-center has-tertiary-background-color has-background" style="border-radius:5px;padding-top:12px;padding-right:12px;padding-bottom:12px;padding-left:12px"><strong><?php esc_html_e( '›', 'ollie' ); ?></strong></p>
 		<!-- /wp:paragraph -->
 		</div>
 	<!-- /wp:group -->
@@ -65,8 +65,8 @@
 			<!-- /wp:paragraph -->
 			</div>
 		<!-- /wp:group -->
-		<!-- wp:paragraph {"align":"center","style":{"spacing":{"padding":{"top":"12px","bottom":"12px","left":"12px","right":"12px"}},"layout":{"selfStretch":"fixed","flexSize":"50px"},"border":{"radius":"10px"}},"backgroundColor":"tertiary"} -->
-			<p class="has-text-align-center has-tertiary-background-color has-background" style="border-radius:10px;padding-top:12px;padding-right:12px;padding-bottom:12px;padding-left:12px"><strong><?php esc_html_e( '›', 'ollie' ); ?></strong></p>
+		<!-- wp:paragraph {"align":"center","style":{"spacing":{"padding":{"top":"12px","bottom":"12px","left":"12px","right":"12px"}},"layout":{"selfStretch":"fixed","flexSize":"50px"},"border":{"radius":"5px"}},"backgroundColor":"tertiary"} -->
+			<p class="has-text-align-center has-tertiary-background-color has-background" style="border-radius:5px;padding-top:12px;padding-right:12px;padding-bottom:12px;padding-left:12px"><strong><?php esc_html_e( '›', 'ollie' ); ?></strong></p>
 		<!-- /wp:paragraph -->
 		</div>
 	<!-- /wp:group -->

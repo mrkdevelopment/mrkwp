@@ -689,8 +689,121 @@ function mrkwp_register_theme_blocks() {
 			),
 		)
 	);
+
+	register_block_type(
+		'mrkwp/video-player',
+		array(
+			'title'           => __( 'Video Player', 'mrkwp' ),
+			'category'        => 'theme',
+			'render_callback' => 'mrkwp_render_video_player',
+			'supports'        => array(
+				'html' => false,
+			),
+		)
+	);
 }
 add_action( 'init', 'mrkwp_register_theme_blocks' );
+
+/**
+ * Render callback for dynamic video player block (mrkwp/video-player).
+ *
+ * Extracts the video player from the post content (or builds it from post meta)
+ * and renders it with the lightbox trigger.
+ *
+ * @param array<string, mixed> $attributes Block attributes.
+ * @param string               $content    Block inner content.
+ * @return string HTML output of the video player.
+ */
+function mrkwp_render_video_player( $attributes = array(), $content = '' ) {
+	unset( $attributes, $content );
+
+	$post_id = get_the_ID();
+	if ( ! $post_id ) {
+		return '';
+	}
+
+	global $mrkwp_rendering_video_player;
+	$mrkwp_rendering_video_player = true;
+
+	$post = get_post( $post_id );
+	if ( ! $post ) {
+		$mrkwp_rendering_video_player = false;
+		return '';
+	}
+
+	$video_html = '';
+	$blocks     = parse_blocks( $post->post_content );
+	foreach ( $blocks as $block ) {
+		if ( ! empty( $block['blockName'] ) && 'greenshift-blocks/video' === $block['blockName'] ) {
+			$video_html = render_block( $block );
+			break;
+		}
+	}
+
+	// Fallback if no GreenShift video block in content: build from post meta.
+	if ( empty( trim( $video_html ) ) ) {
+		$youtube_id    = get_post_meta( $post_id, '_mrkwp_youtube_id', true );
+		$thumbnail_url = get_post_meta( $post_id, '_mrkwp_youtube_thumbnail_url', true );
+		if ( empty( $thumbnail_url ) && has_post_thumbnail( $post_id ) ) {
+			$maxres        = get_the_post_thumbnail_url( $post_id, 'maxresdefault' );
+			$thumbnail_url = $maxres ? $maxres : get_the_post_thumbnail_url( $post_id, 'full' );
+		}
+
+		if ( ! empty( $youtube_id ) ) {
+			$video_url  = 'https://youtu.be/' . $youtube_id;
+			$video_html = sprintf(
+				'<div class="wp-block-greenshift-blocks-video gs-video youtube">' .
+					'<div class="gs-video-wrapper" itemscope>' .
+						'<iframe class="gs-video-element" data-src="%1$s" data-provider="youtube" data-autoplay="true" frameborder="0" allowfullscreen></iframe>' .
+						'<div class="gs-video-overlay" style="background-image:url(%2$s)" data-type="youtube" data-lightbox="true" data-video-id="%3$s" data-video-url="%1$s" role="button" aria-label="%4$s" tabindex="0">' .
+							'<div class="gs-play-icon" style="background-color:#cc0000" aria-hidden="true">' .
+								'<div style="content:\'\';display:block;position:absolute;border-radius:50%;border:1px solid #cc0000;left:-20px;right:-20px;bottom:-20px;top:-20px;animation:pulsevideobutton 1.5s linear infinite;opacity:0"></div>' .
+								'<span></span>' .
+								'<div style="content:\'\';display:block;position:absolute;border-radius:50%;border:1px solid #cc0000;left:-20px;right:-20px;bottom:-20px;top:-20px;animation:pulsevideobutton 1.5s linear infinite;opacity:0;animation-delay:0.5s"></div>' .
+							'</div>' .
+							'<div class="gs-overlay-color" style="background-color:var(--wp--preset--color--palette-color-12, var(--theme-palette-color-12, #111518));opacity:0.5"></div>' .
+						'</div>' .
+					'</div>' .
+				'</div>',
+				esc_url( $video_url ),
+				esc_url( $thumbnail_url ),
+				esc_attr( $youtube_id ),
+				esc_attr__( 'Play video', 'mrkwp' )
+			);
+		}
+	}
+
+	$mrkwp_rendering_video_player = false;
+
+	if ( empty( trim( $video_html ) ) ) {
+		return '';
+	}
+
+	return '<div class="video-player-frame">' . $video_html . '</div>';
+}
+
+/**
+ * Suppress duplicate greenshift video block in the post-content area on single video posts,
+ * since the video player is rendered via mrkwp/video-player above.
+ *
+ * @param string               $block_content The block content.
+ * @param array<string, mixed> $block         The parsed block.
+ * @return string Filtered block content.
+ */
+function mrkwp_filter_greenshift_video_block( $block_content, $block ) {
+	unset( $block );
+	global $mrkwp_rendering_video_player;
+	if ( ! empty( $mrkwp_rendering_video_player ) ) {
+		return $block_content;
+	}
+
+	if ( is_singular( 'mrkwp_video' ) ) {
+		return '';
+	}
+
+	return $block_content;
+}
+add_filter( 'render_block_greenshift-blocks/video', 'mrkwp_filter_greenshift_video_block', 10, 2 );
 
 /**
  * Calculate relative post date in days.

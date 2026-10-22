@@ -2,43 +2,26 @@
 
 <!-- wp:group {"tagName":"main","className":"site-main video-single-main"} -->
 <main class="wp-block-group site-main video-single-main">
-	<!-- wp:group {"tagName":"section","className":"page-intro wrap"} -->
-	<section class="wp-block-group page-intro wrap">
-		<!-- wp:group {"className":"video-meta-top","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
-		<div class="wp-block-group video-meta-top">
-			<!-- wp:paragraph {"className":"eyebrow"} -->
-			<p class="eyebrow">Video Walkthrough</p>
-			<!-- /wp:paragraph -->
-
-			<!-- wp:post-date {"className":"video-date"} /-->
+	<!-- wp:group {"tagName":"article","className":"video-single-narrow-wrap"} -->
+	<article class="wp-block-group video-single-narrow-wrap">
+		<!-- wp:buttons {"className":"video-back-row"} -->
+		<div class="wp-block-buttons video-back-row">
+			<!-- wp:button {"className":"button-small is-style-secondary video-back-button"} -->
+			<div class="wp-block-button button-small is-style-secondary video-back-button"><a class="wp-block-button__link wp-element-button" href="/videos/"><span aria-hidden="true">←</span> Back to all videos</a></div>
+			<!-- /wp:button -->
 		</div>
-		<!-- /wp:group -->
+		<!-- /wp:buttons -->
 
-		<!-- wp:post-title {"level":1,"style":{"typography":{"fontSize":"35px","lineHeight":"1.25"}}} /-->
+		<!-- wp:mrkwp/video-player /-->
+
+		<!-- wp:post-date {"className":"video-date"} /-->
+
+		<!-- wp:post-title {"level":1,"className":"video-title"} /-->
 
 		<!-- wp:post-terms {"term":"post_tag","className":"video-tags-row"} /-->
-	</section>
-	<!-- /wp:group -->
 
-	<!-- wp:group {"tagName":"section","className":"wrap section video-content-section"} -->
-	<section class="wp-block-group wrap section video-content-section">
-		<!-- wp:group {"tagName":"article","className":"video-panel"} -->
-		<article class="wp-block-group video-panel">
-			<!-- wp:post-content {"layout":{"type":"default"}} /-->
-		</article>
-		<!-- /wp:group -->
-
-		<!-- wp:group {"className":"video-back-row","layout":{"type":"flex","justifyContent":"space-between"}} -->
-		<div class="wp-block-group video-back-row" style="margin-top: 32px;">
-			<!-- wp:paragraph -->
-			<p><a href="/resources/#video" class="text-link">← Back to Video Library</a></p>
-			<!-- /wp:paragraph -->
-			<!-- wp:paragraph -->
-			<p><a href="https://www.youtube.com/channel/UCO2GcBObiCDXq_NOaCGiHWg" target="_blank" rel="noopener noreferrer" class="text-link">Visit MRK WP on YouTube ↗</a></p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:group -->
-	</section>
+		<!-- wp:post-content {"className":"video-description","layout":{"type":"default"}} /-->
+	</article>
 	<!-- /wp:group -->
 
 	<!-- wp:mrkwp/related-videos /-->
