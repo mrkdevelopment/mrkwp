@@ -201,6 +201,8 @@ function mrkwp_scripts() {
 		is_page_template( 'page-tools.html' ) ||
 		is_page_template( 'page-tools' ) ||
 		is_page( 'tools' ) ||
+		is_post_type_archive( 'mrkwp_tool' ) ||
+		is_singular( 'mrkwp_tool' ) ||
 		is_page_template( 'page-advisory.php' ) ||
 		is_page_template( 'page-advisory.html' ) ||
 		is_page_template( 'page-advisory' ) ||
