@@ -199,6 +199,12 @@ function mrkwp_scripts() {
 	if ( is_page_template( 'page-tools.php' ) || is_page( 'tools' ) || is_page_template( 'page-advisory.php' ) || is_page( 'advisory' ) ) {
 		wp_enqueue_script( 'mrkwp-app', MRKWP_THEME_URI . '/js/app.js', array( 'mrkwp-navigation' ), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
 	}
+
+	// Dequeue generic block styles on the custom coded frontend.
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'global-styles' );
+	wp_dequeue_style( 'classic-theme-styles' );
 }
 add_action( 'wp_enqueue_scripts', 'mrkwp_scripts' );
 
