@@ -1,8 +1,8 @@
 # MRK WP Theme
 
-> Custom hybrid WordPress theme for **MRK WP** — founder-led design and engineering, built for performance, editorial clarity, and structured knowledge.
+> Full Site Editing (FSE) block theme for **MRK WP** — founder-led design and engineering, built for performance, editorial clarity, and structured knowledge.
 
-- **Current Version:** `1.0.1`
+- **Current Version:** `1.0.2`
 - **Requires WordPress:** `6.7+`
 - **Requires PHP:** `8.0+`
 - **Author:** Matt Knighton ([https://mrkwp.com/](https://mrkwp.com/))
@@ -12,49 +12,53 @@
 
 ## Overview
 
-The **MRK WP** theme is a modern hybrid WordPress theme that blends classic PHP page templates with Full Site Editing (FSE) block capabilities, a centralized `theme.json` design token architecture, and an automated SCSS/PostCSS build pipeline.
+The **MRK WP** theme is a modern Full Site Editing (FSE) block theme featuring HTML templates in `templates/`, template parts in `parts/`, block patterns in `patterns/`, a centralized `theme.json` design token architecture, and an automated SCSS/PostCSS build pipeline.
 
 ### Key Highlights
-- **Hybrid Architecture:** Uses robust PHP page templates for tailored layouts alongside Gutenberg block template parts (e.g., FSE footer) and block patterns.
+- **Full Site Editing (FSE) Architecture:** Uses standard HTML templates and template parts (`templates/` and `parts/`), editable via the WordPress Site Editor.
 - **Design Tokens (`theme.json` v3):** Unified palette, typography scales, spacing units, and block styling presets shared across the frontend and block editor.
 - **Gutenberg Native Extensions:** Custom block styles for buttons and typography, customized SVG stroke social icons, and Gutenberg sidebar panels for page-level settings.
 - **Strict Code Quality:** 100% compliant with WordPress Coding Standards (WPCS) via PHP_CodeSniffer (`phpcs.xml`).
 
 ---
 
-## What We Have So Far
+## What We Have
 
 ### 1. Theme Configuration & Design Tokens (`theme.json`)
 - **Color Palette:**
   - `ink` (`#0a2540`): Primary headings and deep dark backgrounds.
   - `body` (`#425466`): Standard body copy with high readability.
   - `canvas` (`#f8fafc`): Subtle off-white canvas backgrounds.
-  - `accent-orange` (`#ff6a3d`): Primary CTA accent.
-  - `accent-cyan` (`#00b4d8`): Secondary accent.
-  - `accent-green` (`#2ec4b6`): Positive status and metric highlights.
-  - `white` (`#ffffff`), `black` (`#000000`), and `border` (`#e2e8f0`).
+  - `white` (`#ffffff`), `indigo` (`#554cf0`), `cyan` (`#00d4ff`), `deep-cyan` (`#007a99`).
 - **Typography Scale:**
   - Font families: `Inter` (body copy & UI) and `Plus Jakarta Sans` (headings & display).
-  - Sizes: `xs` (13px), `sm` (14px), `base` (16px), `lg` (18px), `xl` (20px), `2xl` (24px), `3xl` (32px), `4xl` (40px).
-- **Layout:**
-  - Content width: `1120px`
-  - Wide width: `1320px`
-- **Button Styling:**
-  - Standardized button presets with border-radius, typography, and hover interaction rules matching MRK WP brand aesthetics.
+- **Template Parts:**
+  - `header` (`parts/header.html`): Site header with navigation and mega-menu.
+  - `footer` (`parts/footer.html`): Site footer with brand lockup, links, and social icons.
+- **Custom Templates:**
+  - `page-about`: About Matt
+  - `page-advisory`: Advisory
+  - `page-clearer-brief`: Resource: Clearer Brief
+  - `page-community`: Community
+  - `page-contact`: Work With Me / Contact
+  - `page-resources`: Resource Library
+  - `page-tools`: Tools & Workflows
 
-### 2. Page Templates & Hierarchy
-- **`front-page.php`:** Homepage template featuring the hero section, belief strip, comparison matrix, strategic frameworks, and dynamic post grids.
-- **`page.php`:** Default page template with support for page-level meta toggles (e.g. show/hide title) and clean content wrapping without border artifacts.
-- **`page-about.php`:** Editorial about and founder layout.
-- **`page-tools.php`:** Interactive tools, calculator, and diagnostic layout.
-- **`page-advisory.php`:** Advisory and consulting service breakdown.
-- **`page-resources.php`:** Curated resource library and reading list.
-- **`page-contact.php`:** Inquiries and project discovery contact form.
-- **`page-community.php`:** Community hub and discussion overview.
-- **`page-clearer-brief.php`:** Project briefing tool landing page.
-- **`single.php` & `index.php`:** Clean, accessible blog post and archive views.
-- **`header.php`:** Responsive navigation header with quick links, mobile drawer, and accessible SVG icons.
-- **`footer.php` & `parts/footer.html`:** Block-based FSE footer template part with direct shortcut in WordPress Admin under **Appearance > Footer**.
+### 2. Block Templates (`templates/`)
+- **`templates/front-page.html`:** Homepage featuring hero section, belief strip, editorial about, path grid, resource highlights, generative engine optimization comparison, and process journey.
+- **`templates/page.html`:** Default page template.
+- **`templates/single.html`:** Single post template.
+- **`templates/index.html`:** Blog index and query loop fallback.
+- **`templates/archive.html`:** Category, tag, and author archives.
+- **`templates/search.html`:** Search results.
+- **`templates/404.html`:** Accessible 404 error page.
+- **`templates/page-about.html`:** About Matt Knighton.
+- **`templates/page-tools.html`:** Tool directory and readiness assessment.
+- **`templates/page-advisory.html`:** Advisory and consulting service breakdown.
+- **`templates/page-resources.html`:** Curated resource library.
+- **`templates/page-contact.html`:** Contact and inquiry forms.
+- **`templates/page-community.html`:** Free builder community.
+- **`templates/page-clearer-brief.html`:** Clearer brief prompt tool.
 
 ### 3. Block Editor Customizations
 - **Custom Block Styles:**

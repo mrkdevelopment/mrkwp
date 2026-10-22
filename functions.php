@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MRKWP_VERSION', '1.0.1' );
+define( 'MRKWP_VERSION', '1.0.2' );
 define( 'MRKWP_THEME_DIR', get_template_directory() );
 define( 'MRKWP_THEME_URI', get_template_directory_uri() );
 
@@ -196,7 +196,16 @@ function mrkwp_scripts() {
 	);
 
 	// Load assessment script when on tools or pages using readiness assessment.
-	if ( is_page_template( 'page-tools.php' ) || is_page( 'tools' ) || is_page_template( 'page-advisory.php' ) || is_page( 'advisory' ) ) {
+	if (
+		is_page_template( 'page-tools.php' ) ||
+		is_page_template( 'page-tools.html' ) ||
+		is_page_template( 'page-tools' ) ||
+		is_page( 'tools' ) ||
+		is_page_template( 'page-advisory.php' ) ||
+		is_page_template( 'page-advisory.html' ) ||
+		is_page_template( 'page-advisory' ) ||
+		is_page( 'advisory' )
+	) {
 		wp_enqueue_script( 'mrkwp-app', MRKWP_THEME_URI . '/js/app.js', array( 'mrkwp-navigation' ), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
 	}
 
@@ -207,6 +216,49 @@ function mrkwp_scripts() {
 	wp_dequeue_style( 'classic-theme-styles' );
 }
 add_action( 'wp_enqueue_scripts', 'mrkwp_scripts' );
+
+/**
+ * Output favicon links and theme meta in wp_head.
+ */
+function mrkwp_head_meta() {
+	echo '<meta name="theme-color" content="#0a2540">' . "\n";
+	echo '<link rel="icon" href="' . esc_url( mrkwp_asset( 'favicon.svg' ) ) . '" type="image/svg+xml">' . "\n";
+	echo '<link rel="icon" href="' . esc_url( mrkwp_asset( 'mrk-square.png' ) ) . '" sizes="any">' . "\n";
+}
+add_action( 'wp_head', 'mrkwp_head_meta' );
+
+/**
+ * Output global SVG sprite library and skip link at body open.
+ */
+function mrkwp_body_open_elements() {
+	?>
+	<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+		<symbol id="i-up-right" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+		<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+		<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/></symbol>
+		<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z"/></symbol>
+		<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+		<symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-3-.5l-5 1 1-5a9 9 0 0 1-.5-3.5 8 8 0 0 1 15.5 0Z"/><path d="M8 10h8m-8 4h5"/></symbol>
+		<symbol id="i-nodes" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M12 8v4H5v4m7-4h7v4"/></symbol>
+		<symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-8 11-8 11S4 16 4 11V5Z"/><path d="m8.5 11.5 2.5 2.5 4.5-5"/></symbol>
+		<symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+	</svg>
+
+	<a class="skip-link" href="#main"><?php esc_html_e( 'Skip to content', 'mrkwp' ); ?></a>
+	<?php
+}
+add_action( 'wp_body_open', 'mrkwp_body_open_elements' );
+
+/**
+ * Output floating back-to-top button in wp_footer.
+ */
+function mrkwp_footer_elements() {
+	?>
+	<a class="floating-top" href="#" aria-label="<?php esc_attr_e( 'Back to top', 'mrkwp' ); ?>" hidden><span aria-hidden="true">↑</span><span>Top</span></a>
+	<?php
+}
+add_action( 'wp_footer', 'mrkwp_footer_elements' );
 
 /**
  * Register post meta for page settings (e.g. title toggle).

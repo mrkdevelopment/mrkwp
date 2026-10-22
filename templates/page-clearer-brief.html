@@ -1,0 +1,29 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","attrs":{"id":"main"}} -->
+<main id="main">
+	<section class="page-intro wrap">
+		<p class="eyebrow">Skills and Snippets</p>
+		<h1>Better context.<br><span>More useful answers.</span></h1>
+		<p>A simple starting prompt for turning your own experience into helpful content.</p>
+	</section>
+
+	<article class="wrap prompt-article simple-panel">
+		<h2>Start with what only you know.</h2>
+		<p>Replace the bracketed sections with your own details. Give the AI a real example, then review its output for accuracy and your own voice.</p>
+		<pre id="prompt-text">Help me explain [topic] to [specific audience].
+
+Here is my first-hand experience: [your example].
+The question my audience is asking: [their question].
+The next step I want them to understand: [useful action].
+
+Draft a clear outline. Use only the facts I provide.
+Flag missing information instead of inventing details.
+Keep my point of view and avoid generic claims.</pre>
+		<button class="button" id="copy-prompt">Copy prompt</button>
+		<p id="copy-status" role="status"></p>
+	</article>
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->

@@ -260,9 +260,51 @@
 	},
 	"templateParts": [
 		{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
+		},
+		{
 			"name": "footer",
 			"title": "Footer",
 			"area": "footer"
+		}
+	],
+	"customTemplates": [
+		{
+			"name": "page-about",
+			"title": "About Matt",
+			"postTypes": [ "page" ]
+		},
+		{
+			"name": "page-advisory",
+			"title": "Advisory",
+			"postTypes": [ "page" ]
+		},
+		{
+			"name": "page-clearer-brief",
+			"title": "Resource: Clearer Brief",
+			"postTypes": [ "page" ]
+		},
+		{
+			"name": "page-community",
+			"title": "Community",
+			"postTypes": [ "page" ]
+		},
+		{
+			"name": "page-contact",
+			"title": "Work With Me / Contact",
+			"postTypes": [ "page" ]
+		},
+		{
+			"name": "page-resources",
+			"title": "Resource Library",
+			"postTypes": [ "page" ]
+		},
+		{
+			"name": "page-tools",
+			"title": "Tools & Workflows",
+			"postTypes": [ "page" ]
 		}
 	]
 }
