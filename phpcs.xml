@@ -26,11 +26,17 @@
 		<exclude name="Universal.NamingConventions.NoReservedKeywordParameterNames.classFound" />
 	</rule>
 
+	<!-- Allow standard WordPress block pattern headers without standard PHP file docblocks -->
+	<rule ref="Squiz.Commenting.FileComment">
+		<exclude-pattern>*/patterns/*</exclude-pattern>
+	</rule>
+
 	<!-- Verify that strings use the proper text domain -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
 				<element value="mrkwp" />
+				<element value="ollie" />
 			</property>
 		</properties>
 	</rule>

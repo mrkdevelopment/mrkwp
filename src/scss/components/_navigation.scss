@@ -55,15 +55,26 @@
 }
 
 // Main Navigation
-.main-nav {
+.main-nav,
+.wp-block-navigation.main-nav {
   display: flex;
   align-items: center;
   gap: 28px;
   margin-left: auto;
   margin-right: auto;
 
+  .wp-block-navigation__container {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
   > a,
-  .resources-toggle {
+  .resources-toggle,
+  .wp-block-navigation-item__content {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -78,8 +89,84 @@
     }
   }
 
+  .current-menu-item > .wp-block-navigation-item__content {
+    color: var(--indigo);
+    font-weight: 600;
+  }
+
   .mobile-apply {
     display: none;
+  }
+}
+
+// Ollie Menu Designer Mega Menu integration
+.wp-block-ollie-mega-menu {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  list-style: none;
+
+  .wp-block-ollie-mega-menu__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--indigo-dark);
+    }
+  }
+
+  .wp-block-ollie-mega-menu__toggle {
+    background: none;
+    border: none;
+    color: var(--ink);
+    min-height: 44px;
+    padding: 0 4px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--indigo-dark);
+    }
+
+    .wp-block-ollie-mega-menu__toggle-icon svg {
+      transition: transform 0.2s;
+      stroke: currentColor;
+    }
+
+    &[aria-expanded="true"] .wp-block-ollie-mega-menu__toggle-icon svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.wp-block-ollie-mega-menu__menu-container {
+  z-index: 100;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+
+  .mega-menu {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 0.9fr 1.15fr 0.9fr;
+    gap: 32px;
+    padding: 32px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: 0 24px 35px rgba(10, 37, 64, 0.07);
   }
 }
 
@@ -219,7 +306,8 @@
     grid-template-columns: 1fr 1.6fr;
   }
 
-  .mega-feature {
+  .mega-feature,
+  .mega-feature-wrap {
     display: none !important;
   }
 }
@@ -239,6 +327,7 @@
     display: none;
   }
 
+  // Classic toggle
   .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -270,7 +359,100 @@
     }
   }
 
-  .main-nav {
+  // Block navigation mobile toggle
+  .wp-block-navigation__responsive-container-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 10px;
+    color: var(--ink);
+    cursor: pointer;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+  }
+
+  .wp-block-navigation__responsive-container.is-menu-open {
+    background: var(--white);
+    padding: 24px;
+
+    .wp-block-navigation__container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .wp-block-navigation-item {
+      width: 100%;
+    }
+
+    .wp-block-navigation-item__content {
+      font-size: 16px;
+      width: 100%;
+      min-height: 46px;
+      padding: 9px 0;
+    }
+
+    .mobile-apply {
+      display: inline-flex !important;
+      font-weight: 600;
+      color: var(--indigo);
+      margin-top: 12px;
+    }
+
+    .wp-block-ollie-mega-menu {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .wp-block-ollie-mega-menu__toggle {
+        font-size: 16px;
+      }
+    }
+
+    .wp-block-ollie-mega-menu__menu-container {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      background: var(--white);
+      z-index: 200;
+      overflow-y: auto !important;
+
+      .mega-menu {
+        display: block;
+        padding: 24px;
+        border: none;
+        box-shadow: none;
+
+        .mega-intro {
+          display: none;
+        }
+
+        .mega-categories {
+          grid-template-columns: 1fr;
+          gap: 12px;
+          margin-bottom: 24px;
+        }
+
+        .mega-feature,
+        .mega-feature-wrap {
+          display: flex !important;
+        }
+      }
+    }
+  }
+
+  .main-nav:not(.wp-block-navigation) {
     display: none;
     position: absolute;
     top: 78px;

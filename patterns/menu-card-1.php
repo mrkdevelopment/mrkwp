@@ -2,12 +2,12 @@
 /**
  * Title: Menu Card 1
  * Slug: ollie/menu-card-1
- * Description: 
+ * Description:
  * Categories: ollie/menu
  * Keywords: menu, drop down, mobile, card
  * Viewport Width: 800
- * Block Types: core/template-part/menu 
- * Post Types: 
+ * Block Types: core/template-part/menu
+ * Post Types:
  * Inserter: true
  */
 ?>
