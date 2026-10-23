@@ -335,6 +335,11 @@
 			"name": "menu-resources",
 			"title": "Resources Dropdown Menu",
 			"area": "menu"
+		},
+		{
+			"name": "video-card",
+			"title": "Video Card",
+			"area": "uncategorized"
 		}
 	],
 	"customTemplates": [

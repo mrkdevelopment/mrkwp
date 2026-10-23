@@ -24,14 +24,14 @@
 }
 
 .section {
-  padding-block: 100px;
+  padding-block: 40px;
 
   @media (max-width: 1180px) {
-    padding-block: 98px;
+    padding-block: 28px;
   }
 
   @media (max-width: 760px) {
-    padding-block: 70px;
+    padding-block: 35px;
   }
 }
 

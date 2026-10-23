@@ -21,20 +21,7 @@
 		<!-- wp:query {"queryId":10,"query":{"perPage":15,"pages":0,"offset":0,"postType":"mrkwp_video","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
 		<div class="wp-block-query">
 			<!-- wp:post-template {"className":"content-grid videos-grid"} -->
-			<!-- wp:group {"tagName":"article","className":"content-card"} -->
-			<article class="wp-block-group content-card">
-				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9"} /-->
-
-				<!-- wp:group {"className":"content-card-copy"} -->
-				<div class="wp-block-group content-card-copy">
-					<!-- wp:post-terms {"term":"post_tag","className":"video-tags-row"} /-->
-					<!-- wp:post-title {"level":3,"isLink":true} /-->
-					<!-- wp:post-date /-->
-					<!-- wp:read-more {"content":"Watch walkthrough ↗"} /-->
-				</div>
-				<!-- /wp:group -->
-			</article>
-			<!-- /wp:group -->
+			<!-- wp:template-part {"slug":"video-card","theme":"mrkwp","area":"uncategorized"} /-->
 			<!-- /wp:post-template -->
 
 			<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
