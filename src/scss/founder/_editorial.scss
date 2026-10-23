@@ -550,38 +550,6 @@ h3 {
     line-height: .8
 }
 
-.footer-links {
-    gap: 55px
-}
-
-.site-footer .logo-caption {
-    color: #ffffff
-}
-
-.site-footer .logo {
-    letter-spacing: -.04em
-}
-
-.page-intro {
-    padding-block: 90px 60px;
-    max-width: 1240px
-}
-
-.page-intro h1:not([class*="has-"]):not([style*="font-size"]) {
-    font-size: var(--wp--preset--font-size--3xl);
-    line-height: 1.08;
-    margin: 22px 0
-}
-
-.page-intro h1 span {
-    color: var(--indigo)
-}
-
-.page-intro>p:last-child {
-    max-width: 660px;
-    font-size: 18px
-}
-
 .about-detail {
     display: grid;
     grid-template-columns: 1fr 1.3fr;
