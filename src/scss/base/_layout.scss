@@ -148,3 +148,11 @@
   white-space: nowrap;
   border: 0;
 }
+
+// Modern Web Guidance (defer-rendering-heavy-content): Defer layout & paint for deep off-screen sections.
+.process,
+.community-invite,
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}

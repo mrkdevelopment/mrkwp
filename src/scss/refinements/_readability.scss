@@ -3,11 +3,1134 @@
 // ==========================================================================
 
 /* Readability refinements from the annotated design review. */
-.eyebrow,.founder-hero .eyebrow{font-size:15px;line-height:1.6;letter-spacing:.06em;color:#006c86}.eyebrow-line{display:none}.editorial-index{font-size:16px;color:var(--body);margin-top:28px}.button,.button-small,.text-link{font-size:16px;min-height:52px}.button{background:#554cf0}.button:hover{background:#463cd7}.button-light{background:white;color:var(--ink)}.button-light:hover{background:#e7edff}.founder-hero .hero-actions{display:flex;flex-direction:column;align-items:stretch;max-width:370px;gap:12px}.hero-actions .button{justify-content:space-between;padding:18px 23px;min-height:60px}.button-secondary{background:white;color:var(--ink);border:1px solid #aebcd0}.button-secondary:hover{background:#e9edff;color:var(--ink)}.founder-hero .hero-footnote{display:flex;align-items:center;gap:13px;max-width:440px;padding:16px 20px;background:#e9edf8;border:1px solid #d3dceb;border-radius:3px;font-size:14px;line-height:1.6;color:var(--body);margin-top:20px}.hero-footnote .info-symbol{width:25px;height:25px;border:1.5px solid #63738a;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;font-weight:600;color:var(--ink)}.hero-footnote strong{display:block;font-weight:600;color:var(--ink)}.founder-hero{padding-bottom:65px}.belief-strip{display:grid;grid-template-columns:1.15fr 1fr 1fr;grid-template-rows:auto auto;gap:18px;padding:0;border:0;perspective:1000px}.belief-card{border:1px solid #d9e1ec;border-radius:4px;background:#edf1f8;padding:30px;min-width:0;position:relative;overflow:hidden}.belief-main{grid-row:1/3;background:var(--ink);border:0;display:flex;flex-direction:column;justify-content:flex-end;padding:35px}.belief-card:nth-child(2){grid-column:2/4;background:#eae8ff;display:grid;grid-template-columns:48px 1fr 1fr;align-items:center;gap:22px}.belief-card h3{font-size:24px;line-height:1.25;margin:20px 0 10px}.belief-card:nth-child(2) h3{margin:0}.belief-main h2{font-size:36px;line-height:1.15;color:white;margin:25px 0 16px}.belief-main h2 span{color:#a5aaff}.belief-strip .belief-card p{border:0;padding:0;font-size:16px;line-height:1.6;color:var(--body)}.belief-strip .belief-main p{color:#c5d4e4}.belief-card .icon{width:32px;height:32px;color:var(--indigo-dark)}.bento-symbol{font-size:76px;line-height:1;color:var(--cyan);align-self:flex-start}.about-editorial{grid-template-columns:1fr 2fr}.about-editorial p:not(.eyebrow){font-size:18px}.path-card p{font-size:16px}.path-card b{font-size:16px}.advisory-art{border:0;padding-left:0;height:155px}.advisory-art>span{font-size:17px;color:#b3b7ff}.section-heading>p{font-size:18px}.content-card-copy>span{display:inline-flex;align-items:center;min-height:34px;padding:4px 14px;border-radius:6px;background:#e7eff5;color:#006780;font-size:14px;font-weight:600}.content-card p{font-size:16px}.content-card b{display:flex;align-items:center;min-height:48px;background:#edf0ff;border:1px solid #c8c9f0;border-radius:2px;padding:11px 17px;font-size:16px;color:#443bc0}.content-card:hover b{background:#dedfff}.home-resources .section-heading>.button{flex-shrink:0}.comparison{border:1px solid #ccd7e5;border-radius:4px;overflow:hidden}.comparison-head,.comparison-row{grid-template-columns:.75fr 1.1fr 1.2fr}.comparison-head{font-size:19px;font-weight:600;color:var(--ink);background:#fff}.comparison-head>span{padding:24px;display:flex;flex-direction:column;align-items:flex-start;gap:3px}.comparison-head>span:first-child{padding-left:24px;justify-content:center}.comparison-head>span:nth-child(2){background:#edf0f4}.comparison-head>span:last-child{background:var(--ink);color:white;border-radius:0}.comparison-head small{font-size:14px;font-weight:500;color:var(--body)}.comparison-head>span:last-child small{color:var(--cyan)}.comparison-row h3{padding:30px 24px;font-size:19px;background:white;line-height:1.4}.comparison-before,.comparison-after{padding:28px 24px}.comparison-before{background:#edf0f4}.comparison-after{background:#e9e7ff}.comparison-row p{font-size:17px;line-height:1.75}.comparison-before p{color:var(--body)}.comparison-after strong{font-weight:700}.comparison-after>.icon{width:24px;height:24px;color:#5146ce}.comparison-row:last-child .comparison-after{border-radius:0}.geo-note{align-items:center;gap:20px;background:#eaf0f7;padding:25px 28px;border-radius:3px}.geo-note p{font-size:17px;max-width:760px}.geo-note .text-link{font-size:16px}.geo-note-mark{font-size:32px}.process .eyebrow{font-size:15px;color:var(--cyan)}.process-summary{display:flex;gap:24px;align-items:center;max-width:420px}.process-summary>strong{font-size:140px;font-weight:600;line-height:.9;letter-spacing:-.06em;color:var(--cyan)}.process-summary p{font-size:17px;line-height:1.6}.process-summary b{font-size:23px;line-height:1.3;font-weight:500;color:white;display:block}.process-summary p>span{display:block;margin-top:14px;color:#bfccdb}.process-step{grid-template-columns:78px 1fr 1.05fr;gap:28px;padding-block:48px}.journey-line{left:38px}.step-marker{width:78px;height:92px;border-radius:3px;display:flex;flex-direction:column;justify-content:center;gap:4px;color:white}.step-marker span{font-size:14px;line-height:1.2}.step-marker strong{font-size:33px;line-height:1.1;font-weight:600}.process-verb{font-size:19px;margin-bottom:20px}.process-copy>p{font-size:18px;line-height:1.8;max-width:460px;color:#c5d3e2}.process-deliverable{font-size:16px;line-height:1.65;border:1px solid #375774;background:#0d2c48;border-radius:2px;padding:18px;max-width:460px;color:white;margin-top:26px}.process-deliverable .icon{width:23px;height:23px}.visual-topline{font-size:17px;color:#d7e5f3;padding:22px}.voice-document>div:first-child{font-size:17px;padding:20px}.voice-document-grid{gap:12px;padding:20px}.voice-document-grid>span{font-size:15px;line-height:1.4;color:var(--ink)}.voice-document-grid i{font-size:13px;color:var(--body);margin-bottom:8px}.architecture-layer{font-size:15px}.layer-inner strong{font-size:24px}.layer-inner>span{font-size:14px}.architecture-caption{font-size:14px;flex-wrap:wrap;color:#d7e5f3}.architecture-caption .icon{width:18px;height:18px}.workflow-source strong{font-size:17px}.workflow-source div>span{font-size:14px}.workflow-outputs strong{font-size:16px}.workflow-outputs>div>span:last-child{font-size:14px;color:var(--body)}.process-close{margin-left:106px}.process-close p,.process-close .button{font-size:17px}.community-invite p:not(.eyebrow){font-size:18px}.footer-top{display:grid;grid-template-columns:1fr 2fr;gap:55px}.footer-links{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.footer-links>div>span,.footer-links>div>.footer-heading{font-size:17px;color:white;font-weight:600;margin-bottom:16px}.footer-links a{font-size:16px;min-height:46px;line-height:1.45;justify-content:flex-start;color:#d1ddea}.footer-bottom{font-size:15px;color:#c2d1e1;padding-block:24px}.footer-bottom a{min-height:44px}.social-row{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:0 0 32px}.social-row>span,.social-row>p,.social-row>.social-row-label{font-size:17px;color:white}.social-icons{display:flex;gap:12px;flex-wrap:wrap}.social-icons a,.social-icons .wp-block-social-link-anchor,.social-pending{display:grid;place-items:center;width:52px;height:52px;border:1px solid #48617c;border-radius:2px;background:#12314e;color:white;transition:background .2s,transform .2s}.social-icons a:hover,.social-icons .wp-block-social-link-anchor:hover{background:#24435f;transform:translateY(-3px)}.social-icons svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}.floating-top{position:fixed;left:22px;bottom:24px;z-index:30;display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:12px 20px;border:1px solid #8e91ff;border-radius:2.5px;background:#554cf0;color:white;box-shadow:0 7px 24px #05132224;font-size:16px;font-weight:600}.floating-top>span:first-child{font-size:26px;line-height:1}.floating-top:hover{background:#463cd7}.floating-top:focus-visible{outline:3px solid var(--cyan)}
-@media(max-width:1100px){.footer-top{grid-template-columns:1fr;gap:40px}.footer-links{grid-template-columns:repeat(3,1fr)}.process-step{grid-template-columns:70px 1fr 1fr;gap:23px}.step-marker{width:70px}.journey-line{left:34px}.process-copy h3{font-size:32px}.process-copy>p{font-size:17px}.process-summary>strong{font-size:115px}.process-summary{max-width:340px;gap:20px}.belief-main h2{font-size:30px}.belief-card{padding:25px}.belief-card h3{font-size:22px}.comparison-head,.comparison-row{grid-template-columns:.8fr 1fr 1.15fr}.comparison-row h3{font-size:17px;padding:24px 18px;gap:9px}.comparison-before,.comparison-after{padding:25px 20px}.voice-document{margin-inline:16px}.voice-document-grid{padding:16px;gap:8px}.voice-document-grid>span{font-size:14px}.visual-topline{font-size:16px;padding:18px}.process-close{margin-left:93px}}
-@media(max-width:900px){.belief-strip{grid-template-columns:1fr 1fr;grid-template-rows:auto}.belief-main{grid-row:auto}.belief-card:nth-child(2){grid-column:auto;display:block}.belief-card:nth-child(2) h3{margin:20px 0 10px}.belief-main h2{font-size:30px}.process-heading{align-items:flex-start}.process-summary{max-width:300px}.process-summary b{font-size:20px}.process-summary p{font-size:16px}.comparison-head{font-size:17px}.comparison-row p{font-size:16px}.comparison-head>span{padding:20px}.process-step{grid-template-columns:70px 1fr;gap:25px}.process-copy{grid-column:2}.process-visual{grid-column:2;max-width:none}.process-copy>p{max-width:none}.process-deliverable{max-width:none}.voice-document-grid>span{font-size:17px}.process-copy h3{font-size:35px}.architecture{height:270px}.process-close{margin-left:95px}.process-summary>strong{font-size:96px}.geo-note{flex-wrap:wrap}.geo-note p{flex:1;min-width:70%}.geo-note .text-link{margin-left:45px}}
-@media(max-width:760px){.eyebrow,.founder-hero .eyebrow,.process .eyebrow{font-size:14px}.founder-hero .hero-actions{display:flex;flex-direction:column;align-items:stretch;max-width:none;gap:12px}.founder-hero .hero-footnote{font-size:14px;max-width:none;gap:12px;padding:15px 17px}.hero-actions .button{font-size:16px}.editorial-index{display:block;font-size:16px;margin-top:15px}.belief-strip{gap:14px}.belief-card{padding:22px;border-radius:3px}.belief-main{grid-column:1/3}.belief-card:nth-child(2){grid-column:1/3;display:grid;grid-template-columns:40px 1fr;gap:15px}.belief-card:nth-child(2) h3{margin:0}.belief-card:nth-child(2) p{grid-column:2}.belief-card h3{font-size:21px}.belief-card h3 br{display:none}.belief-strip .belief-card p{font-size:15px}.belief-card .icon{width:28px;height:28px}.belief-main h2{font-size:33px}.bento-symbol{font-size:54px}.about-editorial p:not(.eyebrow){font-size:17px}.about-editorial{gap:24px}.section-heading>p{font-size:17px}.home-resources .section-heading>.button{margin-top:25px}.content-card-copy>span{font-size:14px}.content-card p{font-size:16px}.content-card b{font-size:16px}.path-card p,.path-card b{font-size:16px}.comparison{border:0;overflow:visible}.comparison-head{display:none}.comparison-row{grid-template-columns:1fr;gap:0;border:1px solid #cbd6e4;border-radius:3px;overflow:hidden;margin-top:20px}.comparison-row h3{grid-column:1;padding:22px;font-size:22px;margin:0}.comparison-before,.comparison-after{display:block;padding:23px;grid-column:1}.comparison-row p{font-size:17px;line-height:1.75}.comparison .mobile-label{position:static;clip:auto;width:auto;height:auto;display:inline-flex;font-size:14px;font-weight:700;padding:5px 12px;border-radius:4px;background:#d9e0e9;color:var(--ink);margin-bottom:14px}.comparison-after .mobile-label{background:var(--ink);color:white}.comparison-after>.icon{display:none}.comparison-row:last-child .comparison-after{border-radius:0}.geo-note{padding:23px;gap:13px}.geo-note p{font-size:17px;flex:auto;width:100%}.geo-note-mark{display:none}.geo-note .text-link{margin-left:0;font-size:16px}.process-heading{display:block}.process-summary{margin-top:30px;max-width:100%;gap:25px}.process-summary>strong{font-size:112px}.process-summary b{font-size:23px}.process-summary p{font-size:16px}.process-step{grid-template-columns:1fr;padding-block:32px;gap:22px}.step-marker{width:auto;height:auto;justify-self:start;display:flex;flex-direction:row;align-items:center;padding:10px 18px;gap:12px;grid-column:1;margin:0;border-radius:2px}.step-marker span{font-size:16px}.step-marker strong{font-size:30px}.process-copy,.process-visual{grid-column:1}.process-copy h3{font-size:32px}.process-copy>p{font-size:17px;max-width:none}.process-verb{font-size:18px;margin-bottom:16px}.process-deliverable{font-size:16px;padding:17px}.journey-line{display:none}.process-close{margin-left:0;flex-direction:column;align-items:flex-start;gap:24px}.process-close p,.process-close .button{font-size:16px}.visual-topline{font-size:16px;padding:18px;line-height:1.5}.voice-document>div:first-child{font-size:16px;padding:16px;gap:8px}.voice-document-grid{padding:16px;grid-template-columns:1fr;gap:13px}.voice-document-grid>span{display:flex;gap:12px;align-items:center;font-size:16px}.voice-document-grid i{margin:0;font-size:14px}.architecture-caption{font-size:14px;justify-content:flex-start}.workflow-source{margin-inline:16px;padding:13px;gap:10px}.workflow-source strong{font-size:16px}.workflow-source div>span{font-size:14px}.workflow-outputs{padding-inline:16px}.workflow-outputs strong{font-size:15px}.workflow-outputs>div>span:last-child{font-size:14px}.layer-inner>span{font-size:13px}.layer-inner strong{font-size:21px}.community-invite p:not(.eyebrow){font-size:17px}.footer-top{display:grid;grid-template-columns:1fr}.footer-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.footer-links>div>span,.footer-links>div>.footer-heading{font-size:16px;line-height:1.4;min-height:44px}.footer-links a{font-size:15px;min-height:48px;line-height:1.5;padding:6px 0}.social-row{flex-direction:column;align-items:flex-start;gap:18px}.social-icons{gap:10px}.social-icons a,.social-icons .wp-block-social-link-anchor{width:48px;height:48px}.footer-bottom{font-size:15px;gap:18px;align-items:flex-start}.footer-bottom>div{gap:24px}.floating-top{left:14px;bottom:16px;min-height:54px;padding:10px 16px}.footer-bottom{padding-bottom:90px}}
-@media(max-width:400px){.belief-strip{grid-template-columns:1fr}.belief-main,.belief-card:nth-child(2){grid-column:auto}.belief-card:nth-child(2){display:block}.belief-card:nth-child(2) h3{margin:18px 0 10px}.belief-card h3{font-size:23px}.footer-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.footer-links a{font-size:14px}.footer-links>div>span,.footer-links>div>.footer-heading{font-size:15px}.eyebrow,.founder-hero .eyebrow{font-size:13px}.architecture{margin-inline:16px}.layer-middle{inset-inline:17px}.layer-inner{inset-inline:34px}}
-@media(prefers-reduced-motion:reduce){.social-icons a{transition:none}.social-icons a:hover,.social-icons .wp-block-social-link-anchor:hover{transform:none}}
-.belief-strip{align-items:stretch}
+.eyebrow,
+.founder-hero .eyebrow {
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: .06em;
+    color: #006c86
+}
+
+.eyebrow-line {
+    display: none
+}
+
+.editorial-index {
+    font-size: 16px;
+    color: var(--body);
+    margin-top: 28px
+}
+
+.button,
+.button-small,
+.text-link {
+    font-size: 16px;
+    min-height: 52px
+}
+
+.button {
+    background: #554cf0
+}
+
+.button:hover {
+    background: #463cd7
+}
+
+.button-light {
+    background: white;
+    color: var(--ink)
+}
+
+.button-light:hover {
+    background: #e7edff
+}
+
+.founder-hero .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 370px;
+    gap: 12px
+}
+
+.hero-actions .button {
+    justify-content: space-between;
+    padding: 18px 23px;
+    min-height: 60px
+}
+
+.button-secondary {
+    background: white;
+    color: var(--ink);
+    border: 1px solid #aebcd0
+}
+
+.button-secondary:hover {
+    background: #e9edff;
+    color: var(--ink)
+}
+
+.founder-hero .hero-footnote {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    max-width: 440px;
+    padding: 16px 20px;
+    background: #e9edf8;
+    border: 1px solid #d3dceb;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--body);
+    margin-top: 20px
+}
+
+.hero-footnote .info-symbol {
+    width: 25px;
+    height: 25px;
+    border: 1.5px solid #63738a;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    font-weight: 600;
+    color: var(--ink)
+}
+
+.hero-footnote strong {
+    display: block;
+    font-weight: 600;
+    color: var(--ink)
+}
+
+.founder-hero {
+    padding-bottom: 65px
+}
+
+
+
+.about-editorial {
+    grid-template-columns: 1fr 2fr
+}
+
+.about-editorial p:not(.eyebrow) {
+    font-size: 18px
+}
+
+.path-card p {
+    font-size: 16px
+}
+
+.path-card b {
+    font-size: 16px
+}
+
+.advisory-art {
+    border: 0;
+    padding-left: 0;
+    height: 155px
+}
+
+.advisory-art>span {
+    font-size: 17px;
+    color: #b3b7ff
+}
+
+.section-heading>p {
+    font-size: 18px
+}
+
+.content-card-copy>span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 4px 14px;
+    border-radius: 6px;
+    background: #e7eff5;
+    color: #006780;
+    font-size: 14px;
+    font-weight: 600
+}
+
+.content-card p {
+    font-size: 16px
+}
+
+.content-card b {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    background: #edf0ff;
+    border: 1px solid #c8c9f0;
+    border-radius: 2px;
+    padding: 11px 17px;
+    font-size: 16px;
+    color: #443bc0
+}
+
+.content-card:hover b {
+    background: #dedfff
+}
+
+.home-resources .section-heading>.button {
+    flex-shrink: 0
+}
+
+.comparison {
+    border: 1px solid #ccd7e5;
+    border-radius: 4px;
+    overflow: hidden
+}
+
+.comparison-head,
+.comparison-row {
+    grid-template-columns: .75fr 1.1fr 1.2fr
+}
+
+.comparison-head {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    background: #fff
+}
+
+.comparison-head>span {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px
+}
+
+.comparison-head>span:first-child {
+    padding-left: 24px;
+    justify-content: center
+}
+
+.comparison-head>span:nth-child(2) {
+    background: #edf0f4
+}
+
+.comparison-head>span:last-child {
+    background: var(--ink);
+    color: white;
+    border-radius: 0
+}
+
+.comparison-head small {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--body)
+}
+
+.comparison-head>span:last-child small {
+    color: var(--cyan)
+}
+
+.comparison-row h3 {
+    padding: 30px 24px;
+    font-size: 19px;
+    background: white;
+    line-height: 1.4
+}
+
+.comparison-before,
+.comparison-after {
+    padding: 28px 24px
+}
+
+.comparison-before {
+    background: #edf0f4
+}
+
+.comparison-after {
+    background: #e9e7ff
+}
+
+.comparison-row p {
+    font-size: 17px;
+    line-height: 1.75
+}
+
+.comparison-before p {
+    color: var(--body)
+}
+
+.comparison-after strong {
+    font-weight: 700
+}
+
+.comparison-after>.icon {
+    width: 24px;
+    height: 24px;
+    color: #5146ce
+}
+
+.comparison-row:last-child .comparison-after {
+    border-radius: 0
+}
+
+.geo-note {
+    align-items: center;
+    gap: 20px;
+    background: #eaf0f7;
+    padding: 25px 28px;
+    border-radius: 3px
+}
+
+.geo-note p {
+    font-size: 17px;
+    max-width: 760px
+}
+
+.geo-note .text-link {
+    font-size: 16px
+}
+
+.geo-note-mark {
+    font-size: 32px
+}
+
+.process .eyebrow {
+    font-size: 15px;
+    color: var(--cyan)
+}
+
+.process-summary {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    max-width: 420px
+}
+
+.process-summary>strong {
+    font-size: 140px;
+    font-weight: 600;
+    line-height: .9;
+    letter-spacing: -.06em;
+    color: var(--cyan)
+}
+
+.process-summary p {
+    font-size: 17px;
+    line-height: 1.6
+}
+
+.process-summary b {
+    font-size: 23px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: white;
+    display: block
+}
+
+.process-summary p>span {
+    display: block;
+    margin-top: 14px;
+    color: #bfccdb
+}
+
+.process-step {
+    grid-template-columns: 78px 1fr 1.05fr;
+    gap: 28px;
+    padding-block: 48px
+}
+
+.journey-line {
+    left: 38px
+}
+
+.step-marker {
+    width: 78px;
+    height: 92px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    color: white
+}
+
+.step-marker span {
+    font-size: 14px;
+    line-height: 1.2
+}
+
+.step-marker strong {
+    font-size: 33px;
+    line-height: 1.1;
+    font-weight: 600
+}
+
+.process-verb {
+    font-size: 19px;
+    margin-bottom: 20px
+}
+
+.process-copy>p {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 460px;
+    color: #c5d3e2
+}
+
+.process-deliverable {
+    font-size: 16px;
+    line-height: 1.65;
+    border: 1px solid #375774;
+    background: #0d2c48;
+    border-radius: 2px;
+    padding: 18px;
+    max-width: 460px;
+    color: white;
+    margin-top: 26px
+}
+
+.process-deliverable .icon {
+    width: 23px;
+    height: 23px
+}
+
+.visual-topline {
+    font-size: 17px;
+    color: #d7e5f3;
+    padding: 22px
+}
+
+.voice-document>div:first-child {
+    font-size: 17px;
+    padding: 20px
+}
+
+.voice-document-grid {
+    gap: 12px;
+    padding: 20px
+}
+
+.voice-document-grid>span {
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--ink)
+}
+
+.voice-document-grid i {
+    font-size: 13px;
+    color: var(--body);
+    margin-bottom: 8px
+}
+
+.architecture-layer {
+    font-size: 15px
+}
+
+.layer-inner strong {
+    font-size: 24px
+}
+
+.layer-inner>span {
+    font-size: 14px
+}
+
+.architecture-caption {
+    font-size: 14px;
+    flex-wrap: wrap;
+    color: #d7e5f3
+}
+
+.architecture-caption .icon {
+    width: 18px;
+    height: 18px
+}
+
+.workflow-source strong {
+    font-size: 17px
+}
+
+.workflow-source div>span {
+    font-size: 14px
+}
+
+.workflow-outputs strong {
+    font-size: 16px
+}
+
+.workflow-outputs>div>span:last-child {
+    font-size: 14px;
+    color: var(--body)
+}
+
+.process-close {
+    margin-left: 106px
+}
+
+.process-close p,
+.process-close .button {
+    font-size: 17px
+}
+
+.community-invite p:not(.eyebrow) {
+    font-size: 18px
+}
+
+.floating-top {
+    position: fixed;
+    left: 22px;
+    bottom: 24px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 58px;
+    padding: 12px 20px;
+    border: 1px solid #8e91ff;
+    border-radius: 2.5px;
+    background: #554cf0;
+    color: white;
+    box-shadow: 0 7px 24px #05132224;
+    font-size: 16px;
+    font-weight: 600
+}
+
+.floating-top>span:first-child {
+    font-size: 26px;
+    line-height: 1
+}
+
+.floating-top:hover {
+    background: #463cd7
+}
+
+.floating-top:focus-visible {
+    outline: 3px solid var(--cyan)
+}
+
+@media(max-width:1100px) {
+    .process-step {
+        grid-template-columns: 70px 1fr 1fr;
+        gap: 23px
+    }
+
+    .step-marker {
+        width: 70px
+    }
+
+    .journey-line {
+        left: 34px
+    }
+
+    .process-copy h3 {
+        font-size: 32px
+    }
+
+    .process-copy>p {
+        font-size: 17px
+    }
+
+    .process-summary>strong {
+        font-size: 115px
+    }
+
+    .process-summary {
+        max-width: 340px;
+        gap: 20px
+    }
+
+    .belief-main h2 {
+        font-size: 30px
+    }
+
+    .belief-card {
+        padding: 25px
+    }
+
+    .belief-card h3 {
+        font-size: 22px
+    }
+
+    .comparison-head,
+    .comparison-row {
+        grid-template-columns: .8fr 1fr 1.15fr
+    }
+
+    .comparison-row h3 {
+        font-size: 17px;
+        padding: 24px 18px;
+        gap: 9px
+    }
+
+    .comparison-before,
+    .comparison-after {
+        padding: 25px 20px
+    }
+
+    .voice-document {
+        margin-inline: 16px
+    }
+
+    .voice-document-grid {
+        padding: 16px;
+        gap: 8px
+    }
+
+    .voice-document-grid>span {
+        font-size: 14px
+    }
+
+    .visual-topline {
+        font-size: 16px;
+        padding: 18px
+    }
+
+    .process-close {
+        margin-left: 93px
+    }
+}
+
+@media(max-width:900px) {
+    .belief-strip {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto
+    }
+
+    .belief-main {
+        grid-row: auto
+    }
+
+    .belief-card:nth-child(2) {
+        grid-column: auto;
+        display: block
+    }
+
+    .belief-card:nth-child(2) h3 {
+        margin: 20px 0 10px
+    }
+
+    .belief-main h2 {
+        font-size: 30px
+    }
+
+    .process-heading {
+        align-items: flex-start
+    }
+
+    .process-summary {
+        max-width: 300px
+    }
+
+    .process-summary b {
+        font-size: 20px
+    }
+
+    .process-summary p {
+        font-size: 16px
+    }
+
+    .comparison-head {
+        font-size: 17px
+    }
+
+    .comparison-row p {
+        font-size: 16px
+    }
+
+    .comparison-head>span {
+        padding: 20px
+    }
+
+    .process-step {
+        grid-template-columns: 70px 1fr;
+        gap: 25px
+    }
+
+    .process-copy {
+        grid-column: 2
+    }
+
+    .process-visual {
+        grid-column: 2;
+        max-width: none
+    }
+
+    .process-copy>p {
+        max-width: none
+    }
+
+    .process-deliverable {
+        max-width: none
+    }
+
+    .voice-document-grid>span {
+        font-size: 17px
+    }
+
+    .process-copy h3 {
+        font-size: 35px
+    }
+
+    .architecture {
+        height: 270px
+    }
+
+    .process-close {
+        margin-left: 95px
+    }
+
+    .process-summary>strong {
+        font-size: 96px
+    }
+
+    .geo-note {
+        flex-wrap: wrap
+    }
+
+    .geo-note p {
+        flex: 1;
+        min-width: 70%
+    }
+
+    .geo-note .text-link {
+        margin-left: 45px
+    }
+}
+
+@media(max-width:760px) {
+
+    .eyebrow,
+    .founder-hero .eyebrow,
+    .process .eyebrow {
+        font-size: 14px
+    }
+
+    .founder-hero .hero-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        max-width: none;
+        gap: 12px
+    }
+
+    .founder-hero .hero-footnote {
+        font-size: 14px;
+        max-width: none;
+        gap: 12px;
+        padding: 15px 17px
+    }
+
+    .hero-actions .button {
+        font-size: 16px
+    }
+
+    .editorial-index {
+        display: block;
+        font-size: 16px;
+        margin-top: 15px
+    }
+
+    .belief-strip {
+        gap: 14px
+    }
+
+    .belief-card {
+        padding: 22px;
+        border-radius: 3px
+    }
+
+    .belief-main {
+        grid-column: 1/3
+    }
+
+    .belief-card:nth-child(2) {
+        grid-column: 1/3;
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 15px
+    }
+
+    .belief-card:nth-child(2) h3 {
+        margin: 0
+    }
+
+    .belief-card:nth-child(2) p {
+        grid-column: 2
+    }
+
+    .belief-card h3 {
+        font-size: 21px
+    }
+
+    .belief-card h3 br {
+        display: none
+    }
+
+    .belief-strip .belief-card p {
+        font-size: 15px
+    }
+
+    .belief-card .icon {
+        width: 28px;
+        height: 28px
+    }
+
+    .belief-main h2 {
+        font-size: 33px
+    }
+
+    .bento-symbol {
+        font-size: 54px
+    }
+
+    .about-editorial p:not(.eyebrow) {
+        font-size: 17px
+    }
+
+    .about-editorial {
+        gap: 24px
+    }
+
+    .section-heading>p {
+        font-size: 17px
+    }
+
+    .home-resources .section-heading>.button {
+        margin-top: 25px
+    }
+
+    .content-card-copy>span {
+        font-size: 14px
+    }
+
+    .content-card p {
+        font-size: 16px
+    }
+
+    .content-card b {
+        font-size: 16px
+    }
+
+    .path-card p,
+    .path-card b {
+        font-size: 16px
+    }
+
+    .comparison {
+        border: 0;
+        overflow: visible
+    }
+
+    .comparison-head {
+        display: none
+    }
+
+    .comparison-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+        border: 1px solid #cbd6e4;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 20px
+    }
+
+    .comparison-row h3 {
+        grid-column: 1;
+        padding: 22px;
+        font-size: 22px;
+        margin: 0
+    }
+
+    .comparison-before,
+    .comparison-after {
+        display: block;
+        padding: 23px;
+        grid-column: 1
+    }
+
+    .comparison-row p {
+        font-size: 17px;
+        line-height: 1.75
+    }
+
+    .comparison .mobile-label {
+        position: static;
+        clip: auto;
+        width: auto;
+        height: auto;
+        display: inline-flex;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 5px 12px;
+        border-radius: 4px;
+        background: #d9e0e9;
+        color: var(--ink);
+        margin-bottom: 14px
+    }
+
+    .comparison-after .mobile-label {
+        background: var(--ink);
+        color: white
+    }
+
+    .comparison-after>.icon {
+        display: none
+    }
+
+    .comparison-row:last-child .comparison-after {
+        border-radius: 0
+    }
+
+    .geo-note {
+        padding: 23px;
+        gap: 13px
+    }
+
+    .geo-note p {
+        font-size: 17px;
+        flex: auto;
+        width: 100%
+    }
+
+    .geo-note-mark {
+        display: none
+    }
+
+    .geo-note .text-link {
+        margin-left: 0;
+        font-size: 16px
+    }
+
+    .process-heading {
+        display: block
+    }
+
+    .process-summary {
+        margin-top: 30px;
+        max-width: 100%;
+        gap: 25px
+    }
+
+    .process-summary>strong {
+        font-size: 112px
+    }
+
+    .process-summary b {
+        font-size: 23px
+    }
+
+    .process-summary p {
+        font-size: 16px
+    }
+
+    .process-step {
+        grid-template-columns: 1fr;
+        padding-block: 32px;
+        gap: 22px
+    }
+
+    .step-marker {
+        width: auto;
+        height: auto;
+        justify-self: start;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 18px;
+        gap: 12px;
+        grid-column: 1;
+        margin: 0;
+        border-radius: 2px
+    }
+
+    .step-marker span {
+        font-size: 16px
+    }
+
+    .step-marker strong {
+        font-size: 30px
+    }
+
+    .process-copy,
+    .process-visual {
+        grid-column: 1
+    }
+
+    .process-copy h3 {
+        font-size: 32px
+    }
+
+    .process-copy>p {
+        font-size: 17px;
+        max-width: none
+    }
+
+    .process-verb {
+        font-size: 18px;
+        margin-bottom: 16px
+    }
+
+    .process-deliverable {
+        font-size: 16px;
+        padding: 17px
+    }
+
+    .journey-line {
+        display: none
+    }
+
+    .process-close {
+        margin-left: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px
+    }
+
+    .process-close p,
+    .process-close .button {
+        font-size: 16px
+    }
+
+    .visual-topline {
+        font-size: 16px;
+        padding: 18px;
+        line-height: 1.5
+    }
+
+    .voice-document>div:first-child {
+        font-size: 16px;
+        padding: 16px;
+        gap: 8px
+    }
+
+    .voice-document-grid {
+        padding: 16px;
+        grid-template-columns: 1fr;
+        gap: 13px
+    }
+
+    .voice-document-grid>span {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        font-size: 16px
+    }
+
+    .voice-document-grid i {
+        margin: 0;
+        font-size: 14px
+    }
+
+    .architecture-caption {
+        font-size: 14px;
+        justify-content: flex-start
+    }
+
+    .workflow-source {
+        margin-inline: 16px;
+        padding: 13px;
+        gap: 10px
+    }
+
+    .workflow-source strong {
+        font-size: 16px
+    }
+
+    .workflow-source div>span {
+        font-size: 14px
+    }
+
+    .workflow-outputs {
+        padding-inline: 16px
+    }
+
+    .workflow-outputs strong {
+        font-size: 15px
+    }
+
+    .workflow-outputs>div>span:last-child {
+        font-size: 14px
+    }
+
+    .layer-inner>span {
+        font-size: 13px
+    }
+
+    .layer-inner strong {
+        font-size: 21px
+    }
+
+    .community-invite p:not(.eyebrow) {
+        font-size: 17px
+    }
+
+    .social-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px
+    }
+
+    .social-icons {
+        gap: 14px
+    }
+
+    .floating-top {
+        left: 14px;
+        bottom: 16px;
+        min-height: 54px;
+        padding: 10px 16px
+    }
+}
+
+@media(max-width:400px) {
+    .belief-strip {
+        grid-template-columns: 1fr
+    }
+
+    .belief-main,
+    .belief-card:nth-child(2) {
+        grid-column: auto
+    }
+
+    .belief-card:nth-child(2) {
+        display: block
+    }
+
+    .belief-card:nth-child(2) h3 {
+        margin: 18px 0 10px
+    }
+
+    .belief-card h3 {
+        font-size: 23px
+    }
+
+    .eyebrow,
+    .founder-hero .eyebrow {
+        font-size: 13px
+    }
+
+    .architecture {
+        margin-inline: 16px
+    }
+
+    .layer-middle {
+        inset-inline: 17px
+    }
+
+    .layer-inner {
+        inset-inline: 34px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .social-icons a {
+        transition: none
+    }
+
+    .social-icons a:hover,
+    .social-icons .wp-block-social-link-anchor:hover {
+        transform: none
+    }
+}
+
+.belief-strip {
+    align-items: stretch
+}
 

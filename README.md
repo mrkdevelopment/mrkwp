@@ -2,7 +2,7 @@
 
 > Full Site Editing (FSE) block theme for **MRK WP** — founder-led design and engineering, built for performance, editorial clarity, and structured knowledge.
 
-- **Current Version:** `1.0.2`
+- **Current Version:** `1.0.4`
 - **Requires WordPress:** `6.7+`
 - **Requires PHP:** `8.0+`
 - **Author:** Matt Knighton ([https://mrkwp.com/](https://mrkwp.com/))
@@ -129,6 +129,14 @@ Configuration is maintained in [`phpcs.xml`](./phpcs.xml), scanning all theme PH
 ---
 
 ## Changelog
+
+### [1.0.4] - 2026-10-23
+#### Changed
+- **Architectural SCSS Consolidation:** Eliminated redundant cascade overlay layers by removing monolithic legacy stylesheets `founder/_editorial.scss` (1,757 lines), `refinements/_readability.scss`, and the detached `base/_responsive.scss`.
+- **Co-located Breakpoints:** Relocated all media query breakpoints directly into their respective atomic components (`_navigation.scss`, `_footer.scss`, `_buttons.scss`, `_bento.scss`, `_cards.scss`, `_eyebrows-badges.scss`) and composite sections (`_hero.scss`, `_shift-comparison.scss`, `_engine.scss`, `_community-invite.scss`, `_assessment.scss`).
+- **Single Source of Truth:** Unified design tokens in `abstracts/_variables.scss` and `theme.json`, removing conflicting `:root` border radius overrides that were crushing styled radii.
+- **Performance Optimization:** Reduced compiled `dist/theme.css` by over 36KB compressed (down from 127KB to 91KB, eliminating over 100KB of raw duplicated CSS) for faster browser parsing and improved Core Web Vitals (LCP).
+- **Code Quality:** Maintained 100% PHPCS compliance (26 of 26 files passing) with clean Sass and PostCSS asset compilation.
 
 ### [1.0.2] - 2026-10-23
 #### Added

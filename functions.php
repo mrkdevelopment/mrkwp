@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MRKWP_VERSION', '1.0.2' );
+define( 'MRKWP_VERSION', '1.0.4' );
 define( 'MRKWP_THEME_DIR', get_template_directory() );
 define( 'MRKWP_THEME_URI', get_template_directory_uri() );
 
@@ -218,6 +218,11 @@ function mrkwp_scripts() {
 		wp_enqueue_style( 'mrkwp-video-card-style' );
 	}
 
+	// Archive progressive pagination (Load More on Desktop / Infinite Scroll on Mobile).
+	if ( is_archive() || is_home() || is_search() || is_post_type_archive( 'mrkwp_video' ) || is_post_type_archive( 'mrkwp_short' ) ) {
+		wp_enqueue_script( 'mrkwp-archive-pagination', MRKWP_THEME_URI . '/js/archive-pagination.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
+	}
+
 	// Dequeue generic block styles on the custom coded frontend.
 	wp_dequeue_style( 'wp-block-library' );
 	wp_dequeue_style( 'wp-block-library-theme' );
@@ -226,12 +231,38 @@ function mrkwp_scripts() {
 add_action( 'wp_enqueue_scripts', 'mrkwp_scripts' );
 
 /**
- * Output favicon links and theme meta in wp_head.
+ * Output favicon links, preload hints, and speculation rules in wp_head.
  */
 function mrkwp_head_meta() {
 	echo '<meta name="theme-color" content="#0a2540">' . "\n";
 	echo '<link rel="icon" href="' . esc_url( mrkwp_asset( 'favicon.svg' ) ) . '" type="image/svg+xml">' . "\n";
 	echo '<link rel="icon" href="' . esc_url( mrkwp_asset( 'mrk-square.png' ) ) . '" sizes="any">' . "\n";
+
+	// Modern Web Guidance (optimize-preload-priority): Elevate LCP hero image preload on the front page.
+	if ( is_front_page() ) {
+		echo '<link rel="preload" as="image" href="/wp-content/themes/mrkwp/assets/matt-founder.webp" fetchpriority="high" type="image/webp">' . "\n";
+	}
+
+	// Modern Web Guidance (improve-next-page-load-performance): Speculation rules for sub-second internal navigation.
+	?>
+	<script type="speculationrules">
+	{
+		"prefetch": [
+			{
+				"where": {
+					"and": [
+						{ "href_matches": "/*" },
+						{ "not": { "href_matches": "/wp-admin/*" } },
+						{ "not": { "href_matches": "/wp-login.php*" } },
+						{ "not": { "selector_matches": "[rel~=nofollow]" } }
+					]
+				},
+				"eagerness": "moderate"
+			}
+		]
+	}
+	</script>
+	<?php
 }
 add_action( 'wp_head', 'mrkwp_head_meta' );
 
@@ -488,85 +519,6 @@ function mrkwp_custom_social_link_icons( $services_data ) {
 
 	return $services_data;
 }
-add_filter( 'block_core_social_link_get_services', 'mrkwp_custom_social_link_icons' );
-
-/**
- * Override core/social-link variation icons inside the Block / Site Editor so they match the frontend stroke icons.
- */
-function mrkwp_enqueue_block_editor_social_icons() {
-	$inline_js = <<<'JS'
-( function( wp ) {
-	if ( ! wp || ! wp.element || ! wp.hooks ) {
-		return;
-	}
-	var el = wp.element.createElement;
-	var customIcons = {
-		github: function() {
-			return el( 'svg', { className: 'mrkwp-stroke-icon', width: '24', height: '24', viewBox: '0 0 24 24', 'aria-hidden': 'true' },
-				el( 'path', { d: 'M9 19c-4 1-4-2-6-2m15 4v-4c0-1-.4-2-1-2 4-.5 5-2 5-6 0-1-1-3-2-3 0-1 0-2-.5-3-2 0-3 1-3 1a12 12 0 0 0-7 0S8 3 6 3c-.5 1-.5 2-.5 3C4 7 3 8 3 10c0 3 2 5 6 5-.6.5-1 1-1 2v4' } )
-			);
-		},
-		instagram: function() {
-			return el( 'svg', { className: 'mrkwp-stroke-icon', width: '24', height: '24', viewBox: '0 0 24 24', 'aria-hidden': 'true' },
-				el( 'rect', { x: '3', y: '3', width: '18', height: '18', rx: '5' } ),
-				el( 'circle', { cx: '12', cy: '12', r: '4' } ),
-				el( 'circle', { cx: '17.5', cy: '6.5', r: '.7', fill: 'currentColor', stroke: 'none' } )
-			);
-		},
-		linkedin: function() {
-			return el( 'svg', { className: 'mrkwp-stroke-icon', width: '24', height: '24', viewBox: '0 0 24 24', 'aria-hidden': 'true' },
-				el( 'rect', { x: '3', y: '9', width: '4', height: '12', rx: '.5' } ),
-				el( 'circle', { cx: '5', cy: '4.5', r: '1.5' } ),
-				el( 'path', { d: 'M11 21V9h4v2c1-3 6-3 6 2v8m-6 0v-7' } )
-			);
-		},
-		x: function() {
-			return el( 'svg', { className: 'mrkwp-stroke-icon', width: '24', height: '24', viewBox: '0 0 24 24', 'aria-hidden': 'true' },
-				el( 'path', { d: 'm4 3 12 18h4L8 3H4Zm0 18L20 3' } )
-			);
-		},
-		youtube: function() {
-			return el( 'svg', { className: 'mrkwp-stroke-icon', width: '24', height: '24', viewBox: '0 0 24 24', 'aria-hidden': 'true' },
-				el( 'rect', { x: '2', y: '5', width: '20', height: '14', rx: '4' } ),
-				el( 'path', { d: 'm10 9 5 3-5 3Z' } )
-			);
-		}
-	};
-
-	wp.hooks.addFilter(
-		'blocks.registerBlockType',
-		'mrkwp/social-link-icons',
-		function( settings, name ) {
-			if ( name === 'core/social-link' && Array.isArray( settings.variations ) ) {
-				settings.variations = settings.variations.map( function( variation ) {
-					if ( customIcons[ variation.name ] ) {
-						return Object.assign( {}, variation, { icon: customIcons[ variation.name ] } );
-					}
-					return variation;
-				} );
-			}
-			return settings;
-		}
-	);
-
-	if ( wp.domReady && wp.blocks && wp.blocks.getBlockVariations ) {
-		wp.domReady( function() {
-			var variations = wp.blocks.getBlockVariations( 'core/social-link' );
-			if ( Array.isArray( variations ) ) {
-				variations.forEach( function( variation ) {
-					if ( customIcons[ variation.name ] ) {
-						variation.icon = customIcons[ variation.name ];
-					}
-				} );
-			}
-		} );
-	}
-} )( window.wp );
-JS;
-	wp_add_inline_script( 'wp-blocks', $inline_js );
-}
-add_action( 'enqueue_block_editor_assets', 'mrkwp_enqueue_block_editor_social_icons' );
-
 
 /**
  * Register pattern categories.
@@ -585,238 +537,7 @@ function pattern_categories() {
 }
 add_action( 'init', 'pattern_categories', 9 );
 
-/**
- * Render callback for dynamic tools directory block (mrkwp/tools-directory).
- *
- * @param array  $attributes Block attributes.
- * @param string $content    Block inner content.
- * @return string HTML output.
- */
-function mrkwp_render_tools_directory( $attributes = array(), $content = '' ) {
-	unset( $attributes, $content );
-	$categories = array(
-		'all'         => __( 'All tools', 'mrkwp' ),
-		'assistants'  => __( 'AI assistants', 'mrkwp' ),
-		'social'      => __( 'Social media AI', 'mrkwp' ),
-		'video'       => __( 'Video', 'mrkwp' ),
-		'coding'      => __( 'AI coding', 'mrkwp' ),
-		'creative'    => __( 'Creative', 'mrkwp' ),
-		'development' => __( 'Development', 'mrkwp' ),
-	);
 
-	$tools_query = new WP_Query(
-		array(
-			'post_type'      => 'mrkwp_tool',
-			'post_status'    => 'publish',
-			'posts_per_page' => -1,
-			'orderby'        => array(
-				'menu_order' => 'ASC',
-				'title'      => 'ASC',
-			),
-		)
-	);
-
-	$total_tools = $tools_query->found_posts;
-
-	ob_start();
-	?>
-	<section class="wrap" aria-label="<?php esc_attr_e( 'Matt’s tool directory', 'mrkwp' ); ?>">
-		<div class="tool-controls" aria-label="<?php esc_attr_e( 'Filter tools', 'mrkwp' ); ?>">
-			<?php foreach ( $categories as $slug => $label ) : ?>
-				<button class="tool-filter" data-category="<?php echo esc_attr( $slug ); ?>" aria-pressed="<?php echo 'all' === $slug ? 'true' : 'false'; ?>"><?php echo esc_html( $label ); ?></button>
-			<?php endforeach; ?>
-		</div>
-
-		<p id="tool-count" role="status"><?php echo esc_html( sprintf( /* translators: %d: number of tools. */ _n( '%d tool', '%d tools', $total_tools, 'mrkwp' ), $total_tools ) ); ?></p>
-
-		<div class="tool-grid">
-			<?php
-			if ( $tools_query->have_posts() ) :
-				while ( $tools_query->have_posts() ) :
-					$tools_query->the_post();
-					$post_id   = get_the_ID();
-					$title     = get_the_title();
-					$permalink = get_permalink();
-					$initial   = get_post_meta( $post_id, '_mrkwp_tool_initial', true );
-					if ( empty( $initial ) ) {
-						$initial = mb_substr( $title, 0, 1 );
-					}
-					$terms    = get_the_terms( $post_id, 'mrkwp_tool_cat' );
-					$cat_slug = 'other';
-					$cat_name = '';
-					if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-						$first_term = reset( $terms );
-						$cat_slug   = $first_term->slug;
-						$cat_name   = $first_term->name;
-					}
-					?>
-					<a class="tool-card" href="<?php echo esc_url( $permalink ); ?>" data-category="<?php echo esc_attr( $cat_slug ); ?>">
-						<span class="tool-initial" aria-hidden="true"><?php echo esc_html( $initial ); ?></span>
-						<h3><?php echo esc_html( $title ); ?></h3>
-						<p><?php echo esc_html( $cat_name ); ?></p>
-					</a>
-					<?php
-				endwhile;
-				wp_reset_postdata();
-			endif;
-			?>
-		</div>
-	</section>
-	<?php
-	return ob_get_clean();
-}
-
-/**
- * Register dynamic blocks for the theme.
- */
-function mrkwp_register_theme_blocks() {
-	register_block_type(
-		'mrkwp/tools-directory',
-		array(
-			'title'           => __( 'Tools Directory', 'mrkwp' ),
-			'category'        => 'theme',
-			'render_callback' => 'mrkwp_render_tools_directory',
-			'supports'        => array(
-				'html' => false,
-			),
-		)
-	);
-
-	register_block_type(
-		'mrkwp/related-videos',
-		array(
-			'title'           => __( 'Related Videos', 'mrkwp' ),
-			'category'        => 'theme',
-			'render_callback' => 'mrkwp_render_related_videos',
-			'style'           => 'mrkwp-video-card-style',
-			'supports'        => array(
-				'html' => false,
-			),
-		)
-	);
-
-	register_block_type(
-		'mrkwp/video-player',
-		array(
-			'title'           => __( 'Video Player', 'mrkwp' ),
-			'category'        => 'theme',
-			'render_callback' => 'mrkwp_render_video_player',
-			'supports'        => array(
-				'html' => false,
-			),
-		)
-	);
-}
-add_action( 'init', 'mrkwp_register_theme_blocks' );
-
-/**
- * Render callback for dynamic video player block (mrkwp/video-player).
- *
- * Extracts the video player from the post content (or builds it from post meta)
- * and renders it with the lightbox trigger.
- *
- * @param array<string, mixed> $attributes Block attributes.
- * @param string               $content    Block inner content.
- * @return string HTML output of the video player.
- */
-function mrkwp_render_video_player( $attributes = array(), $content = '' ) {
-	unset( $attributes, $content );
-
-	$post_id = get_the_ID();
-	if ( ! $post_id ) {
-		return '';
-	}
-
-	global $mrkwp_rendering_video_player;
-	$mrkwp_rendering_video_player = true;
-
-	$post = get_post( $post_id );
-	if ( ! $post ) {
-		$mrkwp_rendering_video_player = false;
-		return '';
-	}
-
-	$video_html = '';
-	$blocks     = parse_blocks( $post->post_content );
-	foreach ( $blocks as $block ) {
-		if ( ! empty( $block['blockName'] ) ) {
-			if ( 'greenshift-blocks/video' === $block['blockName'] ) {
-				$video_html = render_block( $block );
-				break;
-			} elseif ( 'core/html' === $block['blockName'] && ! empty( $block['innerHTML'] ) && false !== strpos( $block['innerHTML'], 'gs-video' ) ) {
-				$video_html = render_block( $block );
-				break;
-			}
-		}
-	}
-
-	// Fallback if no GreenShift video block in content: build from post meta.
-	if ( empty( trim( $video_html ) ) ) {
-		$youtube_id    = get_post_meta( $post_id, '_mrkwp_youtube_id', true );
-		$thumbnail_url = get_post_meta( $post_id, '_mrkwp_youtube_thumbnail_url', true );
-		if ( empty( $thumbnail_url ) && has_post_thumbnail( $post_id ) ) {
-			$maxres        = get_the_post_thumbnail_url( $post_id, 'maxresdefault' );
-			$thumbnail_url = $maxres ? $maxres : get_the_post_thumbnail_url( $post_id, 'full' );
-		}
-
-		if ( ! empty( $youtube_id ) ) {
-			$video_url  = 'https://youtu.be/' . rawurlencode( $youtube_id );
-			$safe_thumb = esc_url( $thumbnail_url );
-			$safe_yt_id = esc_attr( $youtube_id );
-			$safe_url   = esc_url( $video_url );
-			$safe_label = esc_attr__( 'Play video', 'mrkwp' );
-
-			$video_html = '<div class="wp-block-greenshift-blocks-video gs-video youtube">' .
-				'<div class="gs-video-wrapper" itemscope>' .
-					'<iframe class="gs-video-element" data-src="' . $safe_url . '" data-provider="youtube" data-autoplay="true" frameborder="0" allowfullscreen></iframe>' .
-					'<div class="gs-video-overlay" style="background-image:url(' . $safe_thumb . ')" data-type="youtube" data-lightbox="true" data-video-id="' . $safe_yt_id . '" data-video-url="' . $safe_url . '" role="button" aria-label="' . $safe_label . '" tabindex="0">' .
-						'<div class="gs-play-icon" style="background-color:#cc0000" aria-hidden="true">' .
-							'<div style="content:\'\';display:block;position:absolute;border-radius:50%;border:1px solid #cc0000;left:-20px;right:-20px;bottom:-20px;top:-20px;animation:pulsevideobutton 1.5s linear infinite;opacity:0"></div>' .
-							'<span></span>' .
-							'<div style="content:\'\';display:block;position:absolute;border-radius:50%;border:1px solid #cc0000;left:-20px;right:-20px;bottom:-20px;top:-20px;animation:pulsevideobutton 1.5s linear infinite;opacity:0;animation-delay:0.5s"></div>' .
-						'</div>' .
-						'<div class="gs-overlay-color" style="background-color:var(--wp--preset--color--palette-color-12, var(--theme-palette-color-12, #111518));opacity:0.5"></div>' .
-					'</div>' .
-				'</div>' .
-			'</div>';
-		}
-	}
-
-	$mrkwp_rendering_video_player = false;
-
-	if ( empty( trim( $video_html ) ) ) {
-		return '';
-	}
-
-	return '<div class="video-player-frame">' . $video_html . '</div>';
-}
-
-/**
- * Suppress duplicate video blocks in the post-content area on single video posts,
- * since the video player is rendered via mrkwp/video-player above.
- *
- * @param string               $block_content The block content.
- * @param array<string, mixed> $block         The parsed block.
- * @return string Filtered block content.
- */
-function mrkwp_filter_video_content_blocks( $block_content, $block ) {
-	global $mrkwp_rendering_video_player;
-	if ( ! empty( $mrkwp_rendering_video_player ) ) {
-		return $block_content;
-	}
-
-	if ( is_singular( 'mrkwp_video' ) ) {
-		if ( ! empty( $block['blockName'] ) && 'greenshift-blocks/video' === $block['blockName'] ) {
-			return '';
-		}
-		if ( ! empty( $block['blockName'] ) && 'core/html' === $block['blockName'] && false !== strpos( $block_content, 'gs-video' ) ) {
-			return '';
-		}
-	}
-
-	return $block_content;
-}
-add_filter( 'render_block', 'mrkwp_filter_video_content_blocks', 10, 2 );
 
 /**
  * Calculate relative post date in days.
@@ -869,122 +590,7 @@ function mrkwp_filter_video_post_date( $block_content, $block, $instance = null 
 }
 add_filter( 'render_block_core/post-date', 'mrkwp_filter_video_post_date', 10, 3 );
 
-/**
- * Render callback for dynamic related videos block (mrkwp/related-videos).
- *
- * @param array  $attributes Block attributes.
- * @param string $content    Block inner content.
- * @return string HTML output.
- */
-function mrkwp_render_related_videos( $attributes = array(), $content = '' ) {
-	unset( $attributes, $content );
 
-	$current_id = get_the_ID();
-	if ( ! $current_id ) {
-		return '';
-	}
-
-	$tag_ids = wp_get_post_terms( $current_id, 'post_tag', array( 'fields' => 'ids' ) );
-	if ( is_wp_error( $tag_ids ) ) {
-		$tag_ids = array();
-	}
-
-	$related_ids = array();
-
-	// 1. Primary query: Same post_tag ordered by date DESC.
-	if ( ! empty( $tag_ids ) ) {
-		$tag_query = new WP_Query(
-			array(
-				'post_type'      => 'mrkwp_video',
-				'post_status'    => 'publish',
-				'posts_per_page' => 3,
-				'post__not_in'   => array( $current_id ),
-				'tax_query'      => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-					array(
-						'taxonomy' => 'post_tag',
-						'field'    => 'term_id',
-						'terms'    => $tag_ids,
-					),
-				),
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-				'fields'         => 'ids',
-				'no_found_rows'  => true,
-			)
-		);
-
-		if ( ! empty( $tag_query->posts ) ) {
-			$related_ids = array_map( 'intval', $tag_query->posts );
-		}
-	}
-
-	// 2. Backfill query: Most recent videos if fewer than 3 were found.
-	$needed = 3 - count( $related_ids );
-	if ( $needed > 0 ) {
-		$exclude        = array_merge( array( $current_id ), $related_ids );
-		$backfill_query = new WP_Query(
-			array(
-				'post_type'      => 'mrkwp_video',
-				'post_status'    => 'publish',
-				'posts_per_page' => $needed,
-				'post__not_in'   => $exclude,
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-				'fields'         => 'ids',
-				'no_found_rows'  => true,
-			)
-		);
-
-		if ( ! empty( $backfill_query->posts ) ) {
-			$related_ids = array_merge( $related_ids, array_map( 'intval', $backfill_query->posts ) );
-		}
-	}
-
-	if ( empty( $related_ids ) ) {
-		return '';
-	}
-
-	$related_query = new WP_Query(
-		array(
-			'post_type'      => 'mrkwp_video',
-			'post_status'    => 'publish',
-			'post__in'       => $related_ids,
-			'orderby'        => 'post__in',
-			'posts_per_page' => count( $related_ids ),
-			'no_found_rows'  => true,
-		)
-	);
-
-	if ( ! $related_query->have_posts() ) {
-		return '';
-	}
-
-	ob_start();
-	?>
-	<section class="wrap section related-videos-section" aria-label="<?php esc_attr_e( 'Related Videos', 'mrkwp' ); ?>">
-		<div class="section-heading">
-			<div>
-				<p class="eyebrow"><?php esc_html_e( 'More Walkthroughs', 'mrkwp' ); ?></p>
-				<h2><?php esc_html_e( 'Related Videos', 'mrkwp' ); ?></h2>
-			</div>
-			<p><?php esc_html_e( 'Continue learning with tutorials and workflows related to this walkthrough.', 'mrkwp' ); ?></p>
-		</div>
-
-		<div class="content-grid videos-grid">
-			<?php
-			while ( $related_query->have_posts() ) :
-				$related_query->the_post();
-				if ( class_exists( '\MrkWp\Core\Blocks\VideoCardBlock' ) ) {
-					echo \MrkWp\Core\Blocks\VideoCardBlock::render_card( (int) get_the_ID() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Pre-escaped video card component.
-				}
-			endwhile;
-			wp_reset_postdata();
-			?>
-		</div>
-	</section>
-	<?php
-	return ob_get_clean();
-}
 
 /**
  * Set default posts per page to 15 across all main queries (3-column layout standard)

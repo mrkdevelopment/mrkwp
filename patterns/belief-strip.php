@@ -9,27 +9,20 @@
  */
 
 ?>
-<!-- wp:html -->
-<section class="belief-strip wrap" aria-label="<?php esc_attr_e( 'What we build on', 'mrkwp' ); ?>">
-	<article class="belief-card belief-main">
-		<span class="bento-symbol" aria-hidden="true">✳</span>
-		<h2>Human expertise.<br><span>Amplified by AI.</span></h2>
-		<p>Your knowledge is the starting point.</p>
-	</article>
-	<article class="belief-card">
-		<svg class="icon"><use href="#i-shield"/></svg>
-		<h3>Keep the WordPress<br>you own.</h3>
-		<p>A stronger foundation. Still yours.</p>
-	</article>
-	<article class="belief-card">
-		<svg class="icon"><use href="#i-search"/></svg>
-		<h3>Make your knowledge<br>discoverable.</h3>
-		<p>Help people and AI find your expertise.</p>
-	</article>
-	<article class="belief-card">
-		<svg class="icon"><use href="#i-bolt"/></svg>
-		<h3>Build skills that<br>stay with you.</h3>
-		<p>Practical tools. Lasting confidence.</p>
-	</article>
-</section>
-<!-- /wp:html -->
+<!-- wp:mrkwp/bento-box-group -->
+<section class="wp-block-mrkwp-bento-box-group mrkwp-bento-group wrap belief-strip" data-max-tilt="14" data-glare="true" aria-label="<?php esc_attr_e( 'What we build on', 'mrkwp' ); ?>"><!-- wp:mrkwp/bento-box-card {"cardSpan":"tall","swatchPreset":"dark","icon":"asterisk","iconSize":52,"iconColor":"#00d4ff","mainText":"Human expertise.<br><span style=\"color:#a5aaff\">Amplified by AI.</span>","mainTextTag":"h2","mainTextColor":"#ffffff","secondaryText":"Your knowledge is the starting point.","secondaryTextColor":"#c5d4e4"} -->
+<article class="wp-block-mrkwp-bento-box-card mrkwp-bento-card belief-card mrkwp-bento-card--tall mrkwp-bento-card--swatch-dark belief-main"><div class="mrkwp-bento-card__face" aria-hidden="true"><div class="mrkwp-bento-card__glare" aria-hidden="true"></div></div><div class="mrkwp-bento-card__content"><div class="mrkwp-bento-card__icon" style="color:#00d4ff"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="52" height="52" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mrkwp-lucide-icon mrkwp-lucide-icon--asterisk" aria-hidden="true"><path d="M12 6v12"></path><path d="M17.196 9 6.804 15"></path><path d="m6.804 9 10.392 6"></path></svg></div><h2 class="mrkwp-bento-card__main-text" style="color:#ffffff">Human expertise.<br><span style="color:#a5aaff">Amplified by AI.</span></h2><p class="mrkwp-bento-card__secondary-text" style="color:#c5d4e4">Your knowledge is the starting point.</p></div></article>
+<!-- /wp:mrkwp/bento-box-card -->
+
+<!-- wp:mrkwp/bento-box-card {"cardSpan":"wide","swatchPreset":"subtle","icon":"shield","iconSize":32,"iconColor":"#463cd7","mainText":"Keep the WordPress<br>you own.","mainTextTag":"h3","mainTextColor":"#0a2540","secondaryText":"A stronger foundation. Still yours.","secondaryTextColor":"#425466"} -->
+<article class="wp-block-mrkwp-bento-box-card mrkwp-bento-card belief-card mrkwp-bento-card--wide mrkwp-bento-card--swatch-subtle belief-wide"><div class="mrkwp-bento-card__face" aria-hidden="true"><div class="mrkwp-bento-card__glare" aria-hidden="true"></div></div><div class="mrkwp-bento-card__content"><div class="mrkwp-bento-card__icon" style="color:#463cd7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#463cd7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mrkwp-lucide-icon mrkwp-lucide-icon--shield" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></div><h3 class="mrkwp-bento-card__main-text" style="color:#0a2540">Keep the WordPress<br>you own.</h3><p class="mrkwp-bento-card__secondary-text" style="color:#425466">A stronger foundation. Still yours.</p></div></article>
+<!-- /wp:mrkwp/bento-box-card -->
+
+<!-- wp:mrkwp/bento-box-card {"cardSpan":"square","swatchPreset":"surface","icon":"search","iconSize":32,"iconColor":"#463cd7","mainText":"Make your knowledge<br>discoverable.","mainTextTag":"h3","mainTextColor":"#0a2540","secondaryText":"Help people and AI find your expertise.","secondaryTextColor":"#425466"} -->
+<article class="wp-block-mrkwp-bento-box-card mrkwp-bento-card belief-card mrkwp-bento-card--square mrkwp-bento-card--swatch-surface"><div class="mrkwp-bento-card__face" aria-hidden="true"><div class="mrkwp-bento-card__glare" aria-hidden="true"></div></div><div class="mrkwp-bento-card__content"><div class="mrkwp-bento-card__icon" style="color:#463cd7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#463cd7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mrkwp-lucide-icon mrkwp-lucide-icon--search" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></div><h3 class="mrkwp-bento-card__main-text" style="color:#0a2540">Make your knowledge<br>discoverable.</h3><p class="mrkwp-bento-card__secondary-text" style="color:#425466">Help people and AI find your expertise.</p></div></article>
+<!-- /wp:mrkwp/bento-box-card -->
+
+<!-- wp:mrkwp/bento-box-card {"cardSpan":"square","swatchPreset":"surface","icon":"zap","iconSize":32,"iconColor":"#463cd7","mainText":"Build skills that<br>stay with you.","mainTextTag":"h3","mainTextColor":"#0a2540","secondaryText":"Practical tools. Lasting confidence.","secondaryTextColor":"#425466"} -->
+<article class="wp-block-mrkwp-bento-box-card mrkwp-bento-card belief-card mrkwp-bento-card--square mrkwp-bento-card--swatch-surface"><div class="mrkwp-bento-card__face" aria-hidden="true"><div class="mrkwp-bento-card__glare" aria-hidden="true"></div></div><div class="mrkwp-bento-card__content"><div class="mrkwp-bento-card__icon" style="color:#463cd7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#463cd7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mrkwp-lucide-icon mrkwp-lucide-icon--zap" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></div><h3 class="mrkwp-bento-card__main-text" style="color:#0a2540">Build skills that<br>stay with you.</h3><p class="mrkwp-bento-card__secondary-text" style="color:#425466">Practical tools. Lasting confidence.</p></div></article>
+<!-- /wp:mrkwp/bento-box-card --></section>
+<!-- /wp:mrkwp/bento-box-group -->

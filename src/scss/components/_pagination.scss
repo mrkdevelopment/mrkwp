@@ -144,3 +144,142 @@
     }
   }
 }
+
+// --------------------------------------------------------------------------
+// Hybrid Archive Loader (Load More on Desktop / Infinite Scroll on Mobile)
+// --------------------------------------------------------------------------
+
+.mrkwp-archive-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 48px;
+  margin-bottom: 32px;
+  position: relative;
+  min-height: 52px;
+
+  .mrkwp-load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 12px 32px;
+    background: var(--white, #ffffff);
+    color: var(--ink, #0a2540);
+    border: 1px solid var(--line-strong, #cbd6e4);
+    border-radius: var(--radius-md, 2px);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(10, 37, 64, 0.04);
+    transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.15s var(--ease), box-shadow 0.2s var(--ease);
+
+    &:hover {
+      background: var(--surface-hover, #e9edff);
+      border-color: var(--indigo, #554cf0);
+      color: var(--indigo, #554cf0);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(85, 76, 240, 0.08);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &[aria-busy="true"] {
+      pointer-events: none;
+      opacity: 0.8;
+
+      .mrkwp-load-more-spinner {
+        display: inline-block;
+      }
+    }
+  }
+
+  .mrkwp-load-more-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--line, #dfe5ec);
+    border-top-color: var(--indigo, #554cf0);
+    border-radius: 50%;
+    animation: mrkwp-spin 0.7s linear infinite;
+  }
+
+  .mrkwp-infinite-sentinel {
+    height: 1px;
+    width: 100%;
+    pointer-events: none;
+    opacity: 0;
+    margin-top: -20px;
+  }
+
+  .mrkwp-archive-end-message {
+    color: var(--muted, #637386);
+    font-size: 14px;
+    text-align: center;
+    margin: 24px 0 12px;
+    padding: 14px 24px;
+    background: var(--canvas, #f8fafc);
+    border: 1px dashed var(--line, #dfe5ec);
+    border-radius: var(--radius-md, 2px);
+  }
+
+  // Mobile specific: hide the manual button while in auto-infinite-scroll mode
+  &.is-infinite-mode {
+    @media (max-width: 760px) {
+      .mrkwp-load-more-btn {
+        display: none;
+      }
+    }
+  }
+
+  // Mobile indicator while fetching the next batch
+  &.is-loading-mobile {
+    @media (max-width: 760px) {
+      &::after {
+        content: "";
+        display: block;
+        width: 26px;
+        height: 26px;
+        border: 2.5px solid var(--line, #dfe5ec);
+        border-top-color: var(--indigo, #554cf0);
+        border-radius: 50%;
+        animation: mrkwp-spin 0.7s linear infinite;
+        margin: 20px auto;
+      }
+    }
+  }
+}
+
+// Fade-in animation for newly appended cards
+@keyframes mrkwp-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mrkwp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wp-block-post-template > li.mrkwp-card-animating {
+  animation: mrkwp-fade-in-up 0.4s var(--ease) forwards;
+}
+
+// When enhanced by JS, hide the default pagination controls
+.wp-block-query.is-enhanced-query {
+  .wp-block-query-pagination {
+    display: none !important;
+  }
+}

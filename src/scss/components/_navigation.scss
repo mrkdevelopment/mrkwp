@@ -18,41 +18,7 @@
   gap: 25px;
 }
 
-// Logo lockup
-.square-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 2px;
-  display: block;
-  object-fit: cover;
-}
 
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  flex: 0 0 auto;
-  color: var(--ink);
-  font-size: 23px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  text-decoration: none;
-
-  span {
-    display: block;
-    line-height: 1;
-  }
-}
-
-.logo-caption {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 0.01em;
-  font-weight: 500;
-  margin-top: 7px;
-  color: var(--body);
-}
 
 // Main Navigation
 .main-nav,

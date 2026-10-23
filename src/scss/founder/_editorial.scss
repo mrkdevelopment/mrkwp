@@ -3,12 +3,6 @@
 // ==========================================================================
 
 /* Founder-led editorial layer. Shared across the homepage and destination pages. */
-:root {
-    --radius-xl: 4px;
-    --radius-lg: 4px;
-    --radius-md: 2px;
-    --radius-sm: 2px
-}
 
 h1,
 h2,
@@ -27,116 +21,6 @@ h3 {
 .header-inner {
     height: 96px;
     gap: 25px
-}
-
-.square-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 2px
-}
-
-.logo {
-    gap: 12px;
-    font-size: 23px;
-    letter-spacing: -.04em
-}
-
-.logo-caption {
-    display: block;
-    font-size: 10px;
-    letter-spacing: .01em;
-    font-weight: 500;
-    margin-top: 7px;
-    color: var(--body)
-}
-
-.main-nav {
-    gap: 28px
-}
-
-.main-nav>a,
-.resources-toggle {
-    font-size: 13px
-}
-
-.resources-toggle {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    background: none;
-    color: var(--ink);
-    min-height: 44px;
-    padding: 0;
-    font-weight: 500
-}
-
-.resources-toggle span {
-    transition: transform .2s
-}
-
-.resources-toggle[aria-expanded=true] span {
-    transform: rotate(180deg)
-}
-
-.mega-intro h2 {
-    font-size: 27px;
-    margin: 16px 0
-}
-
-.mega-categories {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px
-}
-
-.mega-categories a {
-    display: block;
-    padding: 8px;
-    line-height: 1.5;
-    border-radius: 2px
-}
-
-.mega-categories a:hover {
-    background: var(--canvas)
-}
-
-.mega-categories b {
-    font-size: 13px;
-    color: var(--ink);
-    display: block
-}
-
-.mega-categories span {
-    display: block;
-    font-size: 11px;
-    margin-top: 5px;
-    color: var(--body)
-}
-
-.mega-feature {
-    background: var(--ink);
-    padding: 24px;
-    border-radius: 3px;
-    color: white !important;
-    display: flex !important;
-    align-items: flex-start !important;
-    flex-direction: column;
-    gap: 16px
-}
-
-.mega-feature>span,
-.mega-feature small {
-    font-size: 11px;
-    color: #c6d2e2
-}
-
-.mega-feature strong {
-    font-size: 21px;
-    line-height: 1.25
-}
-
-.header-apply {
-    font-size: 13px
 }
 
 .founder-hero {
@@ -300,32 +184,7 @@ h3 {
     grid-row: 1/3
 }
 
-.belief-strip {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
-    align-items: center;
-    padding: 28px 0;
-    border-block: 1px solid var(--line);
-    gap: 30px
-}
 
-.belief-strip>span {
-    font-size: 12px;
-    line-height: 1.5
-}
-
-.belief-strip strong {
-    color: var(--ink);
-    font-weight: 600
-}
-
-.belief-strip p {
-    font-size: 12px;
-    padding-left: 20px;
-    border-left: 1px solid var(--line);
-    line-height: 1.6;
-    color: var(--ink)
-}
 
 .about-editorial {
     display: grid;

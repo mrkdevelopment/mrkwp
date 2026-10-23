@@ -40,12 +40,6 @@
         document.querySelectorAll('.section-heading, .assessment-copy, .assessment-card, .about-editorial, .path-card, .content-card, .community-invite, .about-detail, .price-panel, .community-manifesto').forEach(element => {
           observe(element, () => reveal(element, { y: 24, duration: .8 }));
         });
-        const bento = document.querySelector('.belief-strip');
-        if (bento) observe(bento, context.add('bentoReveal', () => {
-          gsap.from('.belief-card', {opacity:0,y:38,rotationX:8,transformOrigin:'50% 100%',duration:.85,stagger:.13,ease:'power3.out',clearProps:'opacity,transform'});
-          gsap.from('.bento-symbol', {rotation:-90,scale:.7,duration:1.2,delay:.2,ease:'power3.out',clearProps:'transform'});
-          reveal(bento.querySelectorAll('.belief-card .icon'), {y:12,delay:.45,stagger:.15});
-        }));
         document.querySelectorAll('.comparison-row').forEach(element => {
           observe(element, () => reveal(element, { y: 15, duration: .6 }));
         });
