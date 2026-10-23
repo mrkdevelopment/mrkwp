@@ -216,7 +216,6 @@ function mrkwp_scripts() {
 	// Dequeue generic block styles on the custom coded frontend.
 	wp_dequeue_style( 'wp-block-library' );
 	wp_dequeue_style( 'wp-block-library-theme' );
-	wp_dequeue_style( 'global-styles' );
 	wp_dequeue_style( 'classic-theme-styles' );
 }
 add_action( 'wp_enqueue_scripts', 'mrkwp_scripts' );
@@ -755,11 +754,11 @@ function mrkwp_render_video_player( $attributes = array(), $content = '' ) {
 		}
 
 		if ( ! empty( $youtube_id ) ) {
-			$video_url   = 'https://youtu.be/' . rawurlencode( $youtube_id );
-			$safe_thumb  = esc_url( $thumbnail_url );
-			$safe_yt_id  = esc_attr( $youtube_id );
-			$safe_url    = esc_url( $video_url );
-			$safe_label  = esc_attr__( 'Play video', 'mrkwp' );
+			$video_url  = 'https://youtu.be/' . rawurlencode( $youtube_id );
+			$safe_thumb = esc_url( $thumbnail_url );
+			$safe_yt_id = esc_attr( $youtube_id );
+			$safe_url   = esc_url( $video_url );
+			$safe_label = esc_attr__( 'Play video', 'mrkwp' );
 
 			$video_html = '<div class="wp-block-greenshift-blocks-video gs-video youtube">' .
 				'<div class="gs-video-wrapper" itemscope>' .

@@ -39,7 +39,7 @@
     min-height: 48px;
     background: #edf0ff;
     border: 1px solid #c8c9f0;
-    border-radius: 7px;
+    border-radius: 2px;
     padding: 11px 17px;
     font-size: 16px;
     color: #443bc0;
@@ -73,7 +73,7 @@
 
   .wp-block-post-date,
   .video-date {
-    font-size: 13px;
+    font-size: var(--wp--preset--font-size--sm, 13px);
     color: var(--muted);
     margin: 8px 0 16px;
   }
@@ -84,15 +84,15 @@
     align-self: flex-start;
     min-height: 34px;
     padding: 4px 14px;
-    border-radius: 25px;
+    border-radius: 6px;
     background: #e7eff5;
     color: #006780;
-    font-size: 14px;
+    font-size: var(--wp--preset--font-size--sm, 14px);
     font-weight: 600;
   }
 
-  h3 {
-    font-size: 24px;
+  h3:not([class*="has-"]):not([style*="font-size"]) {
+    font-size: var(--wp--preset--font-size--lg, 24px);
     line-height: 1.25;
     margin-top: 14px;
   }
@@ -100,8 +100,8 @@
   @include mobile {
     padding: 22px;
 
-    h3 {
-      font-size: 21px;
+    h3:not([class*="has-"]):not([style*="font-size"]) {
+      font-size: var(--wp--preset--font-size--md, 21px);
     }
   }
 }
@@ -174,7 +174,7 @@
       width: 24px;
       height: 60px;
       background: var(--line);
-      border-radius: 2px;
+      border-radius: 1px;
     }
   }
 }
@@ -241,7 +241,7 @@
     place-items: center;
     width: 64px;
     height: 64px;
-    border-radius: 9px;
+    border-radius: 2px;
     background: #edf1f8;
     color: var(--ink);
     font-weight: 700;
@@ -278,7 +278,7 @@
     place-items: center;
     width: 56px;
     height: 56px;
-    border-radius: 8px;
+    border-radius: 2px;
     background: #edf1f8;
     color: var(--indigo);
     font-size: 20px;
@@ -347,7 +347,7 @@
     place-items: center;
     width: 48px;
     height: 48px;
-    border-radius: 7px;
+    border-radius: 2px;
     background: #ebefff;
     color: var(--indigo);
     font-size: 20px;

@@ -3,46 +3,97 @@
 // ==========================================================================
 
 :root {
+  // ------------------------------------------------------------------------
+  // WordPress Preset Default Fallbacks (used when global-styles is missing)
+  // ------------------------------------------------------------------------
+
+  // Preset Colors
+  --wp--preset--color--ink: #0a2540;
+  --wp--preset--color--body: #425466;
+  --wp--preset--color--canvas: #f8fafc;
+  --wp--preset--color--white: #ffffff;
+  --wp--preset--color--indigo: #554cf0;
+  --wp--preset--color--indigo-dark: #463cd7;
+  --wp--preset--color--indigo-subtle: #eae8ff;
+  --wp--preset--color--cyan: #00d4ff;
+  --wp--preset--color--deep-cyan: #007a99;
+  --wp--preset--color--accent-cyan: #006c86;
+  --wp--preset--color--line: #dfe5ec;
+  --wp--preset--color--line-strong: #cbd6e4;
+  --wp--preset--color--muted: #637386;
+  --wp--preset--color--night: #051322;
+  --wp--preset--color--dark-line: #20394f;
+  --wp--preset--color--surface-alt: #edf1f8;
+  --wp--preset--color--surface-hover: #e9edff;
+
+  // Preset Font Families
+  --wp--preset--font-family--inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', var(--wp--preset--font-family--inter);
+  --wp--preset--font-family--monospace: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+
+  // Preset Font Sizes
+  --wp--preset--font-size--xs: 11px;
+  --wp--preset--font-size--x-small: 11px;
+  --wp--preset--font-size--sm: 13px;
+  --wp--preset--font-size--small: 13px;
+  --wp--preset--font-size--base: 16px;
+  --wp--preset--font-size--md: 18px;
+  --wp--preset--font-size--medium: 18px;
+  --wp--preset--font-size--lg: 24px;
+  --wp--preset--font-size--large: 24px;
+  --wp--preset--font-size--xl: 32px;
+  --wp--preset--font-size--x-large: 32px;
+  --wp--preset--font-size--2-xl: clamp(36px, 4vw, 52px);
+  --wp--preset--font-size--2xl: var(--wp--preset--font-size--2-xl, clamp(36px, 4vw, 52px));
+  --wp--preset--font-size--xx-large: clamp(36px, 4vw, 52px);
+  --wp--preset--font-size--3-xl: clamp(48px, 6vw, 76px);
+  --wp--preset--font-size--3xl: var(--wp--preset--font-size--3-xl, clamp(48px, 6vw, 76px));
+  --wp--preset--font-size--hero: clamp(60px, 6.45vw, 91px);
+
+  // ------------------------------------------------------------------------
+  // Theme Design Tokens & Aliases
+  // ------------------------------------------------------------------------
+
   // Brand Palette wired directly to WordPress theme.json presets
-  --ink: var(--wp--preset--color--ink, #0a2540);
-  --body: var(--wp--preset--color--body, #425466);
-  --canvas: var(--wp--preset--color--canvas, #f8fafc);
-  --white: var(--wp--preset--color--white, #ffffff);
-  --indigo: var(--wp--preset--color--indigo, #554cf0);
-  --indigo-dark: var(--wp--preset--color--indigo-dark, #463cd7);
-  --indigo-subtle: var(--wp--preset--color--indigo-subtle, #eae8ff);
-  --cyan: var(--wp--preset--color--cyan, #00d4ff);
-  --deep-cyan: var(--wp--preset--color--deep-cyan, #007a99);
-  --accent-cyan: var(--wp--preset--color--accent-cyan, #006c86);
-  --line: var(--wp--preset--color--line, #dfe5ec);
-  --line-strong: var(--wp--preset--color--line-strong, #cbd6e4);
-  --muted: var(--wp--preset--color--muted, #637386);
-  --night: var(--wp--preset--color--night, #051322);
-  --dark-line: var(--wp--preset--color--dark-line, #20394f);
-  --surface-alt: var(--wp--preset--color--surface-alt, #edf1f8);
-  --surface-hover: var(--wp--preset--color--surface-hover, #e9edff);
+  --ink: var(--wp--preset--color--ink);
+  --body: var(--wp--preset--color--body);
+  --canvas: var(--wp--preset--color--canvas);
+  --white: var(--wp--preset--color--white);
+  --indigo: var(--wp--preset--color--indigo);
+  --indigo-dark: var(--wp--preset--color--indigo-dark);
+  --indigo-subtle: var(--wp--preset--color--indigo-subtle);
+  --cyan: var(--wp--preset--color--cyan);
+  --deep-cyan: var(--wp--preset--color--deep-cyan);
+  --accent-cyan: var(--wp--preset--color--accent-cyan);
+  --line: var(--wp--preset--color--line);
+  --line-strong: var(--wp--preset--color--line-strong);
+  --muted: var(--wp--preset--color--muted);
+  --night: var(--wp--preset--color--night);
+  --dark-line: var(--wp--preset--color--dark-line);
+  --surface-alt: var(--wp--preset--color--surface-alt);
+  --surface-hover: var(--wp--preset--color--surface-hover);
 
   // Typography Families
-  --font-sans: var(--wp--preset--font-family--inter, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-  --font-display: var(--wp--preset--font-family--plus-jakarta-sans, 'Plus Jakarta Sans', var(--font-sans));
-  --font-mono: var(--wp--preset--font-family--monospace, ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace);
+  --font-sans: var(--wp--preset--font-family--inter);
+  --font-display: var(--wp--preset--font-family--plus-jakarta-sans);
+  --font-mono: var(--wp--preset--font-family--monospace);
 
-  // Font Size Tokens (Wired to WordPress theme.json presets)
-  --font-size-xs: var(--wp--preset--font-size--xs, 11px);
-  --font-size-sm: var(--wp--preset--font-size--sm, 13px);
-  --font-size-base: var(--wp--preset--font-size--base, 16px);
-  --font-size-md: var(--wp--preset--font-size--md, 18px);
-  --font-size-lg: var(--wp--preset--font-size--lg, 24px);
-  --font-size-xl: var(--wp--preset--font-size--xl, 32px);
-  --font-size-2xl: var(--wp--preset--font-size--2xl, clamp(36px, 4vw, 52px));
-  --font-size-3xl: var(--wp--preset--font-size--3xl, clamp(48px, 6vw, 76px));
-  --font-size-hero: var(--wp--preset--font-size--hero, clamp(60px, 6.45vw, 91px));
+  // Font Size Tokens
+  --font-size-xs: var(--wp--preset--font-size--xs);
+  --font-size-sm: var(--wp--preset--font-size--sm);
+  --font-size-base: var(--wp--preset--font-size--base);
+  --font-size-md: var(--wp--preset--font-size--md);
+  --font-size-lg: var(--wp--preset--font-size--lg);
+  --font-size-xl: var(--wp--preset--font-size--xl);
+  --font-size-2xl: var(--wp--preset--font-size--2xl);
+  --font-size-3xl: var(--wp--preset--font-size--3xl);
+  --font-size-hero: var(--wp--preset--font-size--hero);
 
-  // Radii Tokens (Reduced by half)
-  --radius-sm: 5px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
-  --radius-xl: 16px;
+  // Radii Tokens (Reduced by 75%)
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
 
   // Motion & Easing
   --ease: cubic-bezier(0.22, 1, 0.36, 1);

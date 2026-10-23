@@ -9,14 +9,14 @@ label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: var(--wp--preset--font-size--sm, 14px);
   font-weight: 600;
   color: var(--ink);
   margin-top: 20px;
   margin-bottom: 8px;
 
   span {
-    font-size: 12px;
+    font-size: var(--wp--preset--font-size--xs, 12px);
     color: var(--muted);
     font-weight: 500;
   }
@@ -33,7 +33,7 @@ textarea {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   color: var(--ink);
-  font-size: 16px;
+  font-size: var(--wp--preset--font-size--base, 16px);
   transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 
   &:focus {

@@ -82,7 +82,7 @@
   padding-block: 65px 50px;
 
   h1:not([class*="has-"]):not([style*="font-size"]) {
-    font-size: var(--wp--preset--font-size--3xl, clamp(48px, 5.5vw, 76px));
+    font-size: var(--wp--preset--font-size--3xl);
     line-height: 1.05;
     letter-spacing: -0.055em;
     margin-top: 20px;
@@ -93,7 +93,7 @@
   }
 
   > p:last-child:not([class*="has-"]):not([style*="font-size"]) {
-    font-size: var(--wp--preset--font-size--md, 18px);
+    font-size: var(--wp--preset--font-size--md);
     line-height: 1.7;
     max-width: 580px;
     margin-top: 22px;
@@ -103,11 +103,11 @@
     padding-block: 55px 40px;
 
     h1:not([class*="has-"]):not([style*="font-size"]) {
-      font-size: var(--wp--preset--font-size--2xl, 46px);
+      font-size: var(--wp--preset--font-size--2xl);
     }
 
     > p:last-child:not([class*="has-"]):not([style*="font-size"]) {
-      font-size: var(--wp--preset--font-size--base, 16px);
+      font-size: var(--wp--preset--font-size--base);
     }
   }
 }

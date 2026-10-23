@@ -22,7 +22,7 @@
 .square-logo {
   width: 48px;
   height: 48px;
-  border-radius: 8px;
+  border-radius: 2px;
   display: block;
   object-fit: cover;
 }
@@ -78,7 +78,7 @@
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    font-size: 13px;
+    font-size: var(--wp--preset--font-size--sm, 13px);
     font-weight: 500;
     color: var(--ink);
     text-decoration: none;
@@ -151,7 +151,7 @@
 
 .wp-block-ollie-mega-menu__menu-container {
   z-index: 100;
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  border-radius: var(--radius-lg);
 
   .mega-menu {
     position: static;
@@ -165,7 +165,7 @@
     padding: 32px;
     background: var(--white);
     border: 1px solid var(--line);
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border-radius: var(--radius-lg);
     box-shadow: 0 24px 35px rgba(10, 37, 64, 0.07);
   }
 }
@@ -262,7 +262,7 @@
 .mega-feature {
   background: var(--ink);
   padding: 24px;
-  border-radius: 10px;
+  border-radius: 3px;
   color: var(--white) !important;
   display: flex !important;
   align-items: flex-start !important;
@@ -320,7 +320,7 @@
   .square-logo {
     width: 42px;
     height: 42px;
-    border-radius: 7px;
+    border-radius: 2px;
   }
 
   .header-apply {
@@ -490,7 +490,7 @@
     transform: none;
     width: 100%;
     box-shadow: none;
-    border-radius: 10px;
+    border-radius: 3px;
     padding: 18px;
     display: block;
   }

@@ -274,7 +274,7 @@
 					"text": "var(--wp--preset--color--white)"
 				},
 				"border": {
-					"radius": "8px"
+					"radius": "2px"
 				},
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--base)",
