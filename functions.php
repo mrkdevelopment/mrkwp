@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MRKWP_VERSION', '1.0.4' );
+define( 'MRKWP_VERSION', '1.0.5' );
 define( 'MRKWP_THEME_DIR', get_template_directory() );
 define( 'MRKWP_THEME_URI', get_template_directory_uri() );
 
@@ -44,7 +44,8 @@ function mrkwp_setup() {
 		)
 	);
 
-	// Gutenberg Block Editor Styles & FSE Template Parts.
+	// Gutenberg Block Editor Styles, Align Wide & FSE Template Parts.
+	add_theme_support( 'align-wide' );
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'dist/editor-style.css' );
 	add_theme_support( 'block-template-parts' );

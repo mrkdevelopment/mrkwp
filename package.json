@@ -1,6 +1,6 @@
 {
   "name": "mrkwp-theme",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "MRK WP custom theme build system and SCSS component library",
   "scripts": {

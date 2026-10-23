@@ -2,12 +2,15 @@
 // WordPress: Core Alignments & Accessibility
 // ==========================================================================
 
-.alignwide {
-  max-width: min(1320px, calc(100% - 64px));
+// Zero-specificity fallbacks for classic/unconstrained contexts.
+// Core block layout styles (:where(.is-layout-constrained) > .alignwide/.alignfull)
+// will automatically take precedence inside constrained containers.
+:where(.alignwide) {
+  max-width: var(--wp--style--global--wide-size, 1440px);
   margin-inline: auto;
 }
 
-.alignfull {
+:where(.alignfull) {
   width: 100%;
   max-width: 100%;
 }
