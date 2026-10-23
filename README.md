@@ -72,8 +72,6 @@ The **MRK WP** theme is a modern Full Site Editing (FSE) block theme featuring H
     - `Lead Paragraph` (`is-style-lead`)
 - **Custom Social Link Icons:**
   - Replaces default filled social icons with brand-aligned minimal stroke SVG icons for GitHub, Instagram, LinkedIn, X, and YouTube on both the frontend and inside the block editor.
-- **Page Settings Editor Sidebar (`js/page-settings-editor.js`):**
-  - Gutenberg Document Sidebar panel providing a toggle to hide or show the page title (`mrkwp_hide_title` meta field).
 - **Editor Styles (`dist/editor-style.css`):**
   - Compiles SCSS design tokens directly for the Gutenberg canvas to ensure true WYSIWYG editing.
 

@@ -1080,27 +1080,6 @@
 }
 
 @media(max-width:400px) {
-    .belief-strip {
-        grid-template-columns: 1fr
-    }
-
-    .belief-main,
-    .belief-card:nth-child(2) {
-        grid-column: auto
-    }
-
-    .belief-card:nth-child(2) {
-        display: block
-    }
-
-    .belief-card:nth-child(2) h3 {
-        margin: 18px 0 10px
-    }
-
-    .belief-card h3 {
-        font-size: 23px
-    }
-
     .eyebrow,
     .founder-hero .eyebrow {
         font-size: 13px
@@ -1119,16 +1098,6 @@
     }
 }
 
-@media(prefers-reduced-motion:reduce) {
-    .social-icons a {
-        transition: none
-    }
-
-    .social-icons a:hover,
-    .social-icons .wp-block-social-link-anchor:hover {
-        transform: none
-    }
-}
 
 .belief-strip {
     align-items: stretch

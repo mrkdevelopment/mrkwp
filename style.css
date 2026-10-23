@@ -27,8 +27,13 @@ Text Domain: mrkwp
 }
 
 /* WordPress layout alignments */
+.wp-container-id > * {
+    max-width: 840px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 .alignwide {
-  max-width: min(1320px, calc(100% - 64px));
+  max-width: min(1240px, calc(100% - 64px));
   margin-inline: auto;
 }
 .alignfull {

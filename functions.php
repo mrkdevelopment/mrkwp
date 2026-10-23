@@ -230,64 +230,7 @@ function mrkwp_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'mrkwp_scripts' );
 
-/**
- * Output favicon links, preload hints, and speculation rules in wp_head.
- */
-function mrkwp_head_meta() {
-	echo '<meta name="theme-color" content="#0a2540">' . "\n";
-	echo '<link rel="icon" href="' . esc_url( mrkwp_asset( 'favicon.svg' ) ) . '" type="image/svg+xml">' . "\n";
-	echo '<link rel="icon" href="' . esc_url( mrkwp_asset( 'mrk-square.png' ) ) . '" sizes="any">' . "\n";
 
-	// Modern Web Guidance (optimize-preload-priority): Elevate LCP hero image preload on the front page.
-	if ( is_front_page() ) {
-		echo '<link rel="preload" as="image" href="/wp-content/themes/mrkwp/assets/matt-founder.webp" fetchpriority="high" type="image/webp">' . "\n";
-	}
-
-	// Modern Web Guidance (improve-next-page-load-performance): Speculation rules for sub-second internal navigation.
-	?>
-	<script type="speculationrules">
-	{
-		"prefetch": [
-			{
-				"where": {
-					"and": [
-						{ "href_matches": "/*" },
-						{ "not": { "href_matches": "/wp-admin/*" } },
-						{ "not": { "href_matches": "/wp-login.php*" } },
-						{ "not": { "selector_matches": "[rel~=nofollow]" } }
-					]
-				},
-				"eagerness": "moderate"
-			}
-		]
-	}
-	</script>
-	<?php
-}
-add_action( 'wp_head', 'mrkwp_head_meta' );
-
-/**
- * Output global SVG sprite library and skip link at body open.
- */
-function mrkwp_body_open_elements() {
-	?>
-	<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-		<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
-		<symbol id="i-up-right" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
-		<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
-		<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/></symbol>
-		<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z"/></symbol>
-		<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
-		<symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-3-.5l-5 1 1-5a9 9 0 0 1-.5-3.5 8 8 0 0 1 15.5 0Z"/><path d="M8 10h8m-8 4h5"/></symbol>
-		<symbol id="i-nodes" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M12 8v4H5v4m7-4h7v4"/></symbol>
-		<symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-8 11-8 11S4 16 4 11V5Z"/><path d="m8.5 11.5 2.5 2.5 4.5-5"/></symbol>
-		<symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
-	</svg>
-
-	<a class="skip-link" href="#main"><?php esc_html_e( 'Skip to content', 'mrkwp' ); ?></a>
-	<?php
-}
-add_action( 'wp_body_open', 'mrkwp_body_open_elements' );
 
 /**
  * Output floating back-to-top button in wp_footer.
@@ -298,109 +241,6 @@ function mrkwp_footer_elements() {
 	<?php
 }
 add_action( 'wp_footer', 'mrkwp_footer_elements' );
-
-/**
- * Register post meta for page settings (e.g. title toggle).
- */
-function mrkwp_register_post_meta() {
-	register_post_meta(
-		'page',
-		'_mrkwp_show_title',
-		array(
-			'show_in_rest'  => true,
-			'single'        => true,
-			'type'          => 'string',
-			'default'       => '1',
-			'auth_callback' => function () {
-				return current_user_can( 'edit_posts' );
-			},
-		)
-	);
-
-	register_post_meta(
-		'post',
-		'_mrkwp_show_title',
-		array(
-			'show_in_rest'  => true,
-			'single'        => true,
-			'type'          => 'string',
-			'default'       => '1',
-			'auth_callback' => function () {
-				return current_user_can( 'edit_posts' );
-			},
-		)
-	);
-}
-add_action( 'init', 'mrkwp_register_post_meta' );
-
-/**
- * Enqueue editor assets for Gutenberg document settings panels.
- */
-function mrkwp_enqueue_block_editor_assets() {
-	wp_enqueue_script(
-		'mrkwp-page-settings-editor',
-		MRKWP_THEME_URI . '/js/page-settings-editor.js',
-		array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data' ),
-		MRKWP_VERSION,
-		true
-	);
-}
-add_action( 'enqueue_block_editor_assets', 'mrkwp_enqueue_block_editor_assets' );
-
-/**
- * Add Page Settings meta box for classic editor / document settings fallback.
- */
-function mrkwp_add_page_settings_meta_box() {
-	add_meta_box(
-		'mrkwp_page_settings_box',
-		__( 'Page Title Display', 'mrkwp' ),
-		'mrkwp_render_page_settings_meta_box',
-		array( 'page', 'post' ),
-		'side',
-		'default'
-	);
-}
-add_action( 'add_meta_boxes', 'mrkwp_add_page_settings_meta_box' );
-
-/**
- * Render Page Settings meta box.
- *
- * @param \WP_Post $post Current post object.
- */
-function mrkwp_render_page_settings_meta_box( $post ) {
-	wp_nonce_field( 'mrkwp_save_page_settings', 'mrkwp_page_settings_nonce' );
-	$show_title = get_post_meta( $post->ID, '_mrkwp_show_title', true );
-	$checked    = ( '0' !== $show_title );
-	?>
-	<p>
-		<label for="mrkwp_show_title_field" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-			<input type="checkbox" id="mrkwp_show_title_field" name="mrkwp_show_title" value="1" <?php checked( $checked, true ); ?>>
-			<strong><?php esc_html_e( 'Show page title', 'mrkwp' ); ?></strong>
-		</label>
-	</p>
-	<p class="description"><?php esc_html_e( 'Uncheck to hide the title header banner on this page.', 'mrkwp' ); ?></p>
-	<?php
-}
-
-/**
- * Save Page Settings meta box data.
- *
- * @param int $post_id Post ID.
- */
-function mrkwp_save_page_settings_meta( $post_id ) {
-	if ( ! isset( $_POST['mrkwp_page_settings_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['mrkwp_page_settings_nonce'] ), 'mrkwp_save_page_settings' ) ) {
-		return;
-	}
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-	if ( ! current_user_can( 'edit_post', $post_id ) ) {
-		return;
-	}
-	$value = isset( $_POST['mrkwp_show_title'] ) ? '1' : '0';
-	update_post_meta( $post_id, '_mrkwp_show_title', $value );
-}
-add_action( 'save_post', 'mrkwp_save_page_settings_meta' );
 
 /**
  * Register Gutenberg Block Styles.
@@ -495,30 +335,6 @@ function mrkwp_register_footer_editor_menu() {
 	);
 }
 add_action( 'admin_menu', 'mrkwp_register_footer_editor_menu' );
-
-/**
- * Use custom stroke-style SVGs for MRK WP's primary social links in core/social-link block.
- *
- * @param array $services_data Registered social link services.
- * @return array Filtered social link services.
- */
-function mrkwp_custom_social_link_icons( $services_data ) {
-	$custom_icons = array(
-		'github'    => '<svg class="mrkwp-stroke-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1-4-2-6-2m15 4v-4c0-1-.4-2-1-2 4-.5 5-2 5-6 0-1-1-3-2-3 0-1 0-2-.5-3-2 0-3 1-3 1a12 12 0 0 0-7 0S8 3 6 3c-.5 1-.5 2-.5 3C4 7 3 8 3 10c0 3 2 5 6 5-.6.5-1 1-1 2v4"/></svg>',
-		'instagram' => '<svg class="mrkwp-stroke-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg>',
-		'linkedin'  => '<svg class="mrkwp-stroke-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="4" height="12" rx=".5"/><circle cx="5" cy="4.5" r="1.5"/><path d="M11 21V9h4v2c1-3 6-3 6 2v8m-6 0v-7"/></svg>',
-		'x'         => '<svg class="mrkwp-stroke-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 3 12 18h4L8 3H4Zm0 18L20 3"/></svg>',
-		'youtube'   => '<svg class="mrkwp-stroke-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3Z"/></svg>',
-	);
-
-	foreach ( $custom_icons as $service => $svg ) {
-		if ( isset( $services_data[ $service ] ) ) {
-			$services_data[ $service ]['icon'] = $svg;
-		}
-	}
-
-	return $services_data;
-}
 
 /**
  * Register pattern categories.

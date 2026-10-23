@@ -25,6 +25,7 @@
 @use 'components/pagination';
 
 // 4. Sections (Composite Patterns)
+@use 'sections/page_header';
 @use 'sections/hero';
 @use 'sections/about-editorial';
 @use 'sections/engine';
@@ -44,5 +45,4 @@
 @use 'refinements/readability';
 
 // 8. WordPress Compatibility
-@use 'wordpress/admin-bar';
 @use 'wordpress/alignments';

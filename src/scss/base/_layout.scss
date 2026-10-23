@@ -1,13 +1,26 @@
 // ==========================================================================
 // Base: Global Layout Wrappers & Headings
 // ==========================================================================
+.admin-bar {
+  .site-header {
+    top:0px;
+  }
+}
+main{
+   top: 2rem;
+   position: relative;
+}
 
 .wrap {
-  width: min(1240px, calc(100% - 96px));
+  width: 1240px;
   margin-inline: auto;
 
+  @media (max-width: 1260px) {
+    width: calc(100% - 70px);
+  }
+
   @media (max-width: 1180px) {
-    width: calc(100% - 80px);
+    width: calc(100% - 60px);
   }
 
   @media (max-width: 960px) {
@@ -78,65 +91,6 @@
   }
 }
 
-.page-intro {
-  padding-block: 65px 50px;
-
-  h1:not([class*="has-"]):not([style*="font-size"]) {
-    font-size: var(--wp--preset--font-size--3xl);
-    line-height: 1.05;
-    letter-spacing: -0.055em;
-    margin-top: 20px;
-
-    span {
-      color: var(--indigo);
-    }
-  }
-
-  > p:last-child:not([class*="has-"]):not([style*="font-size"]) {
-    font-size: var(--wp--preset--font-size--md);
-    line-height: 1.7;
-    max-width: 580px;
-    margin-top: 22px;
-  }
-
-  @media (max-width: 760px) {
-    padding-block: 55px 40px;
-
-    h1:not([class*="has-"]):not([style*="font-size"]) {
-      font-size: var(--wp--preset--font-size--2xl);
-    }
-
-    > p:last-child:not([class*="has-"]):not([style*="font-size"]) {
-      font-size: var(--wp--preset--font-size--base);
-    }
-  }
-}
-
-.entry-content {
-  width: 100%;
-
-  > :where(:not(.alignwide):not(.alignfull):not(.wrap):not(.founder-hero)) {
-    width: min(1240px, calc(100% - 96px));
-    margin-inline: auto;
-
-    @media (max-width: 1180px) {
-      width: calc(100% - 80px);
-    }
-
-    @media (max-width: 960px) {
-      width: calc(100% - 56px);
-    }
-
-    @media (max-width: 760px) {
-      width: calc(100% - 40px);
-    }
-
-    @media (max-width: 390px) {
-      width: calc(100% - 36px);
-    }
-  }
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -147,12 +101,4 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-// Modern Web Guidance (defer-rendering-heavy-content): Defer layout & paint for deep off-screen sections.
-.process,
-.community-invite,
-.site-footer {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
 }
