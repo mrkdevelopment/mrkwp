@@ -1,0 +1,39 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"site-main video-archive-main"} -->
+<main class="wp-block-group site-main video-archive-main">
+	<!-- wp:group {"tagName":"section","className":"page-intro wrap"} -->
+	<section class="wp-block-group page-intro wrap">
+		<!-- wp:paragraph {"className":"eyebrow"} -->
+		<p class="eyebrow">Category Archive</p>
+		<!-- /wp:paragraph -->
+		<!-- wp:query-title {"type":"archive","level":1} /-->
+		<!-- wp:term-description /-->
+	</section>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"tagName":"section","className":"wrap section video-archive-section"} -->
+	<section class="wp-block-group wrap section video-archive-section">
+		<!-- wp:query {"queryId":12,"query":{"perPage":15,"pages":0,"offset":0,"postType":"mrkwp_video","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template {"className":"content-grid videos-grid"} -->
+			<!-- wp:template-part {"slug":"video-card","theme":"mrkwp","area":"uncategorized"} /-->
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- wp:query-pagination-previous {"label":"← Previous"} /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next {"label":"Next →"} /-->
+			<!-- /wp:query-pagination -->
+
+			<!-- wp:query-no-results -->
+			<p>No videos found in this category.</p>
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+	</section>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
