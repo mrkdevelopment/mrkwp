@@ -8,7 +8,8 @@
 // 1. Standalone / Meta Bar Tag Badges
 .video-meta-tag,
 .article-tag,
-.post-tag-badge {
+.post-tag-badge,
+.post-meta-tag {
   font-size: 12px;
   font-weight: 500;
   color: var(--body);
@@ -38,6 +39,7 @@
 
 // 2. Tag Containers & Lists
 .video-meta-bar__tags,
+.post-meta-bar__tags,
 .article-tags,
 .video-tags-row,
 .wp-block-post-terms {
@@ -77,7 +79,8 @@
 }
 
 // Right alignment modifier when in meta bar
-.video-meta-bar__tags {
+.video-meta-bar__tags,
+.post-meta-bar__tags {
   justify-content: flex-end;
   margin-left: auto;
 

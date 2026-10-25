@@ -34,175 +34,70 @@
   }
 
   // ------------------------------------------------------------------------
-  // 1. Breadcrumbs (Matching Video Article Standard)
-  // ------------------------------------------------------------------------
-  .post-breadcrumbs {
-    margin-bottom: 16px;
-    font-size: var(--wp--preset--font-size--sm, 13px);
-    color: var(--muted);
-
-    &__list {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    &__item {
-      display: inline-flex;
-      align-items: center;
-
-      &--current {
-        color: var(--ink);
-        font-weight: 500;
-      }
-    }
-
-    &__link {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.15s var(--ease);
-
-      &:hover,
-      &:focus-visible {
-        color: var(--indigo);
-      }
-    }
-
-    &__separator {
-      display: inline-flex;
-      align-items: center;
-      color: var(--line-strong);
-      user-select: none;
-
-      .icon {
-        width: 10px;
-        height: 10px;
-      }
-    }
-  }
-
-  // ------------------------------------------------------------------------
-  // 2. Article Hero Header (Title & Metadata Bar Matching Video Layout)
-  // ------------------------------------------------------------------------
-  .post-hero-header {
-    margin-bottom: 32px;
-
-    &__title,
-    h1.post-hero-header__title,
-    h1.wp-block-post-title {
-      font-family: var(--font-display, var(--font-sans));
-      font-size: clamp(1.85rem, 2.5vw + 1rem, 2.65rem);
-      font-weight: 800;
-      line-height: 1.22;
-      letter-spacing: -0.035em;
-      color: var(--ink);
-      margin: 0 0 18px 0;
-    }
-  }
-
-  .post-meta-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 32px;
-    width: 100%;
-
-    @include tablet {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    &__primary {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 18px;
-      font-size: var(--wp--preset--font-size--sm, 13px);
-      color: var(--muted);
-
-      @include mobile {
-        gap: 12px;
-      }
-    }
-
-    .post-meta-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-
-      .icon {
-        width: 14px;
-        height: 14px;
-        stroke: var(--muted);
-      }
-    }
-
-    &__tags {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-
-      @include tablet {
-        width: 100%;
-      }
-    }
-
-    .post-meta-tag {
-      display: inline-flex;
-      align-items: center;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--muted);
-      background: var(--surface-alt);
-      padding: 3px 9px;
-      border-radius: var(--radius-sm, 2px);
-      text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-
-      &__prefix {
-        color: var(--cyan);
-        margin-right: 2px;
-        font-weight: 700;
-      }
-
-      &:hover,
-      &:focus-visible {
-        background: var(--surface-hover);
-        color: var(--indigo);
-      }
-    }
-  }
-
-  // ------------------------------------------------------------------------
-  // 3. 2-Column Article Stage Grid
+  // 1. 2-Column Article Stage Grid
   // ------------------------------------------------------------------------
   .post-stage-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 300px;
     gap: 36px;
-    align-items: start;
     width: 100%;
 
     @include tablet {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 24px;
     }
   }
 
   // ------------------------------------------------------------------------
-  // 4. Content Area: White Rounded Square Container
+  // 2. Main Content Column & Seamless Featured Media Header
+  // ------------------------------------------------------------------------
+  .post-main-column {
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    // Featured Image: Above the box area, seamless join, matching width
+    .post-featured-media,
+    figure.wp-block-post-featured-image {
+      margin: 0 !important;
+      padding: 0;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-radius: var(--radius-lg, 4px) var(--radius-lg, 4px) 0 0;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(10, 37, 64, 0.03);
+      background: var(--night);
+      line-height: 0;
+
+      img {
+        width: 100%;
+        height: auto;
+        max-height: 520px;
+        display: block;
+        object-fit: cover;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+      }
+    }
+
+    // Seamless join with the content card below
+    .post-featured-media + .post-content-card,
+    figure.wp-block-post-featured-image + .post-content-card,
+    figure.wp-block-post-featured-image + article.post-content-card {
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: 0;
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 3. Content Area: White Rounded Square Container
   // ------------------------------------------------------------------------
   .post-content-card {
     background: var(--white);
@@ -211,6 +106,7 @@
     padding: 40px;
     box-shadow: 0 4px 16px rgba(10, 37, 64, 0.03);
     width: 100%;
+    min-width: 0;
     box-sizing: border-box;
 
     @include tablet {
@@ -221,117 +117,37 @@
       padding: 24px 18px;
     }
 
-    // Featured Image inside Content Card
-    .post-featured-media,
-    figure.wp-block-post-featured-image {
-      margin: 0 0 32px 0;
-      width: 100%;
-      border-radius: var(--radius-md, 2px);
-      overflow: hidden;
-      border: 1px solid var(--line);
-
-      img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-      }
-    }
-
     // Article Post Content Typography
     .wp-block-post-content,
     .entry-content {
-      font-size: var(--wp--preset--font-size--base, 16px);
       line-height: 1.8;
       color: var(--body);
       width: 100%;
-
-      p {
-        margin-top: 0;
-        margin-bottom: 1.4em;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-
-      h2, h3, h4, h5, h6 {
-        font-family: var(--font-display, var(--font-sans));
-        color: var(--ink);
-        line-height: 1.3;
-        margin-top: 1.8em;
-        margin-bottom: 0.6em;
-        letter-spacing: -0.025em;
-        scroll-margin-top: 120px;
-      }
-
-      h2 {
-        font-size: clamp(1.4rem, 1.8vw + 0.8rem, 1.85rem);
-        font-weight: 700;
-        padding-bottom: 8px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
-      }
-
-      h4 {
-        font-size: 1.1rem;
-        font-weight: 600;
-      }
-
-      a {
-        color: var(--indigo);
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        transition: color 0.15s var(--ease);
-
-        &:hover,
-        &:focus-visible {
-          color: var(--indigo-dark);
-        }
-      }
-
-      ul, ol {
-        margin: 0 0 1.4em 1.4em;
-        padding: 0;
-
-        li {
-          margin-bottom: 0.4em;
-        }
-      }
-
-      blockquote {
-        margin: 1.6em 0;
-        padding: 16px 20px;
-        border-left: 3px solid var(--cyan);
-        background: var(--surface-alt);
-        border-radius: 0 var(--radius-sm, 2px) var(--radius-sm, 2px) 0;
-
-        p:last-child {
-          margin-bottom: 0;
-        }
-      }
     }
   }
 
   // ------------------------------------------------------------------------
-  // 5. Sidebar Area: Floating Sticky Container & Dynamic TOC
+  // 4. Sidebar Area: Floating Sticky Container & Dynamic TOC
   // ------------------------------------------------------------------------
   .post-sidebar-column {
     width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 32px;
+    align-self: start;
+    height: -moz-fit-content;
+    height: fit-content;
+    z-index: 20;
 
     @include tablet {
       order: -1; // Position above content on mobile
+      position: -webkit-sticky;
       position: sticky;
-      top: 80px;
+      top: 10px;
       z-index: 40;
     }
   }
 
-  .post-sidebar-card,
   .post-toc-widget {
     background: var(--white);
     border: 1px solid var(--line);
@@ -339,11 +155,7 @@
     box-shadow: 0 4px 16px rgba(10, 37, 64, 0.03);
     width: 100%;
     box-sizing: border-box;
-
-    // Desktop sticky configuration
-    position: sticky;
-    top: 110px;
-    max-height: calc(100vh - 140px);
+    max-height: calc(100vh - 64px);
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--line) transparent;
@@ -504,6 +316,17 @@
         border-left-color: var(--indigo);
         background: var(--indigo-subtle);
       }
+    }
+  }
+}
+
+// Adjust sticky offset when WordPress admin bar is present
+body.admin-bar {
+  .post-single-main .post-sidebar-column {
+    top: 64px;
+
+    @include tablet {
+      top: 46px;
     }
   }
 }

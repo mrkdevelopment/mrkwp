@@ -6,6 +6,76 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
+// ------------------------------------------------------------------------
+// 1. Shared Editorial Hero Header (Video & Article Standard)
+// ------------------------------------------------------------------------
+.video-hero-header,
+.post-hero-header {
+  margin-bottom: 20px;
+
+  &__title,
+  h1.video-hero-header__title,
+  h1.post-hero-header__title,
+  h1.wp-block-post-title {
+    font-family: var(--font-display, var(--font-sans));
+    font-size: var(--wp--preset--font-size--3-xl, clamp(1.85rem, 2.5vw + 1rem, 2.65rem));
+    font-weight: 800;
+    line-height: 1.22;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin: 0 0 16px 0;
+  }
+}
+
+// ------------------------------------------------------------------------
+// 2. Structured Technical Metadata Bar (Shared Standard)
+// ------------------------------------------------------------------------
+.video-meta-bar,
+.post-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+  width: 100%;
+
+  @include tablet {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__primary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px; // Natural flex gap between Date and Duration/Reading Time
+    font-size: var(--wp--preset--font-size--sm, 13px);
+    color: var(--muted);
+
+    @include mobile {
+      gap: 12px;
+    }
+  }
+
+  .video-meta-item,
+  .post-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+
+    .icon {
+      width: 14px;
+      height: 14px;
+      stroke: var(--muted);
+    }
+  }
+}
+
 .video-single-main {
   // Narrow layout container conforming to site standard (max 782px wide)
   .video-single-narrow-wrap {
@@ -22,72 +92,6 @@
       padding-inline: 16px;
       padding-top: 24px;
       padding-bottom: 36px;
-    }
-  }
-
-  // ------------------------------------------------------------------------
-  // 1. Video Hero Header (Clean Editorial Hierarchy)
-  // ------------------------------------------------------------------------
-  .video-hero-header {
-    margin-bottom: 20px;
-
-    &__title,
-    h1.video-hero-header__title,
-    h1.wp-block-post-title {
-      font-family: var(--font-display, var(--font-sans));
-      font-size: clamp(1.85rem, 2.5vw + 1rem, 2.65rem);
-      font-weight: 800;
-      line-height: 1.22;
-      letter-spacing: -0.035em;
-      color: var(--ink);
-      margin: 0 0 16px 0;
-    }
-  }
-
-  // ------------------------------------------------------------------------
-  // 2. Structured Technical Metadata Bar
-  // ------------------------------------------------------------------------
-  .video-meta-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 24px;
-    width: 100%;
-
-    @include tablet {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    &__primary {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 18px; // Natural flex gap between Date and Duration
-      font-size: var(--wp--preset--font-size--sm, 13px);
-      color: var(--muted);
-
-      @include mobile {
-        gap: 12px;
-      }
-    }
-
-    .video-meta-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-
-      .icon {
-        width: 14px;
-        height: 14px;
-        stroke: var(--muted);
-      }
     }
   }
 

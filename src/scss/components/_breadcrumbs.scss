@@ -6,7 +6,8 @@
 @use '../abstracts/mixins' as *;
 
 .breadcrumbs,
-.video-breadcrumbs {
+.video-breadcrumbs,
+.post-breadcrumbs {
   margin-bottom: 20px;
 
   &__list {
