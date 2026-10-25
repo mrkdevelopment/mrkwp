@@ -1,0 +1,109 @@
+// ==========================================================================
+// Component: Breadcrumbs (Semantic List & RankMath Compatibility)
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.breadcrumbs,
+.video-breadcrumbs {
+  margin-bottom: 20px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--wp--preset--font-size--xs, 11px);
+    line-height: 1.4;
+    color: var(--muted);
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+
+    &--current {
+      font-weight: 600;
+      color: var(--ink);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include mobile {
+        max-width: 100%;
+        white-space: normal;
+      }
+    }
+  }
+
+  &__link {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s var(--ease);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--indigo);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  &__separator {
+    display: inline-flex;
+    align-items: center;
+    color: var(--line-strong);
+    user-select: none;
+
+    .icon {
+      width: 12px;
+      height: 12px;
+      opacity: 0.85;
+    }
+  }
+
+  // RankMath Breadcrumbs compatibility styling
+  &--rankmath,
+  .rank-math-breadcrumb {
+    font-size: var(--wp--preset--font-size--sm, 13px);
+    line-height: 1.4;
+    color: var(--muted);
+    margin-bottom: 20px;
+
+    p {
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s var(--ease);
+
+      &:hover,
+      &:focus-visible {
+        color: var(--indigo);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+
+    .separator {
+      color: var(--line-strong);
+      display: inline-block;
+      padding-inline: 2px;
+    }
+
+    .last {
+      font-weight: 600;
+      color: var(--ink);
+    }
+  }
+}

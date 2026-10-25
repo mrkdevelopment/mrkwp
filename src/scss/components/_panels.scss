@@ -542,7 +542,7 @@ dialog {
 
   h1.video-title,
   h1.wp-block-post-title:not([class*="has-"]):not([style*="font-size"]) {
-    font-size: var(--wp--preset--font-size--xl, 35px);
+    font-size: var(--wp--preset--font-size--2-xl, 35px);
     line-height: 1.25;
     letter-spacing: -0.03em;
     color: var(--ink);

@@ -23,6 +23,8 @@
 @use 'components/forms';
 @use 'components/carousels';
 @use 'components/pagination';
+@use 'components/breadcrumbs';
+@use 'components/tags';
 @use 'components/code-highlight';
 
 // 4. Sections (Composite Patterns)
@@ -47,6 +49,7 @@
 
 // 8. Template Pages
 @use 'pages/single-video';
+@use 'pages/single-post';
 
 // 9. WordPress Compatibility
 @use 'wordpress/alignments';

@@ -219,6 +219,11 @@ function mrkwp_scripts() {
 		wp_enqueue_style( 'mrkwp-video-card-style' );
 	}
 
+	// Enqueue dynamic Table of Contents script on single blog articles.
+	if ( is_singular( 'post' ) ) {
+		wp_enqueue_script( 'mrkwp-toc', MRKWP_THEME_URI . '/js/toc.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
+	}
+
 	// Archive progressive pagination (Load More on Desktop / Infinite Scroll on Mobile).
 	if ( is_archive() || is_home() || is_search() || is_post_type_archive( 'mrkwp_video' ) || is_post_type_archive( 'mrkwp_short' ) ) {
 		wp_enqueue_script( 'mrkwp-archive-pagination', MRKWP_THEME_URI . '/js/archive-pagination.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
@@ -459,5 +464,10 @@ add_filter( 'render_block', 'mrkwp_filter_pagination_arrows', 10, 2 );
  * Load video template tags and layout helpers.
  */
 require_once MRKWP_THEME_DIR . '/inc/video-template-tags.php';
+
+/**
+ * Load single post template tags and layout helpers.
+ */
+require_once MRKWP_THEME_DIR . '/inc/post-template-tags.php';
 
 

@@ -26,113 +26,7 @@
   }
 
   // ------------------------------------------------------------------------
-  // 1. Semantic Breadcrumbs Component
-  // ------------------------------------------------------------------------
-  .video-breadcrumbs {
-    margin-bottom: 20px;
-
-    &__list {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: var(--wp--preset--font-size--sm, 13px);
-      line-height: 1.4;
-      color: var(--muted);
-    }
-
-    &__item {
-      display: inline-flex;
-      align-items: center;
-
-      &--current {
-        font-weight: 600;
-        color: var(--ink);
-        max-width: 45ch;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        @include mobile {
-          max-width: 100%;
-          white-space: normal;
-        }
-      }
-    }
-
-    &__link {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.15s var(--ease);
-
-      &:hover,
-      &:focus-visible {
-        color: var(--indigo);
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-    }
-
-    &__separator {
-      display: inline-flex;
-      align-items: center;
-      color: var(--line-strong);
-      user-select: none;
-
-      .icon {
-        width: 12px;
-        height: 12px;
-        opacity: 0.85;
-      }
-    }
-
-    // RankMath Breadcrumbs compatibility styling
-    &--rankmath,
-    .rank-math-breadcrumb {
-      font-size: var(--wp--preset--font-size--sm, 13px);
-      line-height: 1.4;
-      color: var(--muted);
-      margin-bottom: 20px;
-
-      p {
-        margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px;
-      }
-
-      a {
-        color: var(--muted);
-        text-decoration: none;
-        transition: color 0.15s var(--ease);
-
-        &:hover,
-        &:focus-visible {
-          color: var(--indigo);
-          text-decoration: underline;
-          text-underline-offset: 3px;
-        }
-      }
-
-      .separator {
-        color: var(--line-strong);
-        display: inline-block;
-        padding-inline: 2px;
-      }
-
-      .last {
-        font-weight: 600;
-        color: var(--ink);
-      }
-    }
-  }
-
-  // ------------------------------------------------------------------------
-  // 2. Video Hero Header (Clean Editorial Hierarchy)
+  // 1. Video Hero Header (Clean Editorial Hierarchy)
   // ------------------------------------------------------------------------
   .video-hero-header {
     margin-bottom: 20px;
@@ -151,7 +45,7 @@
   }
 
   // ------------------------------------------------------------------------
-  // 3. Structured Technical Metadata Bar (Right-Aligned Tags, No Divider Dot)
+  // 2. Structured Technical Metadata Bar
   // ------------------------------------------------------------------------
   .video-meta-bar {
     display: flex;
@@ -195,62 +89,10 @@
         stroke: var(--muted);
       }
     }
-
-    // Tags aligned to the right
-    &__tags {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 6px;
-      margin-left: auto;
-
-      @include tablet {
-        margin-left: 0;
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      @include mobile {
-        overflow-x: auto;
-        padding-bottom: 2px;
-        scrollbar-width: none;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
-    }
-
-    .video-meta-tag {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--body);
-      background: var(--surface-alt);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm, 2px);
-      padding: 3px 9px;
-      text-decoration: none;
-      transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
-      white-space: nowrap;
-
-      &__prefix {
-        color: var(--accent-cyan);
-        margin-right: 2px;
-        font-weight: 600;
-      }
-
-      &:hover,
-      &:focus-visible {
-        background: var(--surface-hover);
-        color: var(--indigo);
-        border-color: var(--indigo);
-      }
-    }
   }
 
   // ------------------------------------------------------------------------
-  // 4. Video Hero Stage & Popover Lightbox Container
+  // 3. Video Hero Stage & Popover Lightbox Container
   // ------------------------------------------------------------------------
   .video-hero-stage {
     margin-bottom: 24px;
@@ -350,7 +192,7 @@
   }
 
   // ------------------------------------------------------------------------
-  // 5. Unified Details Card (Description + Timeline in One Box, No Gap)
+  // 4. Unified Details Card (Description + Timeline in One Box, No Gap)
   // ------------------------------------------------------------------------
   .video-details-card {
     background: var(--white);
@@ -438,7 +280,7 @@
   }
 
   // ------------------------------------------------------------------------
-  // 6. Core Video Description / Post Content Typography
+  // 5. Core Video Description / Post Content Typography
   // ------------------------------------------------------------------------
   .video-description,
   .wp-block-post-content {
@@ -491,21 +333,21 @@
       }
     }
 
-    pre:not(.wp-block-code), code:not(pre code, .wp-block-code code) {
+    pre, code {
       font-family: var(--font-mono);
       font-size: 0.9em;
       background: var(--surface-alt);
       border-radius: var(--radius-sm, 2px);
     }
 
-    pre:not(.wp-block-code) {
+    pre {
       padding: 16px;
       overflow-x: auto;
       border: 1px solid var(--line);
       margin: 1.4em 0;
     }
 
-    code:not(pre code, .wp-block-code code) {
+    code:not(pre code) {
       padding: 2px 6px;
       border: 1px solid var(--line);
     }
@@ -524,7 +366,7 @@
   }
 
   // ------------------------------------------------------------------------
-  // 7. Retained Related Videos Section (Exact design language preserved)
+  // 6. Retained Related Videos Section (Exact design language preserved)
   // ------------------------------------------------------------------------
   .related-videos-section {
     padding-top: 56px;

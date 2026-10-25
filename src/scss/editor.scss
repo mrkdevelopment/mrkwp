@@ -29,5 +29,8 @@
 @use 'founder/editorial';
 @use 'refinements/readability';
 
-// 6. WordPress Alignments
+// 6. Template Pages
+@use 'pages/single-post';
+
+// 7. WordPress Alignments
 @use 'wordpress/alignments';

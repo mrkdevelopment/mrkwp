@@ -1,0 +1,99 @@
+// ==========================================================================
+// Component: Tags & Taxonomy Badges (Article Tags & WordPress Terms)
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// 1. Standalone / Meta Bar Tag Badges
+.video-meta-tag,
+.article-tag,
+.post-tag-badge {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--body);
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm, 2px);
+  padding: 3px 9px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
+  white-space: nowrap;
+
+  &__prefix {
+    color: var(--accent-cyan);
+    margin-right: 2px;
+    font-weight: 600;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: var(--surface-hover);
+    color: var(--indigo);
+    border-color: var(--indigo);
+  }
+}
+
+// 2. Tag Containers & Lists
+.video-meta-bar__tags,
+.article-tags,
+.video-tags-row,
+.wp-block-post-terms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .wp-block-post-terms__separator {
+    display: none;
+  }
+
+  // Core WordPress post-terms links
+  a:not(.video-meta-tag) {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--surface-alt);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm, 2px);
+    color: var(--body);
+    text-decoration: none;
+    transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--surface-hover);
+      color: var(--indigo);
+      border-color: var(--indigo);
+    }
+  }
+}
+
+// Right alignment modifier when in meta bar
+.video-meta-bar__tags {
+  justify-content: flex-end;
+  margin-left: auto;
+
+  @include tablet {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  @include mobile {
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
