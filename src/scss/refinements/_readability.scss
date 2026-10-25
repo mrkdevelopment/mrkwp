@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
     gap: 13px;
-    max-width: 440px;
+    max-width: 370px;
     padding: 16px 20px;
     background: #e9edf8;
     border: 1px solid #d3dceb;
@@ -247,7 +247,7 @@
 
 .process .eyebrow {
     font-size: 15px;
-    color: var(--cyan)
+    color: var(--wp--preset--color--muted, #637386);
 }
 
 .process-summary {

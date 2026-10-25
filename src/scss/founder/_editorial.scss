@@ -511,7 +511,7 @@ h3 {
 }
 
 .community-invite .eyebrow {
-    color: var(--cyan)
+    color: var(--wp--preset--color--muted, #637386);
 }
 
 .community-invite p:not(.eyebrow) {
@@ -799,7 +799,7 @@ h3 {
 }
 
 .booking-placeholder .eyebrow {
-    color: var(--cyan)
+    color: var(--wp--preset--color--muted, #637386);
 }
 
 .booking-placeholder h3 {

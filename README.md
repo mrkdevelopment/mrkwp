@@ -2,7 +2,7 @@
 
 > Full Site Editing (FSE) block theme for **MRK WP** — founder-led design and engineering, built for performance, editorial clarity, and structured knowledge.
 
-- **Current Version:** `1.0.4`
+- **Current Version:** `1.0.6`
 - **Requires WordPress:** `6.7+`
 - **Requires PHP:** `8.0+`
 - **Author:** Matt Knighton ([https://mrkwp.com/](https://mrkwp.com/))

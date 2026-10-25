@@ -76,11 +76,28 @@ function mrkwp_post_breadcrumbs( bool $echo = true ): string {
 	}
 
 	// Native MRK WP accessible breadcrumbs fallback (identical structure to video-template-tags.php).
-	$home_url     = home_url( '/' );
-	$home_text    = __( 'Home', 'mrkwp' );
-	$blog_page_id = (int) get_option( 'page_for_posts' );
-	$blog_url     = $blog_page_id ? get_permalink( $blog_page_id ) : home_url( '/articles/' );
-	$blog_title   = $blog_page_id ? get_the_title( $blog_page_id ) : __( 'Articles', 'mrkwp' );
+	$home_url  = home_url( '/' );
+	$home_text = __( 'Home', 'mrkwp' );
+	$post_type = $post_id ? get_post_type( $post_id ) : get_post_type();
+
+	if ( 'wp-product' === $post_type ) {
+		$parent_url   = get_post_type_archive_link( 'wp-product' );
+		if ( ! $parent_url ) {
+			$parent_url = home_url( '/wp-products/' );
+		}
+		$parent_title = __( 'Products', 'mrkwp' );
+	} elseif ( 'post' === $post_type || empty( $post_type ) ) {
+		$blog_page_id = (int) get_option( 'page_for_posts' );
+		$parent_url   = $blog_page_id ? get_permalink( $blog_page_id ) : home_url( '/articles/' );
+		$parent_title = $blog_page_id ? get_the_title( $blog_page_id ) : __( 'Articles', 'mrkwp' );
+	} else {
+		$type_obj     = get_post_type_object( $post_type );
+		$parent_url   = get_post_type_archive_link( $post_type );
+		if ( ! $parent_url ) {
+			$parent_url = home_url( '/' . $post_type . '/' );
+		}
+		$parent_title = $type_obj ? $type_obj->labels->name : __( 'Archive', 'mrkwp' );
+	}
 
 	$current_title = $post_id ? get_the_title( $post_id ) : '';
 	if ( mb_strlen( $current_title ) > 42 ) {
@@ -92,8 +109,8 @@ function mrkwp_post_breadcrumbs( bool $echo = true ): string {
 		esc_attr__( 'Breadcrumbs', 'mrkwp' ),
 		esc_url( $home_url ),
 		esc_html( $home_text ),
-		esc_url( $blog_url ),
-		esc_html( $blog_title ),
+		esc_url( $parent_url ),
+		esc_html( $parent_title ),
 		esc_html( $current_title )
 	);
 
@@ -382,6 +399,7 @@ function mrkwp_related_posts( int $post_id = 0, bool $echo = true ): string {
  */
 function mrkwp_register_post_shortcodes(): void {
 	add_shortcode( 'mrkwp_post_breadcrumbs', 'mrkwp_post_breadcrumbs_shortcode' );
+	add_shortcode( 'mrkwp_product_breadcrumbs', 'mrkwp_post_breadcrumbs_shortcode' );
 	add_shortcode( 'mrkwp_post_meta_bar', 'mrkwp_post_meta_bar_shortcode' );
 	add_shortcode( 'mrkwp_post_toc', 'mrkwp_post_toc_shortcode' );
 	add_shortcode( 'mrkwp_related_posts', 'mrkwp_related_posts_shortcode' );
@@ -419,3 +437,58 @@ function mrkwp_post_toc_shortcode(): string {
 function mrkwp_related_posts_shortcode(): string {
 	return mrkwp_related_posts( 0, false );
 }
+
+/**
+ * Filter Rank Math breadcrumbs for wp-product to ensure the crumb resolves to "Products".
+ *
+ * @param array $crumbs Breadcrumb items.
+ * @return array Filtered breadcrumb items.
+ */
+function mrkwp_filter_rank_math_product_breadcrumbs( array $crumbs ): array {
+	if ( is_singular( 'wp-product' ) ) {
+		$archive_url = get_post_type_archive_link( 'wp-product' );
+		if ( ! $archive_url ) {
+			$archive_url = home_url( '/wp-products/' );
+		}
+		$archive_title = __( 'Products', 'mrkwp' );
+
+		if ( count( $crumbs ) === 2 ) {
+			// [0 => Home, 1 => Product Title] -> insert Products in the middle.
+			array_splice( $crumbs, 1, 0, array( array( $archive_title, $archive_url ) ) );
+		} elseif ( count( $crumbs ) >= 3 ) {
+			// [0 => Home, 1 => Archive/Tax, 2 => Product Title] -> ensure label is "Products" and url is archive.
+			$crumbs[1][0] = $archive_title;
+			$crumbs[1][1] = $archive_url;
+		}
+	}
+
+	return $crumbs;
+}
+add_filter( 'rank_math/frontend/breadcrumb/items', 'mrkwp_filter_rank_math_product_breadcrumbs', 10, 1 );
+
+/**
+ * Filter Yoast SEO breadcrumbs for wp-product to ensure the crumb resolves to "Products".
+ *
+ * @param array $links Breadcrumb links.
+ * @return array Filtered breadcrumb links.
+ */
+function mrkwp_filter_yoast_product_breadcrumbs( array $links ): array {
+	if ( is_singular( 'wp-product' ) ) {
+		$archive_url = get_post_type_archive_link( 'wp-product' );
+		if ( ! $archive_url ) {
+			$archive_url = home_url( '/wp-products/' );
+		}
+		$archive_title = __( 'Products', 'mrkwp' );
+
+		if ( count( $links ) === 2 ) {
+			array_splice( $links, 1, 0, array( array( 'text' => $archive_title, 'url' => $archive_url ) ) );
+		} elseif ( count( $links ) >= 3 ) {
+			$links[1]['text'] = $archive_title;
+			$links[1]['url']  = $archive_url;
+		}
+	}
+
+	return $links;
+}
+add_filter( 'wpseo_breadcrumb_links', 'mrkwp_filter_yoast_product_breadcrumbs', 10, 1 );
+

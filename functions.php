@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MRKWP_VERSION', '1.0.5' );
+define( 'MRKWP_VERSION', '1.0.6' );
 define( 'MRKWP_THEME_DIR', get_template_directory() );
 define( 'MRKWP_THEME_URI', get_template_directory_uri() );
 
@@ -183,9 +183,6 @@ function mrkwp_scripts() {
 	wp_enqueue_style( 'mrkwp-theme', MRKWP_THEME_URI . '/dist/theme.css', array( 'mrkwp-fonts' ), $theme_css_ver );
 
 	// Scripts.
-	wp_enqueue_script( 'mrkwp-navigation', MRKWP_THEME_URI . '/js/navigation.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
-
-	wp_enqueue_script( 'mrkwp-video-lightbox', MRKWP_THEME_URI . '/js/video-lightbox.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
 
 	wp_enqueue_script( 'mrkwp-motion', MRKWP_THEME_URI . '/js/motion.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
 	wp_localize_script(
@@ -214,18 +211,8 @@ function mrkwp_scripts() {
 		wp_enqueue_script( 'mrkwp-app', MRKWP_THEME_URI . '/js/app.js', array( 'mrkwp-navigation' ), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
 	}
 
-	// Ensure video card block stylesheet is enqueued on video singles and archives.
-	if ( is_singular( 'mrkwp_video' ) || is_post_type_archive( 'mrkwp_video' ) || is_page( 'resources' ) ) {
-		wp_enqueue_style( 'mrkwp-video-card-style' );
-	}
-
-	// Ensure post card block stylesheet is enqueued on post singles, archives, and resources page.
-	if ( is_singular( 'post' ) || is_home() || is_archive() || is_page( 'resources' ) ) {
-		wp_enqueue_style( 'mrkwp-post-card-style' );
-	}
-
 	// Enqueue dynamic Table of Contents script on single blog articles.
-	if ( is_singular( 'post' ) ) {
+	if ( is_singular( 'post' ) || is_singular( 'wp-product' ) ) {
 		wp_enqueue_script( 'mrkwp-toc', MRKWP_THEME_URI . '/js/toc.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );
 	}
 
