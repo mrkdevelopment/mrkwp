@@ -455,3 +455,9 @@ function mrkwp_filter_pagination_arrows( string $block_content, array $block ): 
 }
 add_filter( 'render_block', 'mrkwp_filter_pagination_arrows', 10, 2 );
 
+/**
+ * Load video template tags and layout helpers.
+ */
+require_once MRKWP_THEME_DIR . '/inc/video-template-tags.php';
+
+

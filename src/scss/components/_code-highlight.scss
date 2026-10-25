@@ -1,0 +1,121 @@
+// ==========================================================================
+// Components: Code Highlighting (WordPress core/code block & pre/code tags)
+// ==========================================================================
+
+// Preformatted Code Block (<pre class="wp-block-code"><code>...</code></pre>)
+pre.wp-block-code,
+.wp-block-code {
+  display: block;
+  box-sizing: border-box;
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--night, #051322) !important;
+  color: var(--cyan, #00d4ff) !important;
+  font-family: var(--font-mono, var(--wp--preset--font-family--monospace, ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace)) !important;
+  font-size: var(--wp--preset--font-size--sm, 0.875rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: normal;
+  tab-size: 2;
+  -moz-tab-size: 2;
+  border: 1px solid var(--dark-line, #20394f);
+  border-radius: var(--radius-md, 4px);
+  box-shadow: 0 4px 20px rgba(5, 19, 34, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  word-wrap: normal;
+  text-align: left;
+  position: relative;
+
+  // Custom dark blue scrollbars
+  scrollbar-width: thin;
+  scrollbar-color: var(--dark-line, #20394f) var(--night, #051322);
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--night, #051322);
+    border-radius: var(--radius-sm, 2px);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--dark-line, #20394f);
+    border-radius: var(--radius-sm, 2px);
+
+    &:hover {
+      background: var(--cyan, #00d4ff);
+    }
+  }
+
+  // Inner code tag reset and typography inheritance
+  code {
+    display: inline-block;
+    min-width: 100%;
+    margin: 0;
+    padding: 0 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    color: var(--cyan, #00d4ff) !important;
+    font-family: inherit !important;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    white-space: inherit;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+
+  // Editor editable inputs fidelity
+  textarea,
+  textarea.block-editor-plain-text {
+    color: var(--cyan, #00d4ff) !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    background: transparent !important;
+  }
+
+  // Selection styling
+  &::selection,
+  & *::selection {
+    background-color: rgba(0, 212, 255, 0.25);
+    color: #ffffff;
+  }
+}
+
+// Ensure post-content and editorial containers don't override code block styling
+.wp-block-post-content pre.wp-block-code,
+.entry-content pre.wp-block-code,
+.video-description pre.wp-block-code,
+.video-editorial-content pre.wp-block-code,
+.video-panel-content pre.wp-block-code {
+  background-color: var(--night, #051322) !important;
+  color: var(--cyan, #00d4ff) !important;
+  border-color: var(--dark-line, #20394f) !important;
+
+  code {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: var(--cyan, #00d4ff) !important;
+  }
+}
+
+// Inline code elements outside pre blocks
+code:not(pre code, .wp-block-code code) {
+  display: inline;
+  padding: 0.15em 0.4em;
+  font-family: var(--font-mono, var(--wp--preset--font-family--monospace, ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace));
+  font-size: 0.875em;
+  color: var(--cyan, #00d4ff);
+  background-color: var(--night, #051322);
+  border: 1px solid var(--dark-line, #20394f);
+  border-radius: var(--radius-sm, 2px);
+  vertical-align: baseline;
+  word-break: break-word;
+}

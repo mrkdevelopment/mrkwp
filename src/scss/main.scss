@@ -23,6 +23,7 @@
 @use 'components/forms';
 @use 'components/carousels';
 @use 'components/pagination';
+@use 'components/code-highlight';
 
 // 4. Sections (Composite Patterns)
 @use 'sections/page_header';
@@ -44,5 +45,9 @@
 // 7. Review Refinements (Readability, Bento Grid, Process, Polish)
 @use 'refinements/readability';
 
-// 8. WordPress Compatibility
+// 8. Template Pages
+@use 'pages/single-video';
+
+// 9. WordPress Compatibility
 @use 'wordpress/alignments';
+

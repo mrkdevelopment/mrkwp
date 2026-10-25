@@ -589,13 +589,13 @@ dialog {
       margin-bottom: 0.5em;
     }
 
-    pre, code {
+    pre:not(.wp-block-code), code:not(pre code, .wp-block-code code) {
       background: var(--surface-alt);
       border-radius: 2px;
       font-size: 0.9em;
     }
 
-    pre {
+    pre:not(.wp-block-code) {
       padding: 16px;
       overflow-x: auto;
     }

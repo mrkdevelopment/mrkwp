@@ -4,23 +4,39 @@
 <main class="wp-block-group site-main video-single-main">
 	<!-- wp:group {"tagName":"article","className":"video-single-narrow-wrap"} -->
 	<article class="wp-block-group video-single-narrow-wrap">
-		<!-- wp:buttons {"className":"video-back-row"} -->
-		<div class="wp-block-buttons video-back-row">
-			<!-- wp:button {"className":"button-small is-style-secondary video-back-button"} -->
-			<div class="wp-block-button button-small is-style-secondary video-back-button"><a class="wp-block-button__link wp-element-button" href="/videos/"><span aria-hidden="true">←</span> Back to all videos</a></div>
-			<!-- /wp:button -->
+		<!-- wp:shortcode -->
+		[mrkwp_video_breadcrumbs]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:group {"tagName":"header","className":"video-hero-header"} -->
+		<header class="wp-block-group video-hero-header">
+			<!-- wp:post-title {"level":1,"className":"video-hero-header__title"} /-->
+
+			<!-- wp:shortcode -->
+			[mrkwp_video_meta_bar]
+			<!-- /wp:shortcode -->
+		</header>
+		<!-- /wp:group -->
+
+		<!-- wp:group {"tagName":"div","className":"video-hero-stage"} -->
+		<div class="wp-block-group video-hero-stage">
+			<!-- wp:mrkwp/video-player /-->
 		</div>
-		<!-- /wp:buttons -->
+		<!-- /wp:group -->
 
-		<!-- wp:mrkwp/video-player /-->
+		<!-- wp:group {"tagName":"section","className":"video-details-card"} -->
+		<section class="wp-block-group video-details-card">
+			<!-- wp:heading {"level":2,"className":"video-description-title"} -->
+			<h2 class="wp-block-heading video-description-title">Video Description</h2>
+			<!-- /wp:heading -->
 
-		<!-- wp:post-date {"className":"video-date"} /-->
+			<!-- wp:post-content {"className":"video-description","layout":{"type":"constrained"}} /-->
 
-		<!-- wp:post-title {"level":1,"className":"video-title"} /-->
-
-		<!-- wp:post-terms {"term":"post_tag","className":"video-tags-row"} /-->
-
-		<!-- wp:post-content {"className":"video-description","layout":{"type":"constrained"}} /-->
+			<!-- wp:shortcode -->
+			[mrkwp_video_chapters]
+			<!-- /wp:shortcode -->
+		</section>
+		<!-- /wp:group -->
 
 		<!-- wp:mrkwp/youtube-channel-cta {"variation":"horizontal"} /-->
 	</article>

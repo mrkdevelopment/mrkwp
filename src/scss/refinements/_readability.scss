@@ -3,46 +3,11 @@
 // ==========================================================================
 
 /* Readability refinements from the annotated design review. */
-.eyebrow,
-.founder-hero .eyebrow {
-    font-size: 15px;
-    line-height: 1.6;
-    letter-spacing: .06em;
-    color: #006c86
-}
-
-.eyebrow-line {
-    display: none
-}
 
 .editorial-index {
     font-size: 16px;
     color: var(--body);
     margin-top: 28px
-}
-
-.button,
-.button-small,
-.text-link {
-    font-size: 16px;
-    min-height: 52px
-}
-
-.button {
-    background: #554cf0
-}
-
-.button:hover {
-    background: #463cd7
-}
-
-.button-light {
-    background: white;
-    color: var(--ink)
-}
-
-.button-light:hover {
-    background: #e7edff
 }
 
 .founder-hero .hero-actions {
@@ -57,17 +22,6 @@
     justify-content: space-between;
     padding: 18px 23px;
     min-height: 60px
-}
-
-.button-secondary {
-    background: white;
-    color: var(--ink);
-    border: 1px solid #aebcd0
-}
-
-.button-secondary:hover {
-    background: #e9edff;
-    color: var(--ink)
 }
 
 .founder-hero .hero-footnote {
