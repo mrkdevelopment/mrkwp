@@ -219,6 +219,11 @@ function mrkwp_scripts() {
 		wp_enqueue_style( 'mrkwp-video-card-style' );
 	}
 
+	// Ensure post card block stylesheet is enqueued on post singles, archives, and resources page.
+	if ( is_singular( 'post' ) || is_home() || is_archive() || is_page( 'resources' ) ) {
+		wp_enqueue_style( 'mrkwp-post-card-style' );
+	}
+
 	// Enqueue dynamic Table of Contents script on single blog articles.
 	if ( is_singular( 'post' ) ) {
 		wp_enqueue_script( 'mrkwp-toc', MRKWP_THEME_URI . '/js/toc.js', array(), MRKWP_VERSION, array( 'strategy' => 'defer' ) );

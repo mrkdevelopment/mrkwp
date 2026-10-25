@@ -40,8 +40,6 @@
 		<!-- wp:html -->
 		<a href="/resources/#video"><b><?php esc_html_e( 'Video', 'mrkwp' ); ?></b><span><?php esc_html_e( 'Watch practical walkthroughs', 'mrkwp' ); ?></span></a>
 		<a href="/resources/#articles"><b><?php esc_html_e( 'Articles', 'mrkwp' ); ?></b><span><?php esc_html_e( 'Ideas you can put to work', 'mrkwp' ); ?></span></a>
-		<a href="/resources/#client-stories"><b><?php esc_html_e( 'Client Stories', 'mrkwp' ); ?></b><span><?php esc_html_e( 'See the work behind the websites', 'mrkwp' ); ?></span></a>
-		<a href="/resources/#skills"><b><?php esc_html_e( 'Skills and Snippets', 'mrkwp' ); ?></b><span><?php esc_html_e( 'Small steps. Useful shortcuts.', 'mrkwp' ); ?></span></a>
 		<!-- /wp:html -->
 	</div>
 	<!-- /wp:group -->

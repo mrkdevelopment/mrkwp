@@ -5,7 +5,7 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-// 1. Standalone / Meta Bar Tag Badges
+// 1. Standalone / Meta Bar Tag Badges (Static / Non-clickable by default)
 .video-meta-tag,
 .article-tag,
 .post-tag-badge,
@@ -20,14 +20,26 @@
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
   white-space: nowrap;
+  cursor: default;
+  user-select: none;
+  pointer-events: none; // Completely non-clickable
 
   &__prefix {
     color: var(--accent-cyan);
     margin-right: 2px;
     font-weight: 600;
   }
+}
+
+// Interactive hover only if rendered as an explicit link
+a.video-meta-tag,
+a.article-tag,
+a.post-tag-badge,
+a.post-meta-tag {
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
 
   &:hover,
   &:focus-visible {

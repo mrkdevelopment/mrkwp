@@ -31,6 +31,7 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   document.querySelectorAll('.resource-collection').forEach(section=>{
     const track=section.querySelector('.resource-carousel'),prev=section.querySelector('.carousel-prev'),next=section.querySelector('.carousel-next');
+    if (!track || !prev || !next) return;
     const update=()=>{prev.disabled=track.scrollLeft<2;next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-2;};
     prev.addEventListener('click',()=>track.scrollBy({left:-track.clientWidth*.86,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'}));
     next.addEventListener('click',()=>track.scrollBy({left:track.clientWidth*.86,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'}));

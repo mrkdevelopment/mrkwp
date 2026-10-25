@@ -134,35 +134,14 @@ function mrkwp_video_breadcrumbs( bool $echo = true ): string {
 
 		$current_title = $post_id ? get_the_title( $post_id ) : __( 'Video', 'mrkwp' );
 
-		// Check for primary category.
-		$category_item = '';
-		$position      = 3;
-		if ( $post_id ) {
-			$categories = get_the_category( $post_id );
-			if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
-				$primary_cat   = $categories[0];
-				$category_link = get_category_link( $primary_cat->term_id );
-				$category_name = $primary_cat->name;
-
-				$category_item = sprintf(
-					'<li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%s" itemprop="item"><span itemprop="name">%s</span></a><meta itemprop="position" content="3" /></li>',
-					esc_url( $category_link ),
-					esc_html( $category_name )
-				);
-				$position = 4;
-			}
-		}
-
 		$breadcrumbs_html = sprintf(
-			'<nav class="video-breadcrumbs" aria-label="%1$s"><ol class="video-breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList"><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%2$s" itemprop="item"><span itemprop="name">%3$s</span></a><meta itemprop="position" content="1" /></li><li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%4$s" itemprop="item"><span itemprop="name">%5$s</span></a><meta itemprop="position" content="2" /></li>%6$s<li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item video-breadcrumbs__item--current" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span class="video-breadcrumbs__current" itemprop="name">%7$s</span><meta itemprop="position" content="%8$d" /></li></ol></nav>',
+			'<nav class="video-breadcrumbs" aria-label="%1$s"><ol class="video-breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList"><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%2$s" itemprop="item"><span itemprop="name">%3$s</span></a><meta itemprop="position" content="1" /></li><li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%4$s" itemprop="item"><span itemprop="name">%5$s</span></a><meta itemprop="position" content="2" /></li><li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item video-breadcrumbs__item--current" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span class="video-breadcrumbs__current" itemprop="name">%6$s</span><meta itemprop="position" content="3" /></li></ol></nav>',
 			esc_attr__( 'Breadcrumbs', 'mrkwp' ),
 			esc_url( $home_url ),
 			esc_html( $home_text ),
 			esc_url( $video_archive_url ),
 			esc_html( $video_archive_text ),
-			$category_item,
-			esc_html( $current_title ),
-			$position
+			esc_html( $current_title )
 		);
 	}
 
@@ -203,10 +182,8 @@ function mrkwp_video_meta_bar( int $post_id = 0, bool $echo = true ): string {
 	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 		$tags_html .= '<div class="video-meta-bar__tags" aria-label="' . esc_attr__( 'Video Topics', 'mrkwp' ) . '">';
 		foreach ( array_slice( $terms, 0, 4 ) as $term ) {
-			$term_link  = get_term_link( $term );
 			$tags_html .= sprintf(
-				'<a href="%s" class="video-meta-tag"><span class="video-meta-tag__prefix">#</span>%s</a>',
-				esc_url( is_wp_error( $term_link ) ? '#' : $term_link ),
+				'<span class="video-meta-tag"><span class="video-meta-tag__prefix">#</span>%s</span>',
 				esc_html( $term->name )
 			);
 		}

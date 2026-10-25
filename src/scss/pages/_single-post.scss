@@ -18,18 +18,18 @@
     box-sizing: border-box;
     padding-inline: 24px;
     padding-top: 40px;
-    padding-bottom: 64px;
+    padding-bottom: 48px;
 
     @include tablet {
       padding-inline: 20px;
       padding-top: 28px;
-      padding-bottom: 48px;
+      padding-bottom: 36px;
     }
 
     @include mobile {
       padding-inline: 16px;
       padding-top: 20px;
-      padding-bottom: 36px;
+      padding-bottom: 28px;
     }
   }
 
@@ -315,6 +315,47 @@
         font-weight: 600;
         border-left-color: var(--indigo);
         background: var(--indigo-subtle);
+      }
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 5. Related Posts Section (Exact design language matching Related Videos)
+  // ------------------------------------------------------------------------
+  .single-post .related-posts-section {
+    padding-top: 56px;
+    border-top: 1px solid var(--line);
+    margin-top: 0;
+    margin-bottom: 64px;
+
+    .section-heading {
+      margin-bottom: 36px;
+
+      h2 {
+        font-size: clamp(32px, 3.5vw, 42px);
+        color: var(--ink);
+      }
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      @include mobile {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .mrkwp-post-card {
+        height: 100%;
+        max-width: 100%;
+        margin: 0;
       }
     }
   }

@@ -87,35 +87,14 @@ function mrkwp_post_breadcrumbs( bool $echo = true ): string {
 		$current_title = mb_substr( $current_title, 0, 40 ) . '…';
 	}
 
-	$category_item = '';
-	$position      = 3;
-
-	if ( $post_id ) {
-		$categories = get_the_category( $post_id );
-		if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
-			$primary_cat   = $categories[0];
-			$category_link = get_category_link( $primary_cat->term_id );
-			$category_name = $primary_cat->name;
-
-			$category_item = sprintf(
-				'<li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%s" itemprop="item"><span itemprop="name">%s</span></a><meta itemprop="position" content="3" /></li>',
-				esc_url( $category_link ),
-				esc_html( $category_name )
-			);
-			$position = 4;
-		}
-	}
-
 	$breadcrumbs_html = sprintf(
-		'<nav class="video-breadcrumbs breadcrumbs post-breadcrumbs" aria-label="%1$s"><ol class="video-breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList"><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%2$s" itemprop="item"><span itemprop="name">%3$s</span></a><meta itemprop="position" content="1" /></li><li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%4$s" itemprop="item"><span itemprop="name">%5$s</span></a><meta itemprop="position" content="2" /></li>%6$s<li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item video-breadcrumbs__item--current" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span class="video-breadcrumbs__current" itemprop="name">%7$s</span><meta itemprop="position" content="%8$d" /></li></ol></nav>',
+		'<nav class="video-breadcrumbs breadcrumbs post-breadcrumbs" aria-label="%1$s"><ol class="video-breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList"><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%2$s" itemprop="item"><span itemprop="name">%3$s</span></a><meta itemprop="position" content="1" /></li><li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="video-breadcrumbs__link" href="%4$s" itemprop="item"><span itemprop="name">%5$s</span></a><meta itemprop="position" content="2" /></li><li class="video-breadcrumbs__separator" aria-hidden="true"><svg class="icon icon-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li><li class="video-breadcrumbs__item video-breadcrumbs__item--current" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span class="video-breadcrumbs__current" itemprop="name">%6$s</span><meta itemprop="position" content="3" /></li></ol></nav>',
 		esc_attr__( 'Breadcrumbs', 'mrkwp' ),
 		esc_url( $home_url ),
 		esc_html( $home_text ),
 		esc_url( $blog_url ),
 		esc_html( $blog_title ),
-		$category_item,
-		esc_html( $current_title ),
-		$position
+		esc_html( $current_title )
 	);
 
 	if ( $echo ) {
@@ -155,10 +134,8 @@ function mrkwp_post_meta_bar( int $post_id = 0, bool $echo = true ): string {
 	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 		$tags_html .= '<div class="video-meta-bar__tags post-meta-bar__tags" aria-label="' . esc_attr__( 'Article Topics', 'mrkwp' ) . '">';
 		foreach ( array_slice( $terms, 0, 4 ) as $term ) {
-			$term_link  = get_term_link( $term );
 			$tags_html .= sprintf(
-				'<a href="%s" class="video-meta-tag post-meta-tag"><span class="video-meta-tag__prefix">#</span>%s</a>',
-				esc_url( is_wp_error( $term_link ) ? '#' : $term_link ),
+				'<span class="video-meta-tag post-meta-tag"><span class="video-meta-tag__prefix">#</span>%s</span>',
 				esc_html( $term->name )
 			);
 		}
@@ -222,12 +199,208 @@ function mrkwp_post_toc_widget( bool $echo = true ): string {
 }
 
 /**
+ * Output or return the Related Posts section markup for single blog posts.
+ * Matches the design language and grid structure of the Related Videos section.
+ *
+ * @param int  $post_id Optional. Post ID. Defaults to current post.
+ * @param bool $echo    Whether to echo or return HTML. Default true.
+ * @return string HTML output.
+ */
+function mrkwp_related_posts( int $post_id = 0, bool $echo = true ): string {
+	$current_id = $post_id ? $post_id : get_the_ID();
+	if ( ! $current_id ) {
+		return '';
+	}
+
+	$category_ids = wp_get_post_categories( $current_id );
+	if ( is_wp_error( $category_ids ) ) {
+		$category_ids = array();
+	}
+
+	$tag_ids = wp_get_post_tags( $current_id, array( 'fields' => 'ids' ) );
+	if ( is_wp_error( $tag_ids ) ) {
+		$tag_ids = array();
+	}
+
+	$related_ids = array();
+
+	// 1. Primary query: Posts sharing category OR post_tag, ordered by date DESC.
+	if ( ! empty( $category_ids ) || ! empty( $tag_ids ) ) {
+		$tax_query = array();
+
+		if ( ! empty( $category_ids ) ) {
+			$tax_query[] = array(
+				'taxonomy' => 'category',
+				'field'    => 'term_id',
+				'terms'    => $category_ids,
+			);
+		}
+
+		if ( ! empty( $tag_ids ) ) {
+			$tax_query[] = array(
+				'taxonomy' => 'post_tag',
+				'field'    => 'term_id',
+				'terms'    => $tag_ids,
+			);
+		}
+
+		if ( count( $tax_query ) > 1 ) {
+			$tax_query['relation'] = 'OR';
+		}
+
+		$rel_query = new WP_Query(
+			array(
+				'post_type'      => 'post',
+				'post_status'    => 'publish',
+				'posts_per_page' => 3,
+				'post__not_in'   => array( $current_id ),
+				'tax_query'      => $tax_query, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+			)
+		);
+
+		if ( ! empty( $rel_query->posts ) ) {
+			$related_ids = array_map( 'intval', $rel_query->posts );
+		}
+	}
+
+	// 2. Backfill query: Most recent published posts if fewer than 3 were found.
+	$needed = 3 - count( $related_ids );
+	if ( $needed > 0 ) {
+		$exclude        = array_merge( array( $current_id ), $related_ids );
+		$backfill_query = new WP_Query(
+			array(
+				'post_type'      => 'post',
+				'post_status'    => 'publish',
+				'posts_per_page' => $needed,
+				'post__not_in'   => $exclude,
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+			)
+		);
+
+		if ( ! empty( $backfill_query->posts ) ) {
+			$related_ids = array_merge( $related_ids, array_map( 'intval', $backfill_query->posts ) );
+		}
+	}
+
+	if ( empty( $related_ids ) ) {
+		return '';
+	}
+
+	$related_query = new WP_Query(
+		array(
+			'post_type'      => 'post',
+			'post_status'    => 'publish',
+			'post__in'       => $related_ids,
+			'orderby'        => 'post__in',
+			'posts_per_page' => count( $related_ids ),
+			'no_found_rows'  => true,
+		)
+	);
+
+	if ( ! $related_query->have_posts() ) {
+		return '';
+	}
+
+	ob_start();
+	?>
+	<section class="wrap section related-posts-section" aria-label="<?php esc_attr_e( 'Related Posts', 'mrkwp' ); ?>">
+		<div class="section-heading">
+			<div>
+				<p class="eyebrow"><?php esc_html_e( 'More Articles', 'mrkwp' ); ?></p>
+				<h2><?php esc_html_e( 'Related Posts', 'mrkwp' ); ?></h2>
+			</div>
+			<p><?php esc_html_e( 'Continue reading tutorials, guides, and engineering insights related to this article.', 'mrkwp' ); ?></p>
+		</div>
+
+		<div class="content-grid posts-grid">
+			<?php
+			while ( $related_query->have_posts() ) :
+				$related_query->the_post();
+				if ( class_exists( '\MrkWp\Core\Blocks\PostCardBlock' ) ) {
+					echo \MrkWp\Core\Blocks\PostCardBlock::render_card( (int) get_the_ID() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Pre-escaped post card component.
+				} else {
+					$fallback_id    = (int) get_the_ID();
+					$fallback_title = get_the_title( $fallback_id );
+					$fallback_link  = get_permalink( $fallback_id );
+					$fallback_thumb = has_post_thumbnail( $fallback_id ) ? get_the_post_thumbnail_url( $fallback_id, 'large' ) : '';
+					$fallback_cats  = get_the_category( $fallback_id );
+					$fallback_cat   = ! empty( $fallback_cats ) && ! is_wp_error( $fallback_cats ) ? strtoupper( $fallback_cats[0]->name ) : 'WORDPRESS';
+					$fallback_diff  = human_time_diff( (int) get_the_time( 'U', $fallback_id ), (int) current_time( 'timestamp' ) );
+					?>
+					<article class="mrkwp-post-card">
+						<a href="<?php echo esc_url( $fallback_link ); ?>" class="mrkwp-post-card__thumb" aria-label="<?php echo esc_attr( $fallback_title ); ?>">
+							<?php if ( ! empty( $fallback_thumb ) ) : ?>
+								<img class="mrkwp-post-card__img" src="<?php echo esc_url( $fallback_thumb ); ?>" alt="<?php echo esc_attr( $fallback_title ); ?>" loading="lazy" decoding="async">
+							<?php else : ?>
+								<div class="mrkwp-post-card__thumb-fallback" aria-hidden="true"><?php echo esc_html( mb_substr( $fallback_title, 0, 2 ) ); ?></div>
+							<?php endif; ?>
+						</a>
+						<div class="mrkwp-post-card__body">
+							<span class="mrkwp-post-card__chip"><?php echo esc_html( $fallback_cat ); ?></span>
+							<h3 class="mrkwp-post-card__title">
+								<a href="<?php echo esc_url( $fallback_link ); ?>"><?php echo esc_html( $fallback_title ); ?></a>
+							</h3>
+							<hr class="mrkwp-post-card__divider" aria-hidden="true">
+							<div class="mrkwp-post-card__footer">
+								<a href="<?php echo esc_url( $fallback_link ); ?>" class="mrkwp-post-card__action">
+									<?php esc_html_e( 'Read article', 'mrkwp' ); ?>
+									<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+								</a>
+								<span class="mrkwp-post-card__date"><?php echo esc_html( sprintf( /* translators: %s: relative time */ __( 'Posted %s ago', 'mrkwp' ), $fallback_diff ) ); ?></span>
+							</div>
+						</div>
+					</article>
+					<?php
+				}
+			endwhile;
+			wp_reset_postdata();
+			?>
+		</div>
+	</section>
+	<?php
+	$output = (string) ob_get_clean();
+
+	// Clean whitespace between HTML tags to prevent wpautop from injecting stray <p> or <br> tags.
+	$output = preg_replace( '/>\s+</', '><', $output );
+
+	if ( $echo ) {
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	return $output;
+}
+
+/**
  * Register shortcodes for embedding inside Gutenberg templates or patterns.
  */
 function mrkwp_register_post_shortcodes(): void {
 	add_shortcode( 'mrkwp_post_breadcrumbs', 'mrkwp_post_breadcrumbs_shortcode' );
 	add_shortcode( 'mrkwp_post_meta_bar', 'mrkwp_post_meta_bar_shortcode' );
 	add_shortcode( 'mrkwp_post_toc', 'mrkwp_post_toc_shortcode' );
+	add_shortcode( 'mrkwp_related_posts', 'mrkwp_related_posts_shortcode' );
+
+	if ( function_exists( 'register_block_type' ) && class_exists( 'WP_Block_Type_Registry' ) ) {
+		if ( ! \WP_Block_Type_Registry::get_instance()->is_registered( 'mrkwp/related-posts' ) ) {
+			register_block_type(
+				'mrkwp/related-posts',
+				array(
+					'title'           => __( 'Related Posts', 'mrkwp' ),
+					'category'        => 'theme',
+					'render_callback' => 'mrkwp_related_posts_shortcode',
+					'supports'        => array(
+						'html' => false,
+					),
+				)
+			);
+		}
+	}
 }
 add_action( 'init', 'mrkwp_register_post_shortcodes' );
 
@@ -241,4 +414,8 @@ function mrkwp_post_meta_bar_shortcode(): string {
 
 function mrkwp_post_toc_shortcode(): string {
 	return mrkwp_post_toc_widget( false );
+}
+
+function mrkwp_related_posts_shortcode(): string {
+	return mrkwp_related_posts( 0, false );
 }
