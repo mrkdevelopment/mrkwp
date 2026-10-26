@@ -179,11 +179,18 @@ function mrkwp_post_meta_bar( int $post_id = 0, bool $echo = true ): string {
  * Output or return the Table of Contents container widget.
  * Self-populated dynamically via JavaScript.
  *
- * @param bool $echo Whether to echo or return. Default true.
+ * @param bool   $echo     Whether to echo or return. Default true.
+ * @param string $headings Custom heading selector, e.g. 'h2' or 'h2, h3'. Optional.
  * @return string HTML output.
  */
-function mrkwp_post_toc_widget( bool $echo = true ): string {
-	$markup = '<nav id="post-toc" class="post-toc-widget" aria-label="' . esc_attr__( 'Table of Contents', 'mrkwp' ) . '">
+function mrkwp_post_toc_widget( bool $echo = true, string $headings = '' ): string {
+	if ( empty( $headings ) ) {
+		$post_id   = get_the_ID();
+		$post_type = $post_id ? get_post_type( $post_id ) : get_post_type();
+		$headings  = ( 'wp-product' === $post_type || is_singular( 'wp-product' ) ) ? 'h2' : 'h2, h3';
+	}
+
+	$markup = '<nav id="post-toc" class="post-toc-widget" data-headings="' . esc_attr( $headings ) . '" aria-label="' . esc_attr__( 'Table of Contents', 'mrkwp' ) . '">
 		<div class="post-toc-header">
 			<button type="button" class="post-toc-toggle" aria-expanded="false" aria-controls="post-toc-body">
 				<span class="post-toc-header-main">
@@ -402,6 +409,7 @@ function mrkwp_register_post_shortcodes(): void {
 	add_shortcode( 'mrkwp_product_breadcrumbs', 'mrkwp_post_breadcrumbs_shortcode' );
 	add_shortcode( 'mrkwp_post_meta_bar', 'mrkwp_post_meta_bar_shortcode' );
 	add_shortcode( 'mrkwp_post_toc', 'mrkwp_post_toc_shortcode' );
+	add_shortcode( 'mrkwp_product_toc', 'mrkwp_product_toc_shortcode' );
 	add_shortcode( 'mrkwp_related_posts', 'mrkwp_related_posts_shortcode' );
 
 	if ( function_exists( 'register_block_type' ) && class_exists( 'WP_Block_Type_Registry' ) ) {
@@ -430,8 +438,20 @@ function mrkwp_post_meta_bar_shortcode(): string {
 	return mrkwp_post_meta_bar( 0, false );
 }
 
-function mrkwp_post_toc_shortcode(): string {
-	return mrkwp_post_toc_widget( false );
+function mrkwp_post_toc_shortcode( $atts = array() ): string {
+	$atts = shortcode_atts(
+		array(
+			'headings' => '',
+		),
+		$atts,
+		'mrkwp_post_toc'
+	);
+
+	return mrkwp_post_toc_widget( false, $atts['headings'] );
+}
+
+function mrkwp_product_toc_shortcode(): string {
+	return mrkwp_post_toc_widget( false, 'h2' );
 }
 
 function mrkwp_related_posts_shortcode(): string {

@@ -32,8 +32,13 @@
       return;
     }
 
-    // Extract all h2 and h3 headings within post content
-    const headings = Array.from(contentArea.querySelectorAll('h2, h3')).filter(
+    // Determine heading selector: custom widget attribute, product single body class, or default to 'h2, h3'
+    const headingSelector =
+      tocWidget.dataset.headings ||
+      (document.body.classList.contains('single-wp-product') ? 'h2' : 'h2, h3');
+
+    // Extract matching headings within post content
+    const headings = Array.from(contentArea.querySelectorAll(headingSelector)).filter(
       (heading) => {
         // Exclude headings marked to be ignored or inside hidden elements
         return (
