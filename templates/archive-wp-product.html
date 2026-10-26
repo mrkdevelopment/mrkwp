@@ -1,0 +1,43 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"site-main product-archive-main"} -->
+<main class="wp-block-group site-main product-archive-main">
+	<!-- wp:group {"tagName":"section","className":"page-intro wrap"} -->
+	<section class="wp-block-group page-intro wrap">
+		<!-- wp:paragraph {"className":"eyebrow"} -->
+		<p class="eyebrow">WordPress Products</p>
+		<!-- /wp:paragraph -->
+		<!-- wp:heading {"level":1} -->
+		<h1>WordPress Products.<br><span>Built for performance.</span></h1>
+		<!-- /wp:heading -->
+		<!-- wp:paragraph -->
+		<p>Plugins, tools, and extensions built for modern WordPress websites.</p>
+		<!-- /wp:paragraph -->
+	</section>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"tagName":"section","className":"wrap section product-archive-section"} -->
+	<section class="wp-block-group wrap section product-archive-section">
+		<!-- wp:query {"queryId":12,"query":{"perPage":15,"pages":0,"offset":0,"postType":"wp-product","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template {"className":"content-grid products-grid"} -->
+			<!-- wp:mrkwp/product-card /-->
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- wp:query-pagination-previous {"label":"← Previous"} /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next {"label":"Next →"} /-->
+			<!-- /wp:query-pagination -->
+
+			<!-- wp:query-no-results -->
+			<p>No products found.</p>
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+	</section>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->

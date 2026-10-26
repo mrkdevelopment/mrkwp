@@ -1,0 +1,43 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"site-main post-single-main"} -->
+<main class="wp-block-group site-main post-single-main">
+	<div class="post-single-wrap">
+		<!-- wp:shortcode -->
+		[mrkwp_post_breadcrumbs]
+		<!-- /wp:shortcode -->
+
+		<!-- wp:group {"tagName":"header","className":"video-hero-header"} -->
+		<header class="wp-block-group video-hero-header">
+			<!-- wp:post-title {"level":1,"className":"video-hero-header__title"} /-->
+		</header>
+		<!-- /wp:group -->
+
+		<div class="post-stage-grid">
+			<!-- wp:group {"className":"post-main-column"} -->
+			<div class="wp-block-group post-main-column">
+				<!-- wp:post-featured-image {"className":"post-featured-media"} /-->
+
+				<!-- wp:group {"tagName":"article","className":"post-content-card"} -->
+				<article class="wp-block-group post-content-card">
+					<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+				</article>
+				<!-- /wp:group -->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"tagName":"aside","className":"post-sidebar-column"} -->
+			<aside class="wp-block-group post-sidebar-column">
+				<!-- wp:shortcode -->
+				[mrkwp_post_toc]
+				<!-- /wp:shortcode -->
+			</aside>
+			<!-- /wp:group -->
+		</div>
+	</div>
+
+	<!-- wp:mrkwp/related-products /-->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
